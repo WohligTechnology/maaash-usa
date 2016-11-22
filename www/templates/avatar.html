@@ -1,0 +1,87 @@
+<ion-view>
+  <ion-content class="choose-avatar">
+    <div class="">
+      <div class="logo text-center">
+        <a href=""><img src="img/big-logo.png" width="140" alt="Smaash"></a>
+      </div>
+      <h3 class="text-uppercase text-center text-in-shadow city color-white font-america m-clear">Upload profile photo</h3>
+      <div class="photo text-center">
+        <div class="row">
+          <div class=" col-80">
+            <div class="row">
+              <div class="col-offset-10 col-50">
+                <!-- <div class="add-photo"> -->
+                  <!-- <div class="photos">
+                              <div class="photo-image text-center">
+                                 <p class="ion-plus"></p>
+                                 <p class="text-uppercase color-white">upload</p>
+                              </div>
+
+                           </div> -->
+                  <!-- <img ng-src="{{collection.selectedImage}}" alt=""  class="img-responsive" ng-click="getImageSaveContact();"> -->
+                  <div class="pick-img">
+                    <img ng-src="{{imagetobeup}}" alt=""  class="img-responsive" ng-click="uploadProfilePic();">
+                  </div>
+                <!-- </div> -->
+              </div>
+              <div class="col-offset-10 col-50">
+                <!-- <div class="add-photo"> -->
+                  <!-- <div class="photos" >
+                              <div class="photo-image text-center" >
+                                 <p class="ion-camera"></p>
+                                 <p class="text-uppercase color-white">take photo</p>
+                              </div>
+
+                           </div> -->
+                     <div class="pick-img">
+                  <img ng-src="{{imgURI}}" alt="" class="img-responsive" ng-click="takePhotoCamera();">
+                    </div>
+                  <!-- <div class="uploaded-pic">
+                    <img src="" alt="" class="img-responsive">
+                  </div> -->
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="color-white block font-galano">OR</span>
+        <span class="color-white block text-uppercase mt10 mb10 font-galano">Select your avatar</span>
+        <div class="avatar-holder" ui-sref="app.home">
+          <div class="avatar-box">
+            <div class="row">
+              <div class="col-50">
+<div class="avatars">
+</div>
+              </div>
+              <div class="col-50">
+<div class="avatarss">
+</div>
+              </div>
+            </div>
+                 <div class="row">
+              <div class="col-50">
+<div class="avatars">
+</div>
+              </div>
+              <div class="col-50">
+<div class="avatarss">
+</div>
+              </div>
+            </div>
+                 <div class="row">
+              <div class="col-50">
+<div class="avatars">
+</div>
+              </div>
+              <div class="col-50">
+<div class="avatarss">
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="block color-white mt10 mb10 font-galano" ui-sref="app.home">SKIP</span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

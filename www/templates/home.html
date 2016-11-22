@@ -1,0 +1,90 @@
+<ion-view>
+  <ion-content class="home">
+    <div class="home-main">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
+        <ion-slide ng-repeat="slide in mySlides track by $index">
+          <div class="img-bx">
+            <img ng-src="{{slide.image | uploadpath}}" alt="No Image Slider" class="full-image">
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+      <div class="">
+        <div class="profile-strip">
+          <div class="row">
+            <div class="col col-25">
+              <div class="profile-img">
+                <img src="img/profile-img.jpg" alt="" class="img-responsive">
+              </div>
+            </div>
+            <div class="col col-75">
+              <div class="clearfix relate">
+                <div class="name pull-left">
+                  <div class="" ng-if="!showSignUp">
+                    <h4 class="m-clear text-in-shadow color-white font-america">{{user.name}}</h4>
+                    <!-- <span class="text-in-shadow color-white font-america">Cricketer</span> -->
+                  </div>
+                  <div class="" ng-if="showSignUp">
+                    <h4 class="mt10 text-in-shadow color-white font-america" ui-sref="noheader.signup">SIGN UP</h4>
+                  </div>
+                </div>
+                <div class="slash">
+                  <span class="text-in-shadow font-galano color-white">/</span>
+                </div>
+                <div class="name pull-right" ng-if="!showSignUp">
+                  <h4 class="m-clear text-in-shadow color-white font-america">33500</h4>
+                  <span class="text-in-shadow color-white font-america">Points</span>
+                </div>
+                <div class="name pull-right" ng-if="showSignUp">
+                  <h4 class="m-clear text-in-shadow color-white font-america">0</h4>
+                  <span class="text-in-shadow color-white font-america">Points</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="smaash-details">
+          <div class="row">
+            <div class="col col-25">
+              <div class="smaash-insider">
+                <div class="insider">
+                  <img src="img/inside.png" alt="" class="img-responsive">
+                </div>
+              </div>
+            </div>
+            <div class="col col-75">
+              <div class="get-points">
+                <div class="more">
+                  <img src="img/know-more.png" alt="" class="img responsive">
+                </div>
+                <div class="lady">
+                  <img src="img/lady.png" alt="" class="img-responsive">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="detail-smaash">
+          <div class="row">
+            <div class="col col-25">
+              <div class="inside-smaash relate">
+                <img src="img/red-bg.jpg" alt="" class="red-img img-responsive">
+                <img src="img/inside.png" alt="" class=" inside img-responsive">
+              </div>
+            </div>
+            <div class="col col-75">
+              <div class="points-get">
+                <!-- <img src="img/bg-strip.png" alt=""> -->
+                <div class="know-more">
+                  <img src="img/know-more.png" alt="" class="img responsive">
+                </div>
+                <div class="lady-baga">
+                  <img src="img/lady.png" alt="" class="img-responsive">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

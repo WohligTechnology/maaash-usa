@@ -1,0 +1,33 @@
+
+<ion-view>
+  <ion-content class="beverage-bg">
+    <div class="order-main text-center">
+      <h3 class="text-center text-uppercase text-in-shadow font-america">host a party</h3>
+    </div>
+
+      <div class="list card" ng-repeat="data in SingleHostParty">
+   <div class="restaurant-name">
+       <img ng-src="{{data.image | uploadpath}}" class="img-responsive" alt="">
+   </div>
+   <div class="restaurant-detail">
+         <h3 class="text-uppercase font-america color-white" ng-bind-html="data.hometext"></h3>
+    <p ng-bind-html="data.description | htmlToPlaintext"></p>
+   </div>
+<!-- <div ng-click="openPDF();"><img src="img/notepad.png" class="img-responsive" alt=""></div> -->
+     <a href="" ng-click="openPDF();"> <img src="img/notepad.png" class="img-responsive" alt=""></a>
+    <a href=""> <img src="img/enquiry.png" class="img-responsive" alt="" ui-sref="app.partyform"></a>
+
+      </div>
+         <!-- <div class="list card">
+   <div class="restaurant-name">
+       <img src="img/know-more.png" class="img-responsive" alt="">
+   </div>
+   <div class="restaurant-detail">
+         <h3 class="text-uppercase font-america color-white">uncorked</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos repudiandae inventore beatae. Atque nobis porro architecto repudiandae qui! Dolores, enim. Velit debitis ea, praesentium voluptate delectus vitae saepe quod laborum!</p>
+   </div>
+    <a href=""> <img src="img/microsite.png" class="img-responsive" alt=""></a>
+      <a href=""> <img src="img/notepad.png" class="img-responsive" alt=""></a>
+      </div> -->
+  </ion-content>
+</ion-view>
