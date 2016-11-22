@@ -193,8 +193,8 @@ var options = "location=no,toolbar=yes";
  var target = "_blank";
  var url = "";
 
- $scope.openPDF = function() {
-   url = "http://tingdom.in/smaaash/img/brand.pdf";
+ $scope.openPDF = function(link) {
+   url = link;
    var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
@@ -216,8 +216,8 @@ var options = "location=no,toolbar=yes";
  var target = "_blank";
  var url = "";
 
- $scope.openPDF = function() {
-   url = "http://tingdom.in/smaaash/img/brand.pdf";
+ $scope.openPDF = function(link) {
+   url = link;
    var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
