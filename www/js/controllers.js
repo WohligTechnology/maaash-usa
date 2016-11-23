@@ -191,17 +191,16 @@ angular.module('starter.controllers', ['ngCordova'])
 
 var options = "location=no,toolbar=yes";
  var target = "_blank";
- var url = "";
 
  $scope.openPDF = function(link) {
-   url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
-   var ref = cordova.InAppBrowser.open(url, target, options);
+   url = $filter('uploadpath')(link);
+    var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
 
 })
 
-.controller('PartyCtrl', function($scope, $stateParams, MyServices) {
+.controller('PartyCtrl', function($scope, $stateParams, MyServices,$ionicPopup) {
 
   MyServices.getSingleExploreSmaaash($stateParams.id, function(data) {
     $scope.SingleHostParty = data.data;
@@ -215,12 +214,21 @@ var options = "location=no,toolbar=yes";
  var options = "location=no,toolbar=yes";
  var target = "_blank";
  var url = "";
+ $scope.url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
 
  $scope.openPDF = function(link) {
-   url = link;
+   url = $filter('uploadpath')(link);
    var ref = cordova.InAppBrowser.open(url, target, options);
  };
-
+ $scope.pdf = function() {
+   $scope.pdf = $ionicPopup.show({
+     templateUrl: 'templates/modal/pdf.html',
+     scope: $scope
+   });
+ }
+ $scope.closePopup = function() {
+   $scope.pdf.close();
+ }
     //   $scope.pdf = function() {
     //   $scope.pdfParty = $ionicPopup.show({
     //     templateUrl: 'templates/modal/pdf.html',
