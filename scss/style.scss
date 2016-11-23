@@ -541,7 +541,9 @@ label{
   }
 }
 .points-get {
-  background: url('../img/bg-strip.png') no-repeat -165px -10px #fff002;
+  // background: url('../img/usa/baby.png') no-repeat -165px -10px #fff002;
+  background: url('../img/usa/baby.png') no-repeat -55px -15px #fff002;
+    height: 100%;
 }
 .know-more {
   width: 49%;
@@ -1273,7 +1275,7 @@ img[alt="pay"] {
 // account page
 .account-main {
   padding: 0;
-  background: url('../img/bgaccount.jpg') no-repeat;
+  background: url('../img/usa/account-bg.png') no-repeat;
   background-size: cover;
 }
 .account-more-info {
@@ -1677,6 +1679,14 @@ img[alt="pay"] {
     }
     }
  
+  }
+}
+.usa-logo{
+  height: 79px;
+  width: 79px;
+  margin: 0 auto;
+  img{
+    width: 100%;
   }
 }
 
