@@ -194,7 +194,7 @@ var options = "location=no,toolbar=yes";
  var url = "";
 
  $scope.openPDF = function(link) {
-   url = $filter('uploadpath')(link);
+   url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
    var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
@@ -804,9 +804,9 @@ $scope.userSignup=function(userForm){
 
   });
     $scope.nextSlide = function(val) {
-      console.log("hi");
-      console.log($ionicSlideBoxDelegate.$getByHandle(val).slidesCount());
-      console.log($ionicSlideBoxDelegate.$getByHandle(val).currentIndex());
+      // console.log("hi");
+      // console.log($ionicSlideBoxDelegate.$getByHandle(val).slidesCount());
+      // console.log($ionicSlideBoxDelegate.$getByHandle(val).currentIndex());
       if ($ionicSlideBoxDelegate.$getByHandle(val).slidesCount() - 2 <= $ionicSlideBoxDelegate.$getByHandle(val).currentIndex()) {
         $ionicSlideBoxDelegate.$getByHandle(val).slide(0);
       } else {
