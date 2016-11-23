@@ -152,7 +152,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup) {
+.controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter) {
   $scope.getPlan = function() {
     $scope.checkPlan = $ionicPopup.show({
       templateUrl: 'templates/modal/gallery.html',
@@ -200,7 +200,7 @@ var options = "location=no,toolbar=yes";
 
 })
 
-.controller('PartyCtrl', function($scope, $stateParams, MyServices,$ionicPopup) {
+.controller('PartyCtrl', function($scope, $stateParams, MyServices,$ionicPopup,$filter) {
 
   MyServices.getSingleExploreSmaaash($stateParams.id, function(data) {
     $scope.SingleHostParty = data.data;
