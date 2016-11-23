@@ -1054,10 +1054,34 @@ var i=0;
     }
   })
 
-  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {})
+  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
+    $scope.closeAll = function(val) {
+      $state.go(val);
+      if ($ionicSideMenuDelegate.isOpenLeft()) {
+        $ionicSideMenuDelegate.toggleLeft();
+        // $scope.whenClose();
+      }
+      if ($ionicSideMenuDelegate.isOpenRight()) {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.whenClose();
+      }
+    };
+  })
 
 
-.controller('LandingCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {})
+.controller('LandingCtrl', function($scope, $stateParams, $ionicPopup, $state, $ionicPopup, MyServices, $timeout) {
+  var ionicpop = "";
+  $scope.oneTimepswd = function() {
+    ionicpop = $ionicPopup.show({
+      templateUrl: 'templates/modal/otp.html',
+      scope: $scope
+    });
+  }
+  $scope.toAvatar = function() {
+    ionicpop.close();
+    $state.go("app.account")
+  };
+})
 
   .controller('BonusCtrl', function($scope, $stateParams, MyServices) {})
 
