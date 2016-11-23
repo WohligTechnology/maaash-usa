@@ -472,6 +472,7 @@ label{
   right: -7px;
   z-index: 1;
 }
+.relate,.profile-strip{
 .profile-img {
   width: 70px;
   height: 70px;
@@ -484,6 +485,21 @@ label{
     border-radius: 100%;
   }
 }
+}
+
+.sidemenu-profile{
+  .profile-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin: 0 auto ;
+     img {
+    border-radius: 100%;
+  }
+}
+}
+
+
 .get-points {
   height: 275px;
   position: relative;
@@ -550,10 +566,15 @@ label{
 }
 // home end
 // buy
+.menu{
 .buy-recharge {
-  background: url('../img/bgpurple.png') no-repeat;
+  background: url('../img/usa/buy-bg.png') no-repeat;
   background-size: cover;
 }
+}
+
+
+
 .recharge-list {
   margin: 15px 0 0;
   .img-holder {
@@ -1624,5 +1645,36 @@ img[alt="pay"] {
   background-image: url("../img/usa/bgusa.png");
   background-size: cover;
   background-repeat: no-repeat;
+}
+//usa
+
+ .baring{
+   .bar-profile {
+ background-color: #444;
+ height: 170px;
+ padding: 0px 0px 0px 0px;
+ position: relative;
+}
+ }
+
+.hass-header{
+  top:200px;
+  .item{
+    border:none;
+    background-color: transparent;
+    .item-content{
+         background-color: transparent;
+    }
+  }
+  .list{
+    margin-left: 40px;
+    .sidemenu-item{
+   img{
+      vertical-align: top;
+    margin-right: 10px;
+    }
+    }
+ 
+  }
 }
 
