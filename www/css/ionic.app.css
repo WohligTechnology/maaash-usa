@@ -10270,7 +10270,8 @@ h3.ion-ios-bell-outline {
 .inside-smaash .inside {
   position: absolute;
   top: 30px;
-  right: -15px; }
+  right: -15px;
+  z-index: 99; }
 
 .inside-smaash .red-img {
   height: 220px; }
@@ -10278,6 +10279,13 @@ h3.ion-ios-bell-outline {
 .points-get {
   background: url("../img/usa/baby.png") no-repeat -55px -15px #fff002;
   height: 100%; }
+  .points-get p {
+    position: absolute;
+    top: 25px;
+    left: 50px; }
+  .points-get p + p {
+    top: 45px;
+    left: 90px; }
 
 .know-more {
   width: 49%;

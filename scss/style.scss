@@ -535,6 +535,7 @@ label{
     position: absolute;
     top: 30px;
     right: -15px;
+    z-index: 99;
   }
   .red-img {
     height: 220px;
@@ -544,6 +545,15 @@ label{
   // background: url('../img/usa/baby.png') no-repeat -165px -10px #fff002;
   background: url('../img/usa/baby.png') no-repeat -55px -15px #fff002;
     height: 100%;
+    p{
+          position: absolute;
+    top: 25px;
+    left: 50px;
+    }
+    p+p{
+       top: 45px; 
+       left: 90px;
+    }
 }
 .know-more {
   width: 49%;
