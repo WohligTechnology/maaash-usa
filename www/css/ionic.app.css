@@ -10237,7 +10237,8 @@ h3.ion-ios-bell-outline {
   border-radius: 100%;
   margin: 0 auto; }
   .sidemenu-profile .profile-img img {
-    border-radius: 100%; }
+    border-radius: 100%;
+    margin-top: 5px; }
 
 .get-points {
   height: 275px;
@@ -11112,14 +11113,16 @@ img[alt="pay"] {
   background-size: cover;
   background-repeat: no-repeat; }
 
-.baring .bar-profile {
-  background-color: #444;
-  height: 170px;
-  padding: 0px 0px 0px 0px;
-  position: relative; }
+.baring {
+  margin-top: 30px; }
+  .baring .bar-profile {
+    background-color: #444;
+    height: 170px;
+    padding: 0px 0px 0px 0px;
+    position: relative; }
 
 .hass-header {
-  top: 200px; }
+  top: 190px; }
   .hass-header .item {
     border: none;
     background-color: transparent; }
