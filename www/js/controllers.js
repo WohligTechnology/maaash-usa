@@ -194,7 +194,7 @@ var options = "location=no,toolbar=yes";
  var url = "";
 
  $scope.openPDF = function(link) {
-   url = link;
+   url = $filter('uploadpath')(link);
    var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
