@@ -191,6 +191,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 var options = "location=no,toolbar=yes";
  var target = "_blank";
+  var url = "";
 
  $scope.openPDF = function(link) {
    url = $filter('uploadpath')(link);
