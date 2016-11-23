@@ -10039,6 +10039,15 @@ h3.ion-ios-bell-outline {
   background: url("../img/arrow.png") no-repeat 95% 50%;
   cursor: pointer; }
 
+.resgistration .logo a {
+  display: block;
+  height: 100px;
+  width: 200px;
+  margin: 0 auto; }
+
+.resgistration .logo img {
+  width: 100%; }
+
 .landing .list {
   margin-top: 40px; }
 
@@ -10064,7 +10073,7 @@ h3.ion-ios-bell-outline {
 
 .choose-avatar {
   padding: 20px;
-  background: url("../img/bgpurple.png") no-repeat;
+  background: url("../img/usa/avatar-bg.png") no-repeat;
   background-size: cover; }
   .choose-avatar span {
     font-size: 16px; }
@@ -10984,15 +10993,17 @@ img[alt="pay"] {
     color: #333; }
 
 .foot .tab-item .signups {
-  background-image: url("../img/signup.png"); }
+  background-image: url("../img/signup.png");
+  background-size: 100% 100%; }
 
 .foot .tab-item .login {
-  background-image: url("../img/login.png"); }
+  background-image: url("../img/login.png");
+  background-size: 100% 100%; }
 
 .bar-footer .tabs-striped .tab-item {
   max-width: 100%; }
 
-.tab-nav.tab-item.a {
+.tabs-icon-only .tab-item {
   max-width: 100%; }
 
 .login {
@@ -11039,8 +11050,8 @@ img[alt="pay"] {
   box-shadow: 3px 1px 2px #000;
   border-radius: 5px; }
 
-.avatars, .avatarss {
-  background-image: url("../img/avatar/lady.png");
+.avatars, .avatarss, .avatars1, .avatarss1, .avatars2, .avatarss2 {
+  background-image: url("../img/usa/usvirat.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11050,9 +11061,20 @@ img[alt="pay"] {
   border: 1px solid #fff;
   box-sizing: border-box; }
 
+.avatars1 {
+  background-image: url("../img/usa/flyman.png"); }
+
+.avatars2 {
+  background-image: url("../img/usa/smaillady.png"); }
+
 .avatarss {
-  background-image: url("../img/avatar/lady.png");
-  margin-left: -2px; }
+  background-image: url("../img/usa/sach.png"); }
+
+.avatarss1 {
+  background-image: url("../img/usa/flylady.png"); }
+
+.avatarss2 {
+  background-image: url("../img/usa/smileman.png"); }
 
 .gallery {
   background: white;
@@ -11078,11 +11100,6 @@ img[alt="pay"] {
   margin-left: 20px; }
 
 .login-img {
-  position: absolute; }
-
-.login-div {
-  position: relative;
-  margin-top: 55px; }
-
-.skip {
-  position: relative; }
+  background-image: url("../img/usa/bgusa.png");
+  background-size: cover;
+  background-repeat: no-repeat; }
