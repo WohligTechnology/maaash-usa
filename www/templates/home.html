@@ -4,7 +4,7 @@
       <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
         <ion-slide ng-repeat="slide in mySlides track by $index">
           <div class="img-bx">
-            <img ng-src="{{slide.image | uploadpath}}" alt="No Image Slider" class="full-image">
+            <img src="img/usa/home-bg.png" alt="No Image Slider" class="full-image">
           </div>
         </ion-slide>
       </ion-slide-box>
@@ -21,7 +21,7 @@
                 <div class="name pull-left">
                   <div class="" ng-if="!showSignUp">
                     <h4 class="m-clear text-in-shadow color-white font-america">{{user.name}}</h4>
-                    <!-- <span class="text-in-shadow color-white font-america">Cricketer</span> -->
+                    <span class="text-in-shadow color-white font-america">Cricketer</span> 
                   </div>
                   <div class="" ng-if="showSignUp">
                     <h4 class="mt10 text-in-shadow color-white font-america" ui-sref="noheader.signup">SIGN UP</h4>
@@ -42,27 +42,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="smaash-details">
-          <div class="row">
-            <div class="col col-25">
-              <div class="smaash-insider">
-                <div class="insider">
-                  <img src="img/inside.png" alt="" class="img-responsive">
-                </div>
-              </div>
-            </div>
-            <div class="col col-75">
-              <div class="get-points">
-                <div class="more">
-                  <img src="img/know-more.png" alt="" class="img responsive">
-                </div>
-                <div class="lady">
-                  <img src="img/lady.png" alt="" class="img-responsive">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <div class="detail-smaash">
           <div class="row">
             <div class="col col-25">
@@ -72,15 +51,16 @@
               </div>
             </div>
             <div class="col col-75">
-              <div class="points-get">
-                <p class="text-center text-in-shadow color-white font-america">how to get loyalty points</p>
+              <div class="points-get relate">
+                <p class="text-center  font-america">how to get loyalty points ?</p>
+                <p class="text-center  font-galano">Know More</p>
                 <!-- <img src="img/bg-strip.png" alt=""> -->
                 <!--<div class="know-more">
                   <img src="img/know-more.png" alt="" class="img responsive">
                 </div>
                 <div class="lady-baga">
                   <img src="img/usa/baby.png" alt="" class="img-responsive">
-                </div>-->
+                </div>
               </div>
             </div>
           </div>
