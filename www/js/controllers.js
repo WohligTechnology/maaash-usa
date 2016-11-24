@@ -301,11 +301,22 @@ $scope.userSignup=function(userForm){
 
 })
 
-.controller('NewCtrl', function($scope, $stateParams, MyServices,$ionicPopup) {
+.controller('NewCtrl', function($scope, $stateParams, MyServices,$ionicPopup , $cordovaSocialSharing ,$filter) {
     MyServices.getSingleExploreSmaaash($stateParams.id, function(data) {
       $scope.SingleExploreSmaaash = data.data;
         console.log("$scope.SingleExploreSmaaash", $scope.SingleExploreSmaaash);
       });
+      $scope.shareProduct = function() {
+      var image = $filter("serverimage")($scope.ProductDetails.image);
+      console.log(image);
+      $cordovaSocialSharing
+        .share($scope.ProductDetails.name, '', image, '') // Share via native share sheet
+        .then(function(result) {
+          // Success!
+        }, function(err) {
+          // An error occured. Show a message to the user
+        });
+    };
       $scope.isInWishlist = function(id) {
           var indexF = _.findIndex($scope.userwishlist, function(key) {
               return key.exploresmash._id == id;

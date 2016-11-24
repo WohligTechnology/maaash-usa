@@ -485,6 +485,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
     };
 })
+.filter('serverimage', function() {
+  return function(input) {
+    if (input) {
+      // console.log('serverimage: ', input);
+      // return input;
+      return imgpath + input;
+      // return "http://192.168.0.123/eurobackend/uploads"+input;
+    } else {
+      // return "img/logo.png";
+    }
+  };
+})
+
 .directive('onlyDigits', function () {
     return {
         require: 'ngModel',
