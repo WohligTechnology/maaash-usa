@@ -11136,6 +11136,9 @@ img[alt="pay"] {
   background-size: cover;
   background-repeat: no-repeat; }
 
+.accordion-list .custom-slider {
+  padding: 0 20px; }
+
 .color-black {
   color: #000 !important; }
 
