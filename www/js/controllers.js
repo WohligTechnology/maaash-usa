@@ -96,7 +96,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 .controller('LeaderCtrl', function($scope, $stateParams) {
-  
+
 $scope.leader=[{
 img:'img/usa/flylady.png',
 title:'vishwanathan kothian',
@@ -1013,12 +1013,12 @@ var i=0;
 })
 
 .controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
-    if($.jStorage.set("city")===null){
-      $state.go("noheader.login")
-    }
-    else{
-      $state.go("app.account")
-    }
+    // if($.jStorage.set("city")===null){
+    //   $state.go("noheader.login")
+    // }
+    // else{
+    //   $state.go("app.account")
+    // }
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
