@@ -42,6 +42,10 @@
                 <input type="text" placeholder="Enter Pin Code" required ng-model="userForm.pincode" name="pin" only-Digits maxlength="6" minlength="6">
               </label>
               <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>
+
+              <label class="item item-input">
+                <input type="password" placeholder="Password" required ng-model="userForm.Password" name="password" only-Digits maxlength="14" minlength="8">
+              </label>
               <!-- <button type="submit" name="button" class="go full-width">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->

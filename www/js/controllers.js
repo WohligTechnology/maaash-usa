@@ -9,17 +9,23 @@ angular.module('starter.controllers', ['ngCordova'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.logout = function() {
-    console.log("im in");
-      if ($.jStorage.get("loginDetail") != null) {
-          MyServices.logout(function(data) {
-              // location.reload();
-              $state.go("home");
-          })
-      } else {
-
-      }
-
+  // $scope.logout = function() {
+  //   console.log("im in");
+  //     if ($.jStorage.get("loginDetail") != null) {
+  //         MyServices.logout(function(data) {
+  //             // location.reload();
+  //             $state.go("home");
+  //         })
+  //     } else {
+  //
+  //     }
+  //
+  // };
+  $scope.logout =function(){
+    MyServices.logout(function(data){
+      console.log(data);
+        $state.go("noheader.login");
+    });
   };
   $scope.getCross = "";
   $scope.whenClose = function() {
@@ -998,12 +1004,12 @@ var i=0;
 })
 
 .controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
-    if($.jStorage.set("city")===null){
-      $state.go("noheader.login")
-    }
-    else{
-      $state.go("app.account")
-    }
+    // if($.jStorage.get("city")===null){
+    //   $state.go("noheader.login")
+    // }
+    // else{
+    //   $state.go("app.account")
+    // }
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1045,30 +1051,31 @@ var i=0;
     };
 
     $scope.userForm = {};
-    $scope.userForm.branchid = "17";
+    $scope.userForm.BranchID = "17";
     $scope.userForm.otp ="";
 
     $scope.formComplete = false;
     $scope.emailExist = false;
     $scope.getotp={};
-    $scope.getotp.phone ="";
-    $scope.getotp.otpfor ="1";
+    $scope.getotp.CustomerMobileNo ="";
+    $scope.getotp.OTPFor ="1";
+    $scope.getotp.BranchID ="17";
 
 
     $scope.generateOtp =function(phone){
-      $scope.getotp.phone =phone;
-      // MyServices.generateOtp($scope.getotp, function(data) {
-      //   console.log(data);
+      $scope.getotp.CustomerMobileNo =phone;
+      MyServices.generateOtp($scope.getotp, function(data) {
+        console.log(data);
         $scope.oneTimepswd();
-      // })
+      })
     }
 
     $scope.CustomerRegistration = function(formData) {
 
       console.log("formData", formData);
-      if (formData) {
-        formData.city=$.jStorage.get("cityid");
-      }
+      // if (formData) {
+      //   formData.city=$.jStorage.get("cityid");
+      // }
       MyServices.CustomerRegistration(formData, function(data) {
         console.log(data);
         if (data.value === true) {
@@ -1109,7 +1116,7 @@ var i=0;
   var ionicpop = "";
   $scope.oneTimepswd = function() {
     ionicpop = $ionicPopup.show({
-      templateUrl: 'templates/modal/otp.html',
+      templateUrl: 'templates/modal/otp1.html',
       scope: $scope
     });
   }
@@ -1117,6 +1124,43 @@ var i=0;
     ionicpop.close();
     $state.go("app.account")
   };
+  $scope.getotp={};
+  $scope.getotp.CustomerMobileNo ="";
+  $scope.getotp.OTPFor ="1";
+  $scope.getotp.BranchID ="17";
+  $scope.generateOtp =function(phone){
+    $scope.getotp.CustomerMobileNo =phone;
+    MyServices.generateOtp($scope.getotp, function(data) {
+      console.log(data);
+      $scope.oneTimepswd();
+    })
+  }
+  $scope.VerifyCustomerLogin = function(formData) {
+
+    console.log("formData", formData);
+    // if (formData) {
+    //   formData.city=$.jStorage.get("cityid");
+    // }
+    MyServices.VerifyCustomerLogin(formData, function(data) {
+      console.log(data);
+      if (data.value === true) {
+          $.jStorage.set("loginDetail", data);
+        $scope.formComplete = true;
+
+        $timeout(function() {
+          $scope.formComplete = false;
+          $scope.emailExist = false;
+          $scope.userForm = {};
+          ionicpop.close();
+          $state.go("app.account")
+
+                  }, 2000);
+      } else  {
+        $scope.emailExist = true;
+      }
+
+    })
+  }
 })
 
   .controller('BonusCtrl', function($scope, $stateParams, MyServices) {})

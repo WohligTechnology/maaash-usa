@@ -1,6 +1,6 @@
- // var adminurl = "http://192.168.100.111:1337/"; //local
+ var adminurl = "http://192.168.0.104:1337/"; //local
 
- var adminurl = "http://104.155.129.33:82/";  //server
+ // var adminurl = "http://104.155.129.33:82/";  //server
  // var imgpath = adminurl + "uploadfile/getupload?file=";
  var imgurl = adminurl + "upload/";
  var imgpath = imgurl + "readFile";
@@ -97,15 +97,22 @@
          }).success(callback);
      },
      generateOtp: function(getotp,callback) {
-        //  var data = {
-        //      _id: id,
-        //      city: $.jStorage.get("cityid")
-        //  };
+
          $http({
              url: adminurl + 'signup/generateOtp',
              method: 'POST',
              withCredentials: true,
              data: getotp
+
+         }).success(callback);
+     },
+     VerifyCustomerLogin: function(otp,callback) {
+
+         $http({
+             url: adminurl + 'signup/VerifyCustomerLogin',
+             method: 'POST',
+             withCredentials: true,
+             data: otp
 
          }).success(callback);
      },
@@ -118,7 +125,7 @@
              url: adminurl + 'signup/CustomerRegistration',
              method: 'POST',
              withCredentials: true,
-             data: getotp
+             data: otp
 
          }).success(callback);
      },
@@ -163,11 +170,11 @@
            }).success(callback);
        },
        logout: function(callback) {
-           // $.jStorage.flush();
-             $.jStorage.set("loginDetail",null);
-             $.jStorage.set("loginId",null);
-             $.jStorage.set("loggedInUser",null);
-             $.jStorage.set("customizeobj",null);
+           $.jStorage.flush();
+            //  $.jStorage.set("loginDetail",null);
+            //  $.jStorage.set("loginId",null);
+            //  $.jStorage.set("loggedInUser",null);
+            //  $.jStorage.set("customizeobj",null);
            return $http({
                url: adminurl + 'register/logout',
                method: 'POST',
