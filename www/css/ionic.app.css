@@ -10130,7 +10130,7 @@ h3.ion-ios-bell-outline {
   padding: 44px 0 0; }
 
 .bar.bar-light {
-  background-color: transparent !important;
+  background-color: #000;
   border: none;
   background-size: 0; }
 
@@ -10565,8 +10565,11 @@ h3.ion-ios-bell-outline {
       position: absolute; }
 
 .cricket-bg {
-  background: url("../img/attractions.jpg");
+  background: url("../img/usa/buy-bg.png");
   background-size: cover; }
+  .cricket-bg .card {
+    background-color: transparent;
+    box-shadow: none; }
 
 .earn-bg {
   background: url("../img/orange1.jpg"); }
@@ -11121,6 +11124,9 @@ img[alt="pay"] {
   background-image: url("../img/usa/bgusa.png");
   background-size: cover;
   background-repeat: no-repeat; }
+
+.color-black {
+  color: #000 !important; }
 
 .baring {
   margin-top: 30px; }

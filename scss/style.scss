@@ -114,6 +114,8 @@ $brand-darkblue: #2a3890!default;
 .color-white {
   color: #fff;
 }
+
+
 .font-america {
   font-family: "American Purpose";
 }
@@ -372,7 +374,7 @@ label{
   padding: 44px 0 0;
 }
 .bar.bar-light {
-  background-color: transparent !important;
+  background-color: #000;
   border: none;
   background-size: 0;
 }
@@ -958,8 +960,12 @@ background-color:    #fc5626;
 }
 }
 .cricket-bg{
-background: url('../img/attractions.jpg');
+background: url('../img/usa/buy-bg.png');
   background-size: cover;
+  .card{
+    background-color: transparent;
+    box-shadow: none;
+  }
 
 }
 .earn-bg{
@@ -1660,6 +1666,9 @@ img[alt="pay"] {
   background-repeat: no-repeat;
 }
 //usa
+.color-black{
+  color:#000 !important;
+}
 
  .baring{
        margin-top: 30px;
