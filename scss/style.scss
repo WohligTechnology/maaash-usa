@@ -31,6 +31,9 @@
 //background-colors
 $brand-purply:#662d91 !default;
 $brand-darkblue: #2a3890!default;
+$brand-green: #32b544!default;
+$brand-pink: #ea2b7c!default;
+$brand-blue: #29a8df!default;
 // classes
 .mt5 {
   margin-top: 5px;
@@ -721,7 +724,7 @@ label{
 //detail-smaash
 //deals
 .deals-bg{
-  background: url('../img/bgdeals.png');
+  background: url('../img/usa/dels.jpg');
   background-size: cover;
 }
 .dealings{
@@ -1444,9 +1447,13 @@ img[alt="pay"] {
   }
 }
 //events
-.attraction-bg,.beverage-bg{
-  background: url('../img/attractions.jpg');
+.attraction-bg,.beverage-bg,.what-new{
+  background: url('../img/usa/buy-bg.png');
   background-size: cover;
+  margin-top: 20px;
+}
+.what-new{
+ background: url('../img/attractions.jpg');
 }
 .beverage-bg{
     background: url('../img/bgyellow.jpg');
@@ -1708,4 +1715,74 @@ img[alt="pay"] {
     width: 100%;
   }
 }
+
+.what-new{
+  .list:nth-of-type(2){
+    .karting-championship{
+      border:2px solid $brand-purply;
+.new-detail{
+  .bluey{
+color:$brand-purply;
+  }
+  .blue{
+background-color: $brand-purply;
+  }
+}
+    }
+  }
+    .list:nth-of-type(3){
+        .karting-championship{
+          border:2px solid $brand-darkblue;
+.new-detail{
+  .bluey{
+color:$brand-darkblue;
+  }
+  .blue{
+ background-color:$brand-darkblue;
+  }
+}
+    }
+    }
+        .list:nth-of-type(4){
+        .karting-championship{
+          border:2px solid $brand-green;
+.new-detail{
+  .bluey{
+color:$brand-green;
+  }
+  .blue{
+ background-color:$brand-green;
+  }
+}
+    }
+    }
+        .list:nth-of-type(5){
+        .karting-championship{
+          border:2px solid $brand-pink;
+.new-detail{
+  .bluey{
+color:$brand-pink;
+  }
+  .blue{
+ background-color:$brand-pink;
+  }
+}
+    }
+    }
+        .list:nth-of-type(6){
+        .karting-championship{
+          border:2px solid $brand-blue;
+.new-detail{
+  .bluey{
+color:$brand-blue;
+  }
+  .blue{
+ background-color:$brand-blue;
+  }
+}
+    }
+    }
+
+  }
+
 

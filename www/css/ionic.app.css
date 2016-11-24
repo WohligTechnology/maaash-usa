@@ -10405,7 +10405,7 @@ h3.ion-ios-bell-outline {
     margin-top: -7px; }
 
 .deals-bg {
-  background: url("../img/bgdeals.png");
+  background: url("../img/usa/dels.jpg");
   background-size: cover; }
 
 .dealings .card {
@@ -10958,9 +10958,13 @@ img[alt="pay"] {
   margin: 0;
   margin-left: 20px; }
 
-.attraction-bg, .beverage-bg {
-  background: url("../img/attractions.jpg");
-  background-size: cover; }
+.attraction-bg, .beverage-bg, .what-new {
+  background: url("../img/usa/buy-bg.png");
+  background-size: cover;
+  margin-top: 20px; }
+
+.what-new {
+  background: url("../img/attractions.jpg"); }
 
 .beverage-bg {
   background: url("../img/bgyellow.jpg"); }
@@ -11155,3 +11159,38 @@ img[alt="pay"] {
   margin: 0 auto; }
   .usa-logo img {
     width: 100%; }
+
+.what-new .list:nth-of-type(2) .karting-championship {
+  border: 2px solid #662d91; }
+  .what-new .list:nth-of-type(2) .karting-championship .new-detail .bluey {
+    color: #662d91; }
+  .what-new .list:nth-of-type(2) .karting-championship .new-detail .blue {
+    background-color: #662d91; }
+
+.what-new .list:nth-of-type(3) .karting-championship {
+  border: 2px solid #2a3890; }
+  .what-new .list:nth-of-type(3) .karting-championship .new-detail .bluey {
+    color: #2a3890; }
+  .what-new .list:nth-of-type(3) .karting-championship .new-detail .blue {
+    background-color: #2a3890; }
+
+.what-new .list:nth-of-type(4) .karting-championship {
+  border: 2px solid #32b544; }
+  .what-new .list:nth-of-type(4) .karting-championship .new-detail .bluey {
+    color: #32b544; }
+  .what-new .list:nth-of-type(4) .karting-championship .new-detail .blue {
+    background-color: #32b544; }
+
+.what-new .list:nth-of-type(5) .karting-championship {
+  border: 2px solid #ea2b7c; }
+  .what-new .list:nth-of-type(5) .karting-championship .new-detail .bluey {
+    color: #ea2b7c; }
+  .what-new .list:nth-of-type(5) .karting-championship .new-detail .blue {
+    background-color: #ea2b7c; }
+
+.what-new .list:nth-of-type(6) .karting-championship {
+  border: 2px solid #29a8df; }
+  .what-new .list:nth-of-type(6) .karting-championship .new-detail .bluey {
+    color: #29a8df; }
+  .what-new .list:nth-of-type(6) .karting-championship .new-detail .blue {
+    background-color: #29a8df; }
