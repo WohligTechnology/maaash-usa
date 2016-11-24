@@ -9899,6 +9899,9 @@ a.button {
   height: 100px;
   width: 100px; }
 
+.f20 {
+  font-size: 20px !important; }
+
 .font-light {
   font-weight: 300; }
 
@@ -10429,9 +10432,12 @@ h3.ion-ios-bell-outline {
     color: #fff;
     font-size: 18px; }
 
-.about-bg {
+.about-bg, .leader {
   background: url("../img/about.png");
   background-size: cover; }
+
+.leader {
+  background: url("../img/usa/leader.jpg"); }
 
 .about-text .card {
   overflow: hidden;
