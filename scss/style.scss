@@ -30,6 +30,7 @@
 // end fonts
 //background-colors
 $brand-purply:#662d91 !default;
+$brand-greenblu: #01a69a !default;
 $brand-darkblue: #2a3890!default;
 $brand-green: #32b544!default;
 $brand-pink: #ea2b7c!default;
@@ -1112,7 +1113,7 @@ padding: 0 10px;
   .views{
     button{
       background-color: #fff;
-      border: 1px solid #29a8df;
+      border: 1px solid #000;
       padding: 5px 15px;
     }
   }
@@ -1504,7 +1505,7 @@ img[alt="pay"] {
   }
   .views{
     button{
-      padding: 5px 10px;
+      padding: 5px 8px;
     border-radius: 5px;
     }
   }
@@ -1517,6 +1518,7 @@ img[alt="pay"] {
       button{
             width: 100%;
     margin-top: 0;
+    font-size: 12px;
       }
     }
   }
@@ -1716,8 +1718,27 @@ img[alt="pay"] {
   }
 }
 
-.what-new{
-  .list:nth-of-type(2){
+.color-change{
+    
+  .list:nth-of-type(6n+1){
+    .karting-championship{
+      border:2px solid $brand-greenblu;
+.new-detail{
+  .bluey{
+color:$brand-greenblu;
+  }
+  .blue{
+background-color: $brand-greenblu;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-greenblu;
+  }
+}
+    }
+  }
+  .list:nth-of-type(6n+2){
     .karting-championship{
       border:2px solid $brand-purply;
 .new-detail{
@@ -1728,9 +1749,14 @@ color:$brand-purply;
 background-color: $brand-purply;
   }
 }
+.views{
+  button{
+    border:1px solid $brand-purply;
+  }
+}
     }
   }
-    .list:nth-of-type(3){
+    .list:nth-of-type(6n+3){
         .karting-championship{
           border:2px solid $brand-darkblue;
 .new-detail{
@@ -1741,9 +1767,14 @@ color:$brand-darkblue;
  background-color:$brand-darkblue;
   }
 }
+.views{
+  button{
+    border:1px solid $brand-darkblue;
+  }
+}
     }
     }
-        .list:nth-of-type(4){
+        .list:nth-of-type(6n+4){
         .karting-championship{
           border:2px solid $brand-green;
 .new-detail{
@@ -1754,9 +1785,14 @@ color:$brand-green;
  background-color:$brand-green;
   }
 }
+.views{
+  button{
+    border:1px solid $brand-green;
+  }
+}
     }
     }
-        .list:nth-of-type(5){
+        .list:nth-of-type(6n+5){
         .karting-championship{
           border:2px solid $brand-pink;
 .new-detail{
@@ -1767,9 +1803,14 @@ color:$brand-pink;
  background-color:$brand-pink;
   }
 }
+.views{
+  button{
+    border:1px solid $brand-pink;
+  }
+}
     }
     }
-        .list:nth-of-type(6){
+        .list:nth-of-type(6n+6){
         .karting-championship{
           border:2px solid $brand-blue;
 .new-detail{
@@ -1778,6 +1819,11 @@ color:$brand-blue;
   }
   .blue{
  background-color:$brand-blue;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-blue;
   }
 }
     }
