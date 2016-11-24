@@ -101,10 +101,25 @@ angular.module('starter.controllers', ['ngCordova'])
 
 
 })
-.controller('LeaderCtrl', function($scope, $stateParams, MyServices) {
-   MyServices.getSingleExploreSmaaash(id, function(data) {
-   $scope.SingleDealsPackages = data.data;
- });
+.controller('LeaderCtrl', function($scope, $stateParams) {
+
+$scope.leader=[{
+img:'img/usa/flylady.png',
+title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'As CFO ......'
+},
+{
+  img:'img/usa/flyman.png',
+  title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'As CMO ......'
+},{
+  img:'img/usa/sach.png',
+  title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lot more than your run-of-the-mill banquet hall and gaming center. It presents an unmatched range of games that offer a superlative virtual-reality experience, and combines the best of sports, music and dining into a highly immersive, interactive, innovative and involved entertainment experience. Smaaash has not only redefined sports entertainment, but also raised the bar for customer engagement. This innovative entertainment and active engagement is what defines Smaaash.'
+}]
 
 })
 .controller('PlaylistsCtrl', function($scope) {
@@ -1004,12 +1019,6 @@ var i=0;
 })
 
 .controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
-    // if($.jStorage.get("city")===null){
-    //   $state.go("noheader.login")
-    // }
-    // else{
-    //   $state.go("app.account")
-    // }
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',

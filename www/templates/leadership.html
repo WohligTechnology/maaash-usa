@@ -5,49 +5,20 @@
         <h3 class="text-center text-uppercase text-in-shadow font-america">leadership team</h3>
       </div>
 
-<div class="list card" ng-repeat=" data in SingleExploreSmaaash">
+<div class="list card" ng-repeat="data in leader track by $index">
 
   <div class="item heading">
-    <h3 class="text-center text-in-shadow font-america">vishwanathan kothan</h3>
-    <h3 class="text-center font-america f20">chief financial officer</h3>
+    <h3 class="text-center text-in-shadow font-america">{{data.title}}</h3>
+    <h3 class="text-center font-america f20">{{data.text}}</h3>
   </div>
 
   <div class="item item-image">
-    <img src="img/smashing.png" alt="smaaash" class="img-responsive">
+    <img src="{{data.img}}" alt="smaaash" class="img-responsive">
   </div>
 
-    <p>Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lot more than your run-of-the-mill banquet hall and gaming center. It presents an unmatched range of games that offer a superlative virtual-reality experience, and combines the best of sports, music and dining into a highly immersive, interactive, innovative and involved entertainment experience. Smaaash has not only redefined sports entertainment, but also raised the bar for customer engagement. This innovative entertainment and active engagement is what defines Smaaash.</p>
+    <p>{{data.para}}</p>
 
 </div>
-<!--<div class="list card">
-
-  <div class="item heading">
-     <h3 class="text-center text-in-shadow font-america">ashok cherian</h3>
-    <h3 class="text-center font-america f20">chief marketing officer</h3>
-  </div>
-
-  <div class="item item-image">
-    <img src="img/sm.png" alt="shripal morakia" class="img-responsive">
-  </div>
-
-    <p>Shripal Morakhia is the founder of SMAAASH Entertainment Pvt. Ltd. and the owner of iDream Production Pvt. Ltd. Mr. Morakhia brings with him rich, top management level corporate experience, acquired while working for renowned companies viz.</p>
-
-</div>-->
-
-<!--<div class="list card">
-
-  <div class="item heading">
-    <h3 class="text-center text-uppercase text-in-shadow font-america">brand ambassador</h3>
-  </div>
-
-  <div class="item item-image">
-    <img src="img/sachinva.png" alt="sachin" class="img-responsive">
-  </div>
-
-    <p>Cricketing legend and icon -
-Sachin Tendulkar has been an integral part of the SMAAASH family since its inception in 2012. In his own words, 'The advanced simulators at SMAAASH are fascinating and are very close to the real life experience'</p>
-
-</div>-->
 
   </ion-content>
 </ion-view>
