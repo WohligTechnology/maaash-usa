@@ -820,7 +820,18 @@ $scope.userSignup=function(userForm){
   var attraction = [];
   var whatsnew = [];
   var hostParty = [];
+  $scope.food = [
+      {
+     img: 'img/new.png',
+      },
+      {
+       img: 'img/new.png',
+      },
+     {
+       img: 'img/new.png',
+      }
 
+    ];
 
   MyServices.getHomeContent(function(data) {
     if (data.value) {
