@@ -32,6 +32,15 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
+    .state('app.leader', {
+   url: '/leadership-team',
+   views: {
+     'menuContent': {
+       templateUrl: 'templates/leadership.html',
+       controller: 'LeaderCtrl'
+     }
+   }
+ })
     .state('noheader', {
       url: '/no-header',
       abstract: true,
@@ -431,7 +440,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/no-header/select-city');
+  $urlRouterProvider.otherwise('/app/account');
 })
 
 .directive('scrollDetector', function($window) {

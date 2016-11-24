@@ -95,7 +95,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
 
 })
+.controller('LeaderCtrl', function($scope, $stateParams, MyServices) {
+   MyServices.getSingleExploreSmaaash(id, function(data) {
+   $scope.SingleDealsPackages = data.data;
+ });
 
+})
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [{
     title: 'Reggae',
@@ -195,7 +200,6 @@ var options = "location=no,toolbar=yes";
 
  $scope.openPDF = function(link) {
    url = $filter('uploadpath')(link);
-   console.log("hi",url);
     var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
@@ -225,7 +229,6 @@ var options = "location=no,toolbar=yes";
  $scope.pdf = function() {
    $scope.pdf = $ionicPopup.show({
      templateUrl: 'templates/modal/pdf.html',
-
      scope: $scope
    });
  }
@@ -308,6 +311,7 @@ $scope.userSignup=function(userForm){
       $scope.SingleExploreSmaaash = data.data;
         console.log("$scope.SingleExploreSmaaash", $scope.SingleExploreSmaaash);
       });
+
       $scope.shareProduct = function() {
       var image = $filter("serverimage")($scope.ProductDetails.image);
       console.log(image);
@@ -512,7 +516,6 @@ $scope.userSignup=function(userForm){
 
   MyServices.getCity(function(data) {
     $scope.getCity = _.chunk(data.data, 2);
-    console.log('$scope.getCity', $scope.getCity);
   })
   $scope.selectCity = function(city) {
 
@@ -520,24 +523,7 @@ $scope.userSignup=function(userForm){
     $.jStorage.set("city", city.name);
     $state.go("noheader.signup");
   }
-  $scope.uploadProfilePic = function() {
-      console.log("hi");
-      $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-        // Success! Image data is here
-        console.log("hi1");
 
-        console.log(resultImage);
-        $scope.imagetobeup = resultImage[0];
-        $scope.uploadPhoto(imgurl, function(data) {
-          console.log(data);
-          console.log(JSON.parse(data.response));
-          var parsedImage = JSON.parse(data.response);
-          $scope.personal.profilePicture = parsedImage.data[0];
-        });
-      }, function(err) {
-        // An error occured. Show a message to the user
-      });
-    }
     // $scope.getCityName=function(cityName){
     //   $.jStorage.set("city",cityName);
     //   $scope.city=$.jStorage.get("city").name;
@@ -1012,6 +998,12 @@ var i=0;
 })
 
 .controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
+    if($.jStorage.set("city")===null){
+      $state.go("noheader.login")
+    }
+    else{
+      $state.go("app.account")
+    }
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1039,6 +1031,8 @@ var i=0;
 
 .controller('SignupCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
     var ionicpop = "";
+    $.jStorage.set("cityid", "17");
+    $.jStorage.set("city", "usa");
     $scope.oneTimepswd = function() {
       ionicpop = $ionicPopup.show({
         templateUrl: 'templates/modal/otp.html',
@@ -1051,23 +1045,43 @@ var i=0;
     };
 
     $scope.userForm = {};
+    $scope.userForm.branchid = "17";
+    $scope.userForm.otp ="";
+
     $scope.formComplete = false;
     $scope.emailExist = false;
-    $scope.userSignup = function(formData) {
+    $scope.getotp={};
+    $scope.getotp.phone ="";
+    $scope.getotp.otpfor ="1";
+
+
+    $scope.generateOtp =function(phone){
+      $scope.getotp.phone =phone;
+      // MyServices.generateOtp($scope.getotp, function(data) {
+      //   console.log(data);
+        $scope.oneTimepswd();
+      // })
+    }
+
+    $scope.CustomerRegistration = function(formData) {
+
       console.log("formData", formData);
       if (formData) {
         formData.city=$.jStorage.get("cityid");
       }
-      MyServices.signUp(formData, function(data) {
+      MyServices.CustomerRegistration(formData, function(data) {
         console.log(data);
         if (data.value === true) {
             $.jStorage.set("loginDetail", data);
           $scope.formComplete = true;
+
           $timeout(function() {
             $scope.formComplete = false;
             $scope.emailExist = false;
             $scope.userForm = {};
-          }, 2000);
+            ionicpop.close();
+            $state.go("noheader.avatar")
+                    }, 2000);
         } else  {
           $scope.emailExist = true;
         }

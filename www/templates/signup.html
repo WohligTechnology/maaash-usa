@@ -8,7 +8,7 @@
       <ion-list>
         <div class="row">
           <div class="col-offset-10 col col-80">
-            <form name="user" ng-submit="userSignup(userForm);" ng-if="!formComplete">
+            <form name="user" ng-if="!formComplete">
               <label class="item item-input">
                 <input type="text" placeholder="Name" name="name" required ng-model="userForm.CustomerName">
               </label>
@@ -46,7 +46,7 @@
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->
               <!-- <button type="submit" name="button" class="go full-width" > -->
-              <button type="submit" name="button" class="go full-width" ng-click="oneTimepswd();">
+              <button  name="button" class="go full-width" ng-click="generateOtp(userForm.CustomerMobile)">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="text-center color-white font-galano">OR</p>

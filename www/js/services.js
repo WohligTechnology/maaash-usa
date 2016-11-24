@@ -96,6 +96,32 @@
 
          }).success(callback);
      },
+     generateOtp: function(getotp,callback) {
+        //  var data = {
+        //      _id: id,
+        //      city: $.jStorage.get("cityid")
+        //  };
+         $http({
+             url: adminurl + 'signup/generateOtp',
+             method: 'POST',
+             withCredentials: true,
+             data: getotp
+
+         }).success(callback);
+     },
+     CustomerRegistration: function(otp,callback) {
+        //  var data = {
+        //      _id: id,
+        //      city: $.jStorage.get("cityid")
+        //  };
+         $http({
+             url: adminurl + 'signup/CustomerRegistration',
+             method: 'POST',
+             withCredentials: true,
+             data: getotp
+
+         }).success(callback);
+     },
      searchExploreSmaaash: function(filter, callback) {
        if(filter){
          filter.city=$.jStorage.get("cityid");
