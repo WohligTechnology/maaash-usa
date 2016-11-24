@@ -195,6 +195,7 @@ var options = "location=no,toolbar=yes";
 
  $scope.openPDF = function(link) {
    url = $filter('uploadpath')(link);
+   console.log("hi",url);
     var ref = cordova.InAppBrowser.open(url, target, options);
  };
 
@@ -224,6 +225,7 @@ var options = "location=no,toolbar=yes";
  $scope.pdf = function() {
    $scope.pdf = $ionicPopup.show({
      templateUrl: 'templates/modal/pdf.html',
+
      scope: $scope
    });
  }
