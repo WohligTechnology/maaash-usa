@@ -1086,6 +1086,8 @@ var i=0;
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
+
+        if(data.value === true)
         $scope.oneTimepswd();
       })
     }
@@ -1146,17 +1148,20 @@ var i=0;
   };
   $scope.getotp={};
   $scope.getotp.CustomerMobileNo ="";
-  $scope.getotp.OTPFor ="1";
+  $scope.getotp.OTPFor ="2";
   $scope.getotp.BranchID ="17";
-  $scope.generateOtp =function(phone){
-    $scope.getotp.CustomerMobileNo =phone;
+  $scope.userForm={};
+  $scope.generateOtp =function(userForm){
+    $scope.getotp.CustomerMobileNo =userForm.UserName;
     MyServices.generateOtp($scope.getotp, function(data) {
+      console.log("$scope.getotp",$scope.getotp);
       console.log(data);
+
+      if(data.value === true)
       $scope.oneTimepswd();
     })
   }
   $scope.VerifyCustomerLogin = function(formData) {
-
     console.log("formData", formData);
     // if (formData) {
     //   formData.city=$.jStorage.get("cityid");

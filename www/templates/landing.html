@@ -43,7 +43,7 @@
                 <input type="text" placeholder="Enter Pin Code" required ng-model="userForm.pin" name="pin" only-Digits maxlength="6" minlength="6">
               </label>
               <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>-->
-              <button  name="button" class="go full-width" ng-click="generateOtp(mobileno)">
+              <button  name="button" class="go full-width" ng-click="generateOtp(userForm)">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="text-center color-white font-galano">OR</p>
