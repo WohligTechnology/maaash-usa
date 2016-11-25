@@ -440,7 +440,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/no-header/selectcity');
+  $urlRouterProvider.otherwise('/no-header/login');
 })
 
 .directive('scrollDetector', function($window) {

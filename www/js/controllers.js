@@ -170,7 +170,46 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices) {
+  var jstoreage =  $.jStorage.get("loginDetail");
+  var _id = jstoreage.data._id;
+  console.log("iddd", _id);
+    MyServices.getProfile(_id, function(data) {
+      if (data.value) {
+          console.log("data0",data);
+          $scope.userForm =data;
+      } else {}
+
+    });
+
+  $scope.reset = function() {
+    $scope.popupmsg =false;
+    $scope.reset = $ionicPopup.show({
+      templateUrl: 'templates/modal/reset.html',
+      scope: $scope
+    });
+  };
+  $scope.closePopup = function() {
+    $scope.reset.close();
+  }
+  $scope.updateProfile = function(userForm) {
+    MyServices.updateProfile(userForm, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
+  }
+
+$scope.credentials={};
+  $scope.CustomerResetPassword = function(password) {
+    $scope.credentials=password;
+$scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
+    MyServices.CustomerResetPassword($scope.credentials, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
+  }
 
 })
 
@@ -179,7 +218,8 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 })
 
 .controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter) {
-  $scope.getPlan = function() {
+  $scope.getPlan = function(galleryimg) {
+    $scope.galleryimages=galleryimg;
     $scope.checkPlan = $ionicPopup.show({
       templateUrl: 'templates/modal/gallery.html',
       scope: $scope
@@ -212,6 +252,7 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   MyServices.getSingleExploreSmaaash($scope.foodBeveragesId, function(data) {
     $scope.drinkParty = data.data;
     console.log("  $scope.drinkParty", $scope.drinkParty);
+
   });
 
 
@@ -576,6 +617,7 @@ $scope.userSignup=function(userForm){
       // Success! Image data is here
       console.log(resultImage);
       $scope.imagetobeup = resultImage[0];
+      my
       $scope.uploadPhoto(adminurl + "upload/", function(data) {
         console.log(data);
         console.log(JSON.parse(data.response));
@@ -820,6 +862,7 @@ $scope.userSignup=function(userForm){
   var attraction = [];
   var whatsnew = [];
   var hostParty = [];
+  var beverage = [];
   $scope.food = [
       {
      img: 'img/new.png',
@@ -836,10 +879,13 @@ $scope.userSignup=function(userForm){
   MyServices.getHomeContent(function(data) {
     if (data.value) {
         $scope.homeContent = data.data;
+
         $scope.content = _.groupBy($scope.homeContent, "type.name");
+          // console.log("  $scope.homeContent",    $scope.content );
         $scope.attraction = $scope.content.Attraction;
         $scope.whatsnew = $scope.content["What's new"];
         $scope.hostParty = $scope.content["Host a party"];
+        $scope.beverage = $scope.content["Food and Beverages"];
     } else {}
 
   });
@@ -1016,6 +1062,7 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
+
   })
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {
 
@@ -1034,14 +1081,15 @@ var i=0;
 
 .controller('SignupCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
     var ionicpop = "";
-    $.jStorage.set("cityid", "17");
-    $.jStorage.set("city", "usa");
+    // $.jStorage.set("cityid", "17");
+    // $.jStorage.set("city", "usa");
     $scope.oneTimepswd = function() {
       ionicpop = $ionicPopup.show({
         templateUrl: 'templates/modal/otp.html',
         scope: $scope
       });
     }
+
     $scope.toAvatar = function() {
       ionicpop.close();
       $state.go("noheader.avatar")
@@ -1060,6 +1108,7 @@ var i=0;
 
 
     $scope.generateOtp =function(phone){
+      $scope.userForm.otp ="";
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
@@ -1118,6 +1167,25 @@ var i=0;
       templateUrl: 'templates/modal/otp1.html',
       scope: $scope
     });
+  }
+  $scope.password = function() {
+    $scope.popupmsg =false;
+
+    console.log("hi");
+    $scope.password = $ionicPopup.show({
+      templateUrl: 'templates/modal/password.html',
+      scope: $scope
+    });
+  }
+  $scope.closePopup = function() {
+    $scope.password.close();
+  }
+  $scope.CustomerForgetPassword = function(password) {
+    MyServices.CustomerForgetPassword(password, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
   }
   $scope.toAvatar = function() {
     ionicpop.close();
