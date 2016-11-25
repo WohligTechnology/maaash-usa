@@ -44,8 +44,13 @@
               <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>
 
               <label class="item item-input">
-                <input type="password" placeholder="Password" required ng-model="userForm.Password" name="password" only-Digits maxlength="14" minlength="8">
+                <input type="password" placeholder="Password" required ng-model="userForm.Password" name="password"  maxlength="14" minlength="8">
               </label>
+              <label class="item item-input">
+                <input type="password" placeholder="Re-Enter Password" required ng-model="userForm.confirmPassword" name="password"  maxlength="14" minlength="8">
+              </label>
+              <p class="error-msg" ng-show="userForm.Password != userForm.confirmPassword">Password does not match.</p>
+
               <!-- <button type="submit" name="button" class="go full-width">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->

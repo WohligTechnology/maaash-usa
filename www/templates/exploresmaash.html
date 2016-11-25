@@ -52,12 +52,12 @@
             </ion-slide-box>
           </div>
         </ion-item>
-         <ion-item class="beverage attraction" ng-if="hostParty.length>0">
+         <ion-item class="beverage attraction" ng-if="beverage.length>0">
           <div class="explore-slider">
             <h4 class="text-uppercase text-in-shadow font-america">food and beverage</h4>
             <ion-slide-box delegate-handle="third" >
-              <ion-slide ng-repeat="party in hostParty track by $index">
-                <img ui-sref="app.party({id:party.type._id})" ng-src="{{party.image|uploadpath}}" alt="" class="img-responsive" width="">
+              <ion-slide ng-repeat="party in beverage track by $index">
+                <img ui-sref="app.beverage({id:party.type._id})" ng-src="{{party.image|uploadpath}}" alt="" class="img-responsive" width="">
               </ion-slide>
               <div class="custom-btn" >
                 <!-- ng-click="nextSlide('third');" -->

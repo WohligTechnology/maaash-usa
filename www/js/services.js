@@ -1,4 +1,4 @@
-//  var adminurl = "http://192.168.0.104:1337/"; //local
+ // var adminurl = "http://192.168.0.104:1337/"; //local
 
  var adminurl = "http://104.155.129.33:82/";  //server
  // var imgpath = adminurl + "uploadfile/getupload?file=";
@@ -6,7 +6,7 @@
  var imgpath = imgurl + "readFile";
  var uploadurl = imgurl;
 
-
+  $.jStorage.set("idOfCity", '577f4d106b78e0bc03724800');
  angular.module('starter.services', [])
 
  .factory('MyServices', function($http) {
@@ -15,7 +15,7 @@
 
      getHomeContent: function(callback) {
          var data = {
-             city: $.jStorage.get("cityid")
+             city: $.jStorage.get("idOfCity")
          };
          $http({
              url: adminurl + 'exploresmash/getHomeContent',
@@ -24,6 +24,41 @@
              data: data
          }).success(callback);
      },
+     CustomerForgetPassword: function(credentials, callback) {
+          $http({
+              url: adminurl + 'signup/CustomerForgetPassword',
+              method: 'POST',
+              withCredentials: true,
+              data: credentials
+          }).success(callback);
+      },
+     CustomerResetPassword: function(credentials, callback) {
+          $http({
+              url: adminurl + 'signup/CustomerResetPassword',
+              method: 'POST',
+              withCredentials: true,
+              data: credentials
+          }).success(callback);
+      },
+     getProfile: function( _id ,callback) {
+
+          $http({
+              url: adminurl + 'signup/profile',
+              method: 'POST',
+              withCredentials: true,
+              data: {_id:_id}
+          }).success(callback);
+      },
+     updateProfile: function( update ,callback) {
+
+          $http({
+              url: adminurl + 'signup/updateProfile',
+              method: 'POST',
+              withCredentials: true,
+              data: update
+          }).success(callback);
+      },
+
      getCity: function(callback) {
        $http({
          url: adminurl + 'city/getAllCityByOrder',
@@ -74,7 +109,7 @@
      },
      getSlider: function(callback) {
          var data = {
-             city: $.jStorage.get("cityid")
+             city: $.jStorage.get("idOfCity")
          };
          $http({
              url: adminurl + 'slider/getAllSliderByOrder',
@@ -86,7 +121,7 @@
      getSingleExploreSmaaash: function(id, callback) {
          var data = {
              _id: id,
-             city: $.jStorage.get("cityid")
+             city: $.jStorage.get("idOfCity")
          };
          $http({
              url: adminurl + 'exploresmash/getSingleExploreSmaaash',
@@ -131,7 +166,7 @@
      },
      searchExploreSmaaash: function(filter, callback) {
        if(filter){
-         filter.city=$.jStorage.get("cityid");
+         filter.city=$.jStorage.get("idOfCity");
        }
                $http({
                url: adminurl + 'exploresmash/getSingleExploreSmaaash',
@@ -147,7 +182,7 @@
                user: $.jStorage.get("loginDetail").data._id,
                wishList: {
                    exploresmash: id,
-                   city: $.jStorage.get("cityid")
+                   city: $.jStorage.get("idOfCity")
                }
            };
            $http({
@@ -196,7 +231,7 @@
        getDetailExploreSmaaash: function(id, callback) {
            var data = {
                _id: id,
-               city: $.jStorage.get("cityid")
+               city: $.jStorage.get("idOfCity")
            };
 
            $http({
