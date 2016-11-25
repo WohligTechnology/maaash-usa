@@ -98,13 +98,10 @@
        }).success(callback);
      },
      assistanceLoginSignup: function(formdata, callback) {
-
          $http({
              url: adminurl + 'assistance/save',
              method: 'POST',
-
              data: formdata
-
          }).success(callback);
      },
      getSlider: function(callback) {

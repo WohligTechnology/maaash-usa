@@ -11138,8 +11138,9 @@ img[alt="pay"] {
 .login-div {
   position: absolute;
   top: 20%;
-  left: 43%;
-  transform: translate(-35%, -43%); }
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; }
 
 .dul .scroll-content {
   padding: 0; }

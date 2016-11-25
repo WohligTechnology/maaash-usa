@@ -561,7 +561,7 @@ label{
     left: 50px;
     }
     p+p{
-       top: 45px; 
+       top: 45px;
        left: 90px;
     }
 }
@@ -1681,10 +1681,11 @@ img[alt="pay"] {
   background-repeat: no-repeat;
 }
 .login-div {
-    position: absolute;
-    top: 20%;
-    left: 43%;
-    transform: translate(-35%, -43%);
+  position: absolute;
+top: 20%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
 }
 
 .dul{
@@ -1739,7 +1740,7 @@ img[alt="pay"] {
     margin-right: 10px;
     }
     }
- 
+
   }
 }
 .usa-logo{
@@ -1752,7 +1753,7 @@ img[alt="pay"] {
 }
 
 .color-change{
-    
+
   .list:nth-of-type(6n+1){
     .karting-championship{
       border:2px solid $brand-greenblu;
@@ -1863,5 +1864,3 @@ color:$brand-blue;
     }
 
   }
-
-
