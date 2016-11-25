@@ -430,6 +430,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
+
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
@@ -487,6 +488,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
 })
+.filter('shorten', function () {
+ return function (value, limit) {
+     if (value)
+         if (value.length < limit) {
+             return value;
+         } else {
+             return value.slice(0, limit - 2) + "..";
+
+         }
+
+ }
+})
+
 .filter('youtubethumb', function () {
     return function (input, onlyid) {
         if (input) {
