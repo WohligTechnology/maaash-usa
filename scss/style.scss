@@ -1676,9 +1676,27 @@ img[alt="pay"] {
 }
 
 .login-img{
-  background-image: url("../img/usa/bgusa.png");
+  // background-image: url("../img/usa/bgusa.png");
   background-size: cover;
   background-repeat: no-repeat;
+}
+.login-div {
+    position: absolute;
+    top: 20%;
+    left: 43%;
+    transform: translate(-35%, -43%);
+}
+
+.dul{
+  .scroll-content{
+    padding: 0;
+  }
+  .has-footer{
+    bottom: 0;
+  }
+  .slider-pager{
+    bottom:70px;
+  }
 }
 //usa
 .accordion-list{

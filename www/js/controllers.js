@@ -1108,6 +1108,16 @@ var i=0;
         $scope.whenClose();
       }
     };
+    $scope.earn=[{
+img:'img/usa/bgusa.png'
+
+},
+{
+  img:'img/usa/bgusa.png'
+},{
+  img:'img/usa/bgusa.png'
+}]
+
   })
 
 
