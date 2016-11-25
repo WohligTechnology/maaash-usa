@@ -256,14 +256,25 @@ $scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
   });
 
 
-var options = "location=no,toolbar=yes";
- var target = "_blank";
+  var options = "location=no,toolbar=yes";
+  var target = "_blank";
   var url = "";
+  // $scope.url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
 
- $scope.openPDF = function(link) {
-   url = $filter('uploadpath')(link);
+  $scope.openPDF = function(link) {
+    url = $filter('uploadpath')(link);
     var ref = cordova.InAppBrowser.open(url, target, options);
- };
+  };
+  $scope.pdf = function() {
+    $scope.url = $filter('uploadpath')(link);
+    $scope.pdf = $ionicPopup.show({
+      templateUrl: 'templates/modal/pdf.html',
+      scope: $scope
+    });
+  }
+  $scope.closePopup = function() {
+    $scope.pdf.close();
+  }
 
 
 })
@@ -373,12 +384,28 @@ $scope.userSignup=function(userForm){
       $scope.SingleExploreSmaaash = data.data;
         console.log("$scope.SingleExploreSmaaash", $scope.SingleExploreSmaaash);
       });
+      $scope.read ="Read More";
+      $scope.more =false;
+
+      $scope.readmore =function(){
+        if(!$scope.more)
+        {
+          $scope.read ="Read Less";
+          $scope.more =true;
+      }
+        else
+        {
+          $scope.read ="Read More";
+          $scope.more =false;
+        }
+      }
+
 
       $scope.shareProduct = function() {
-      var image = $filter("serverimage")($scope.ProductDetails.image);
+      var image = $filter("serverimage")($scope.SingleExploreSmaaash.image);
       console.log(image);
       $cordovaSocialSharing
-        .share($scope.ProductDetails.name, '', image, '') // Share via native share sheet
+        .share($scope.SingleExploreSmaaash.hometext,$scope.SingleExploreSmaaash.description, image, '') // Share via native share sheet
         .then(function(result) {
           // Success!
         }, function(err) {

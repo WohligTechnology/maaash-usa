@@ -16,7 +16,7 @@
           </div>
           <div class="button-set clearfix">
             <ul class="social-icons list-inline  inline-block pull-left icos">
-              <p class="inline-block">Share</p>
+              <p class="inline-block" ng-click="shareProduct()">Share</p>
               <li class="inline-block" ng-click="shareProduct()">
                 <h3 class="ion-social-facebook"></h3>
                <!--<ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>-->
@@ -29,11 +29,12 @@
                 <h3 class="ion-social-googleplus-outline"></h3>
               </li>
             </ul>
-            <button class="text-uppercase blue pull-right">read more </button>
+            <button class="text-uppercase blue pull-right" ng-click="readmore();">{{read}}</button>
 
           </div>
           <div class="descrip">
-            <p class="color-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, magnam!</p>
+            <p class="color-black" ng-bind-html="data.description | htmlToPlaintext | shorten :130" ng-if="!more"></p>
+            <p class="color-black" ng-bind-html="data.description | htmlToPlaintext " ng-if="more"></p>
           </div>
           <div class="love" >
             <button class="text-uppercase" ng-click="addedToWishList(data._id)">
