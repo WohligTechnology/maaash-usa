@@ -960,11 +960,127 @@ $scope.userSignup=function(userForm){
     }
 
   })
-  .controller('DirectionCtrl', function($scope, $stateParams) {
+  .controller('DirectionCtrl', function($scope, $stateParams,$cordovaGeolocation) {
     $scope.Mumbai=true;
 $scope.gotofun=function(city){
   console.log(city);
   $scope.Mumbai= false;
+  }
+  // var options = {timeout: 10000, enableHighAccuracy: true};
+  //
+  // $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+  //
+  //   var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  //
+  //   var mapOptions = {
+  //     center: latLng,
+  //     zoom: 15,
+  //     mapTypeId: google.maps.MapTypeId.ROADMAP
+  //   };
+  //
+  //   $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  //
+  // }, function(error){
+  //   console.log("Could not get location");
+  // });
+  //
+  // google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+  //
+  //   var marker = new google.maps.Marker({
+  //       map: $scope.map,
+  //       animation: google.maps.Animation.DROP,
+  //       position: latLng
+  //   });
+  //
+  //   var infoWindow = new google.maps.InfoWindow({
+  //       content: "Here I am!"
+  //   });
+  //
+  //   google.maps.event.addListener(marker, 'click', function () {
+  //       infoWindow.open($scope.map, marker);
+  //   });
+  //
+  // });
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+   $cordovaGeolocation
+     .getCurrentPosition(posOptions)
+     .then(function (position) {
+       var lat  = position.coords.latitude
+       var long = position.coords.longitude
+       $scope.lat=lat;
+       $scope.long=long;
+
+       console.log("latlong1",lat,long);
+       console.log("latlong scope",$scope.lat,$scope.long);
+     }, function(err) {
+       // error
+       console.log("err",err);
+
+     });
+
+
+  //  var watchOptions = {
+  //    timeout : 3000,
+  //    enableHighAccuracy: false // may cause errors if true
+  //  };
+   //
+  //  var watch = $cordovaGeolocation.watchPosition(watchOptions);
+  //  watch.then(
+  //    null,
+  //    function(err) {
+  //      // error
+  //    },
+  //    function(position) {
+  //      var lat  = position.coords.latitude;
+  //      var long = position.coords.longitude;
+  //      console.log("latlong",lat,long);
+  //  });
+
+
+  //  watch.clearWatch();
+
+
+ // marker object
+ $scope.marker = {
+ center: {
+    latitude: 51.51139,
+    longitude: -0.2237284
+ }
+}
+
+// instantiate google map objects for directions
+
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
+var geocoder = new google.maps.Geocoder();
+
+
+// directions object -- with defaults
+
+$scope.directions = {
+origin: "how are working",
+destination: "Wohlig sion mumbai",
+ showList: false
+ }
+ console.log("directions",$scope.directions);
+
+ // get directions using google maps api
+ $scope.getDirections = function () {
+  var request = {
+  origin: $scope.directions.origin,
+  destination: $scope.directions.destination,
+  travelMode: google.maps.DirectionsTravelMode.DRIVING
+ };
+  directionsService.route(request, function (response, status) {
+   if (status === google.maps.DirectionsStatus.OK) {
+    directionsDisplay.setDirections(response);
+    directionsDisplay.setMap($scope.map.control.getGMap());
+    directionsDisplay.setPanel(document.getElementById('directionsList'));
+    $scope.directions.showList = true;
+  } else {
+    alert('Google route unsuccesfull!');
+  }
+  });
 }
   })
 

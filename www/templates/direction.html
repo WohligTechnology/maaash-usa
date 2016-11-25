@@ -20,11 +20,44 @@
 
 
 
+
+   <div class="panel panel-default">
+    <div class="panel-body">
+  <div id='map'>
+      <google-map control="map.control" center="map.center" zoom="map.zoom">
+        <marker coords="marker.center"></marker>
+      </google-map>
+  </div>
+      <form class="form-horizontal" role="form">
+        	<button class="button" ng-click="getCurrentPosition()">Update Location</button>
+        <div class="form-group">
+          <label for="origin" class="col-sm-2 control-label">Origin</label>
+          <div class="col-sm-8">
+            <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="destination" class="col-sm-2 control-label">Destination</label>
+          <div class="col-sm-8">
+            <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-8">
+            <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div>
+    </div>
+  </div>
+
       <!-- <p class=" text-center color-white font-galano">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
 
 <div ng-if="city == 'Mumbai' || Mumbai" >
   <div class="map">
-    <div class="see-map">
+    <div class="see-map" ng-click="getDirections()">
       <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
     </div>
   </div>

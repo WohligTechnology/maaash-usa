@@ -11238,3 +11238,9 @@ img[alt="pay"] {
     background-color: #29a8df; }
   .color-change .list:nth-of-type(6n+6) .karting-championship .views button {
     border: 1px solid #29a8df; }
+
+.angular-google-map {
+  display: block; }
+
+.angular-google-map-container {
+  height: 150px; }
