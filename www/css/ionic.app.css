@@ -10339,7 +10339,7 @@ h3.ion-ios-bell-outline {
   background: url("../img/card-number.png") no-repeat 95% 50%; }
 
 .recharge-main .amount {
-  background: url("../img/rupee.png") no-repeat 3% 50%; }
+  margin: 0 0px 0 10px; }
 
 .direction {
   background: url("../img/bgdirection.png");
@@ -11141,6 +11141,18 @@ img[alt="pay"] {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%; }
+
+.reseting {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.buts {
+  width: 90px;
+  height: auto; }
+  .buts img {
+    width: 100%; }
 
 .dul .scroll-content {
   padding: 0; }

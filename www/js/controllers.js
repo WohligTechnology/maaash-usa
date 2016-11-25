@@ -1170,7 +1170,7 @@ img:'img/usa/bgusa.png'
   })
 
 
-.controller('LandingCtrl', function($scope, $stateParams, $ionicPopup, $state, $ionicPopup, MyServices, $timeout) {
+.controller('LandingCtrl', function($scope, $stateParams,  $state, $ionicPopup, MyServices, $timeout) {
   var ionicpop = "";
   $scope.oneTimepswd = function() {
     ionicpop = $ionicPopup.show({
