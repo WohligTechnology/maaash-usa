@@ -860,29 +860,6 @@ $scope.userSignup=function(userForm){
       $ionicSlideBoxDelegate.enableSlide(false);
     };
 
-
-    // $scope.smaaashNew = [
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png'
-    // ];
-    // $scope.smaaashAttract = [
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png'
-    // ];
-    // $scope.smaaashParty = [
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png'
-    // ];
-
   })
   .controller('PaymentCtrl', function($scope, $stateParams,MyServices) {
     $scope.accordion = function(val) {
