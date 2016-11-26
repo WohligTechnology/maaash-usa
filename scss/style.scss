@@ -1887,3 +1887,18 @@ color:$brand-blue;
 .angular-google-map-container {
 	height:150px;
 }
+.modal-download{
+canvas{
+  width: 100%;
+}
+
+input[type=text]{
+  display: inline-block;
+  margin: 10px 0;
+}
+.button {
+    padding: 0 5px;
+    font-size: 12px;
+     margin: 0 1px;
+}
+}

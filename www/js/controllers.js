@@ -261,20 +261,20 @@ $scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
   var url = "";
   // $scope.url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
 
-  $scope.openPDF = function(link) {
-    url = $filter('uploadpath')(link);
-    var ref = cordova.InAppBrowser.open(url, target, options);
-  };
-  $scope.pdf = function() {
-    $scope.url = $filter('uploadpath')(link);
-    $scope.pdf = $ionicPopup.show({
-      templateUrl: 'templates/modal/pdf.html',
-      scope: $scope
-    });
-  }
-  $scope.closePopup = function() {
-    $scope.pdf.close();
-  }
+ $scope.openPDF = function(link) {
+   url = $filter('uploadpath')(link);
+   var ref = cordova.InAppBrowser.open(url, target, options);
+ };
+ $scope.pdf = function() {
+   $scope.pdf = $ionicPopup.show({
+     templateUrl: 'templates/modal/pdf.html',
+     scope: $scope,
+     
+   });
+ }
+ $scope.closePopup = function() {
+   $scope.pdf.close();
+ }
 
 
 })
@@ -302,7 +302,8 @@ $scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
  $scope.pdf = function() {
    $scope.pdf = $ionicPopup.show({
      templateUrl: 'templates/modal/pdf.html',
-     scope: $scope
+     scope: $scope,
+
    });
  }
  $scope.closePopup = function() {
