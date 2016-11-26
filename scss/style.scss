@@ -633,7 +633,7 @@ label{
     background: url('../img/card-number.png') no-repeat 95% 50%;
   }
   .amount {
-    background: url('../img/rupee.png') no-repeat 3% 50%;
+ margin: 0 0px 0 10px;
   }
 }
 // recharge end
@@ -1687,6 +1687,22 @@ left: 50%;
 transform: translate(-50%, -50%);
 width: 100%;
 }
+
+.reseting{
+  position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+    .buts{
+      width:90px;
+      height: auto;
+      img{
+        width: 100%;
+      }
+    }
+
 
 .dul{
   .scroll-content{
