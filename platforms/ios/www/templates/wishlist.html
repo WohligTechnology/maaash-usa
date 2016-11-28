@@ -1,0 +1,99 @@
+
+<ion-view>
+  <ion-content class="cart-bg about-text cart-text">
+    <div class="order-main text-center">
+        <h3 class="text-center text-uppercase text-in-shadow font-america">wishlist cart</h3>
+      </div>
+
+<div class="list card relate" ng-repeat="data in showWishList.wishList">
+  <div class="item item-image cut">
+    <img src="img/close-popup.png" alt="close" class="img-responsive" ng-click="removeFromWishList(data._id)">
+  </div>
+<div class="row">
+  <div class="col">
+    <div class="item item-image">
+      <img ng-src="{{data.exploresmash.image|uploadpath}}" alt="karting" class="img-responsive" ng-if="data.exploresmash.image && !data.exploresmash.homeimage">
+      <img ng-if="data.exploresmash.homeimage && !data.exploresmash.image" ng-src="{{data.exploresmash.homeimage|uploadpath}}" alt="karting" class="img-responsive">
+      <img ng-if="data.exploresmash.homeimage && data.exploresmash.image" ng-src="{{data.exploresmash.homeimage|uploadpath}}" alt="karting" class="img-responsive">
+        <p class="mt10 uppercase" ng-bind-html="data.exploresmash.hometext"></p>
+  </div>
+  </div>
+  <div class="col">
+    <div class="quant-status">
+    <div class="row">
+      <div class="col-50">
+          <span>Sr.No</span>
+      </div>
+      <div class="col-50">
+          <span class="quantity">{{data.ordering}}</span>
+      </div>
+    </div>
+    </div>
+    <div class="quant-status">
+    <div class="row">
+      <div class="col-50">
+          <span>NAME</span>
+      </div>
+      <div class="col-50">
+          <span class="quantity">{{data.pageName[0]}}</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<!-- <div class="list card relate">
+  <div class="item item-image cut">
+    <img src="img/close-popup.png" alt="close" class="img-responsive">
+  </div>
+<div class="row">
+  <div class="col">
+    <div class="item item-image">
+      <img src="img/karting.jpg" alt="karting" class="img-responsive">
+    </div>
+  </div>
+  <div class="col">
+    <div class="quant-status">
+    <div class="row">
+      <div class="col-50">
+          <span>Sr.No</span>
+      </div>
+      <div class="col-50">
+          <span class="quantity">2</span>
+      </div>
+    </div>
+    </div>
+    <div class="quant-status">
+    <div class="row">
+      <div class="col-50">
+          <span>NAME</span>
+      </div>
+      <div class="col-50">
+          <span class="quantity"></span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+</div> -->
+
+<!--<div class="list card clearfix">
+
+  <div class="amount-letter pull-left">
+  <span>Total:</span>
+  <span><img src="../img/rupee.png" alt="rupee" class="img-responsive">1398</span>
+  </div>
+  <div class="order pull-right">
+    <div class="item item-image cut">
+      <img src="img/order.png" alt="close" class="img-responsive">
+    </div>
+  </div>
+</div>-->
+
+  </ion-content>
+</ion-view>

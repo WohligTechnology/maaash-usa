@@ -1,0 +1,11 @@
+{
+    "Security.framework": 1,
+    "Storekit.framework": 1,
+    "CoreLocation.framework": 2,
+    "libstdc++.dylib": 1,
+    "libz.dylib": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1,
+    "ImageIO.framework": 1,
+    "AVFoundation.framework": 1
+}

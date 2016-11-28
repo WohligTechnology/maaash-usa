@@ -1,0 +1,22 @@
+
+<ion-view>
+  <ion-content class=" evento">
+    <div class="order-main text-center">
+      <h3 class="text-center text-uppercase text-in-shadow font-america">food &amp; beverages</h3>
+    </div>
+
+      <div class="list card" ng-repeat ="data in drinkParty">
+   <div class="restaurant-name text-center">
+       <img ng-src="{{data.homeimage | uploadpath}}" class="img-responsive" alt="">
+   </div>
+   <div class="restaurant-detail">
+         <h3 class="text-uppercase font-america color-white" ng-bind-html="data.hometext"></h3>
+    <p ng-bind-html="data.description"></p>
+   </div>
+    <a href="" ng-click="openPDF(data.pdf);"> <img src="img/buy.png" class="img-responsive" alt=""></a>
+
+    <!--<a href="" class="inline-block"> <img src="img/buy.png" class="img-responsive" alt=""></a>-->
+    <div class="inline-block" ng-click="getPlan();"> <img src="img/camera.png" class="img-responsive" alt=""></div>
+      </div>
+  </ion-content>
+</ion-view>
