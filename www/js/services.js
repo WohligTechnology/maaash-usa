@@ -40,6 +40,12 @@
               data: credentials
           }).success(callback);
       },
+      getmap: function (data) {
+return $http.get("http://maps.googleapis.com/maps/api/geocode/jsonlatlng=40.714224,-73.961452", {});
+// return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + data + "&key=AIzaSyAj0OXepKIgjTlZiPe_ZVYTDjL8rYpobgQ", {});
+withCredentials: true
+
+},
      getProfile: function( _id ,callback) {
 
           $http({

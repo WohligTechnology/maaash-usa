@@ -1,155 +1,19 @@
 <ion-view>
   <ion-content class="direction">
     <div class="direction-main text-center">
-      <h3 class="text-center text-uppercase text-in-shadow font-america">Contact Us</h3>
+      <h3 class="text-center text-uppercase text-in-shadow font-america">Direction</h3>
       <div class="list">
-  <a href=""><img src="img/arrows.png" alt=""></a>
-  <!-- <label class="item item-input item-select"> -->
-    <!-- <div class="input-label">
-      Lightsaber
-    </div> -->
-    <select ng-model="city" id="city" ng-change=gotofun(city)>
-      <option ng-option value="Mumbai" ng-selected="true">Mumbai</option>
-      <option ng-option value="Gurgoan">Gurgoan</option>
-      <option ng-option value="Hydreabad">Hydreabad</option>
-      <option ng-option value="Bengluru">Bengluru</option>
-      <option ng-option value="Noida">Noida</option>
-    </select>
-  <!-- </label> -->
+<div class="">
+  <label for="" class="font-america text-center text-uppercase text-in-shadow" ng-click="initMap();">get directions</label>
+  <div id="map"></div>
+<div id="right-panel">
+  <p class="font-america text-center text-uppercase text-in-shadow">Total Distance: <span id="total"></span></p>
 </div>
-
-
-
-
-   <div class="panel panel-default">
-    <div class="panel-body">
-  <div id='map'>
-      <google-map control="map.control" center="map.center" zoom="map.zoom">
-        <marker coords="marker.center"></marker>
-      </google-map>
-  </div>
-      <form class="form-horizontal" role="form">
-        	<button class="button" ng-click="getCurrentPosition()">Update Location</button>
-        <div class="form-group">
-          <label for="origin" class="col-sm-2 control-label">Origin</label>
-          <div class="col-sm-8">
-            <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="destination" class="col-sm-2 control-label">Destination</label>
-          <div class="col-sm-8">
-            <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-8">
-            <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
-          </div>
-        </div>
-      </form>
-
-      <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div>
-    </div>
-  </div>
-
-      <!-- <p class=" text-center color-white font-galano">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
-
-<div ng-if="city == 'Mumbai' || Mumbai" >
-  <div class="map">
-    <div class="see-map" ng-click="getDirections()">
-      <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-      <a href="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyBqi7xWdMJXtfkOHJ8ofwCBF6IZDray_bI&location=19.045200599999998,72.8633176&heading=210&pitch=10&fov=35" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-      <a href="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBqi7xWdMJXtfkOHJ8ofwCBF6IZDray_bI&origin=19.045200599999998,72.8633176&destination=Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z&avoid=tolls|highways" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-    </div>
-  </div>
-  <ion-list class="direction-list">
-    <ion-item >
-      <p class="no-ellipsis font-galano">Kamala No. 4, Mumbai, Sun Mills Compound <br>Rd,Lower Parel, Mumbai,<br>Maharashtra 400013 </p>
-      <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
-    </ion-item>
-    <ion-item  class="border">
-      <span class="no-ellipsis font-galano">Toll Free: 1800-200-1020</span>
-      <span><img src="img/next.png" alt="" width="80" class="img-responsive"></span>
-      <p class="no-ellipsis font-galano">Mumbai: 022 4914 3143</p>
-    </ion-item>
-  </ion-list>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqi7xWdMJXtfkOHJ8ofwCBF6IZDray_bI&callback=initMap">
+</script>
 </div>
-
-<div ng-if="city == 'Gurgoan'">
-  <div class="map">
-    <div class="see-map">
-      <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-    </div>
-  </div>
-  <ion-list class="direction-list">
-    <ion-item >
-      <p class="no-ellipsis font-galano">Kamala No. 4, Mumbai, Sun Mills Compound <br>Rd,Lower Parel, Gurgoan,<br>Maharashtra 400013 </p>
-      <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
-    </ion-item>
-    <ion-item  class="border">
-      <span class="no-ellipsis font-galano">Toll Free: 1800-200-1020</span>
-      <span><img src="img/next.png" alt="" width="80" class="img-responsive"></span>
-      <p class="no-ellipsis font-galano">Mumbai: 022 4914 3143</p>
-    </ion-item>
-  </ion-list>
-</div>
-<div ng-if="city == 'Hydreabad'">
-  <div class="map">
-    <div class="see-map">
-      <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-    </div>
-  </div>
-  <ion-list class="direction-list">
-    <ion-item >
-      <p class="no-ellipsis font-galano">Kamala No. 4, Mumbai, Sun Mills Compound <br>Rd,Lower Parel, Hydreabad,<br>Maharashtra 400013 </p>
-      <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
-    </ion-item>
-    <ion-item  class="border">
-      <span class="no-ellipsis font-galano">Toll Free: 1800-200-1020</span>
-      <span><img src="img/next.png" alt="" width="80" class="img-responsive"></span>
-      <p class="no-ellipsis font-galano">Mumbai: 022 4914 3143</p>
-    </ion-item>
-  </ion-list>
-</div>
-<div ng-if="city == 'Bengluru'">
-  <div class="map">
-    <div class="see-map">
-      <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-    </div>
-  </div>
-  <ion-list class="direction-list">
-    <ion-item >
-      <p class="no-ellipsis font-galano">Kamala No. 4, Mumbai, Sun Mills Compound <br>Rd,Lower Parel, Bengluru,<br>Maharashtra 400013 </p>
-      <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
-    </ion-item>
-    <ion-item  class="border">
-      <span class="no-ellipsis font-galano">Toll Free: 1800-200-1020</span>
-      <span><img src="img/next.png" alt="" width="80" class="img-responsive"></span>
-      <p class="no-ellipsis font-galano">Mumbai: 022 4914 3143</p>
-    </ion-item>
-  </ion-list>
-</div>
-<div ng-if="city == 'Noida'">
-  <div class="map">
-    <div class="see-map">
-      <a href="https://www.google.co.in/maps/dir//Smaaash,+Lower+Parel,+Mumbai,+Maharashtra/@19.0046012,72.7560316,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3be7ce936967b06f:0x632065952895a84c!2m2!1d72.8260721!2d19.0046144" target="_blank"><img src="img/map.png" alt="" class="img-responsive"></a>
-    </div>
-  </div>
-  <ion-list class="direction-list">
-    <ion-item >
-      <p class="no-ellipsis font-galano">Kamala No. 4, Mumbai, Sun Mills Compound <br>Rd,Lower Parel, Noida,<br>Maharashtra 400013 </p>
-      <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
-    </ion-item>
-    <ion-item  class="border">
-      <span class="no-ellipsis font-galano">Toll Free: 1800-200-1020</span>
-      <span><img src="img/next.png" alt="" width="80" class="img-responsive"></span>
-      <p class="no-ellipsis font-galano">Mumbai: 022 4914 3143</p>
-    </ion-item>
-  </ion-list>
-</div>
-
-
     </div>
   </ion-content>
 </ion-view>

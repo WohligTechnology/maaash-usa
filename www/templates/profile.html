@@ -34,10 +34,17 @@
               <input type="text" placeholder="Name" ng-model="userForm.CustomerName" readonly>
             </label>
             <label class="item item-input">
-              <input type="text" placeholder="Date of Birth" ng-model="userForm.dob" class="arrows">
-            </label>
-            <label class="item item-input">
-              <input type="text" placeholder="Gender" ng-model="userForm.gender" class="editing">
+              <input type="date" placeholder="Date of Birth"  ng-model="userForm.dob" class="arrows">
+              </label>
+
+            <label class="item item-input ">
+              <div class="custom-select">
+                <select class="gender editing" required ng-model="userForm.gender" >
+                  <option selected value="">Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
             </label>
             <label class="item item-input">
               <input type="tel" placeholder="Mobile Number" ng-model="userForm.CustomerMobile" readonly>
