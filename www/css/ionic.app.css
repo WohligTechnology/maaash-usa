@@ -11268,6 +11268,7 @@ img[alt="pay"] {
   font-size: 12px;
   margin: 0 1px; }
 
+<<<<<<< HEAD
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
@@ -11302,3 +11303,10 @@ html, body {
 .panel {
   height: 100%;
   overflow: auto; }
+=======
+.otps {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+>>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d

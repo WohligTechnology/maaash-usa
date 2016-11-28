@@ -1902,6 +1902,7 @@ input[type=text]{
      margin: 0 1px;
 }
 }
+<<<<<<< HEAD
 //map
 #right-panel {
   font-family: 'Roboto','sans-serif';
@@ -1942,3 +1943,11 @@ width: 80%;
   overflow: auto;
 }
 //map end
+=======
+.otps{
+  position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+>>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d
