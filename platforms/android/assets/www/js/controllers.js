@@ -9,17 +9,23 @@ angular.module('starter.controllers', ['ngCordova'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.logout = function() {
-    console.log("im in");
-      if ($.jStorage.get("loginDetail") != null) {
-          MyServices.logout(function(data) {
-              // location.reload();
-              $state.go("home");
-          })
-      } else {
-
-      }
-
+  // $scope.logout = function() {
+  //   console.log("im in");
+  //     if ($.jStorage.get("loginDetail") != null) {
+  //         MyServices.logout(function(data) {
+  //             // location.reload();
+  //             $state.go("home");
+  //         })
+  //     } else {
+  //
+  //     }
+  //
+  // };
+  $scope.logout =function(){
+    MyServices.logout(function(data){
+      console.log(data);
+        $state.go("noheader.login");
+    });
   };
   $scope.getCross = "";
   $scope.whenClose = function() {
@@ -95,7 +101,27 @@ angular.module('starter.controllers', ['ngCordova'])
 
 
 })
+.controller('LeaderCtrl', function($scope, $stateParams) {
 
+$scope.leader=[{
+img:'img/usa/flylady.png',
+title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'As CFO ......'
+},
+{
+  img:'img/usa/flyman.png',
+  title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'As CMO ......'
+},{
+  img:'img/usa/sach.png',
+  title:'vishwanathan kothian',
+text:'chief financial officer',
+para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lot more than your run-of-the-mill banquet hall and gaming center. It presents an unmatched range of games that offer a superlative virtual-reality experience, and combines the best of sports, music and dining into a highly immersive, interactive, innovative and involved entertainment experience. Smaaash has not only redefined sports entertainment, but also raised the bar for customer engagement. This innovative entertainment and active engagement is what defines Smaaash.'
+}]
+
+})
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [{
     title: 'Reggae',
@@ -144,7 +170,47 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices) {
+  var jstoreage =  $.jStorage.get("loginDetail");
+  var _id = jstoreage.data._id;
+  console.log("iddd", _id);
+    MyServices.getProfile(_id, function(data) {
+      if (data.value) {
+          console.log("data0",data);
+          $scope.userForm =data.data;
+           $scope.userForm.dob= new Date(data.data.dob);
+      } else {}
+
+    });
+
+  $scope.reset = function() {
+    $scope.popupmsg =false;
+    $scope.reset = $ionicPopup.show({
+      templateUrl: 'templates/modal/reset.html',
+      scope: $scope
+    });
+  };
+  $scope.closePopup = function() {
+    $scope.reset.close();
+  }
+  $scope.updateProfile = function(userForm) {
+    MyServices.updateProfile(userForm, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
+  }
+
+$scope.credentials={};
+  $scope.CustomerResetPassword = function(password) {
+    $scope.credentials=password;
+$scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
+    MyServices.CustomerResetPassword($scope.credentials, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
+  }
 
 })
 
@@ -153,7 +219,8 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 .controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter) {
-  $scope.getPlan = function() {
+  $scope.getPlan = function(galleryimg) {
+    $scope.galleryimages=galleryimg;
     $scope.checkPlan = $ionicPopup.show({
       templateUrl: 'templates/modal/gallery.html',
       scope: $scope
@@ -186,16 +253,29 @@ angular.module('starter.controllers', ['ngCordova'])
   MyServices.getSingleExploreSmaaash($scope.foodBeveragesId, function(data) {
     $scope.drinkParty = data.data;
     console.log("  $scope.drinkParty", $scope.drinkParty);
+
   });
 
 
-var options = "location=no,toolbar=yes";
- var target = "_blank";
+  var options = "location=no,toolbar=yes";
+  var target = "_blank";
+  var url = "";
+  // $scope.url = "http://104.155.129.33:82/upload/readFile?file=58343a4c9f3f2cd049f2cf56.pdf&width=250&height=250&style=fill";
 
  $scope.openPDF = function(link) {
    url = $filter('uploadpath')(link);
-    var ref = cordova.InAppBrowser.open(url, target, options);
+   var ref = cordova.InAppBrowser.open(url, target, options);
  };
+ $scope.pdf = function() {
+   $scope.pdf = $ionicPopup.show({
+     templateUrl: 'templates/modal/pdf.html',
+     scope: $scope,
+
+   });
+ }
+ $scope.closePopup = function() {
+   $scope.pdf.close();
+ }
 
 
 })
@@ -223,7 +303,8 @@ var options = "location=no,toolbar=yes";
  $scope.pdf = function() {
    $scope.pdf = $ionicPopup.show({
      templateUrl: 'templates/modal/pdf.html',
-     scope: $scope
+     scope: $scope,
+
    });
  }
  $scope.closePopup = function() {
@@ -300,11 +381,39 @@ $scope.userSignup=function(userForm){
 
 })
 
-.controller('NewCtrl', function($scope, $stateParams, MyServices,$ionicPopup) {
+.controller('NewCtrl', function($scope, $stateParams, MyServices,$ionicPopup , $cordovaSocialSharing ,$filter) {
     MyServices.getSingleExploreSmaaash($stateParams.id, function(data) {
       $scope.SingleExploreSmaaash = data.data;
         console.log("$scope.SingleExploreSmaaash", $scope.SingleExploreSmaaash);
       });
+      $scope.read ="Read More";
+      $scope.more =false;
+
+      $scope.readmore =function(){
+        if(!$scope.more)
+        {
+          $scope.read ="Read Less";
+          $scope.more =true;
+      }
+        else
+        {
+          $scope.read ="Read More";
+          $scope.more =false;
+        }
+      }
+
+
+      $scope.shareProduct = function() {
+      var image = $filter("serverimage")($scope.SingleExploreSmaaash.image);
+      console.log(image);
+      $cordovaSocialSharing
+        .share($scope.SingleExploreSmaaash.hometext,$scope.SingleExploreSmaaash.description, image, '') // Share via native share sheet
+        .then(function(result) {
+          // Success!
+        }, function(err) {
+          // An error occured. Show a message to the user
+        });
+    };
       $scope.isInWishlist = function(id) {
           var indexF = _.findIndex($scope.userwishlist, function(key) {
               return key.exploresmash._id == id;
@@ -498,7 +607,6 @@ $scope.userSignup=function(userForm){
 
   MyServices.getCity(function(data) {
     $scope.getCity = _.chunk(data.data, 2);
-    console.log('$scope.getCity', $scope.getCity);
   })
   $scope.selectCity = function(city) {
 
@@ -506,24 +614,7 @@ $scope.userSignup=function(userForm){
     $.jStorage.set("city", city.name);
     $state.go("noheader.signup");
   }
-  $scope.uploadProfilePic = function() {
-      console.log("hi");
-      $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-        // Success! Image data is here
-        console.log("hi1");
 
-        console.log(resultImage);
-        $scope.imagetobeup = resultImage[0];
-        $scope.uploadPhoto(imgurl, function(data) {
-          console.log(data);
-          console.log(JSON.parse(data.response));
-          var parsedImage = JSON.parse(data.response);
-          $scope.personal.profilePicture = parsedImage.data[0];
-        });
-      }, function(err) {
-        // An error occured. Show a message to the user
-      });
-    }
     // $scope.getCityName=function(cityName){
     //   $.jStorage.set("city",cityName);
     //   $scope.city=$.jStorage.get("city").name;
@@ -555,6 +646,7 @@ $scope.userSignup=function(userForm){
       // Success! Image data is here
       console.log(resultImage);
       $scope.imagetobeup = resultImage[0];
+      my
       $scope.uploadPhoto(adminurl + "upload/", function(data) {
         console.log(data);
         console.log(JSON.parse(data.response));
@@ -799,15 +891,30 @@ $scope.userSignup=function(userForm){
   var attraction = [];
   var whatsnew = [];
   var hostParty = [];
+  var beverage = [];
+  $scope.food = [
+      {
+     img: 'img/new.png',
+      },
+      {
+       img: 'img/new.png',
+      },
+     {
+       img: 'img/new.png',
+      }
 
+    ];
 
   MyServices.getHomeContent(function(data) {
     if (data.value) {
         $scope.homeContent = data.data;
+
         $scope.content = _.groupBy($scope.homeContent, "type.name");
+          // console.log("  $scope.homeContent",    $scope.content );
         $scope.attraction = $scope.content.Attraction;
         $scope.whatsnew = $scope.content["What's new"];
         $scope.hostParty = $scope.content["Host a party"];
+        $scope.beverage = $scope.content["Food and Beverages"];
     } else {}
 
   });
@@ -827,29 +934,6 @@ $scope.userSignup=function(userForm){
     $scope.disableSwipe = function() {
       $ionicSlideBoxDelegate.enableSlide(false);
     };
-
-
-    // $scope.smaaashNew = [
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png',
-    //   'img/new.png'
-    // ];
-    // $scope.smaaashAttract = [
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png',
-    //   'img/attract.png'
-    // ];
-    // $scope.smaaashParty = [
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png',
-    //   'img/party.png'
-    // ];
 
   })
   .controller('PaymentCtrl', function($scope, $stateParams,MyServices) {
@@ -878,12 +962,137 @@ $scope.userSignup=function(userForm){
     }
 
   })
-  .controller('DirectionCtrl', function($scope, $stateParams) {
+  .controller('DirectionCtrl', function($scope, $stateParams,$cordovaGeolocation,MyServices,$window) {
     $scope.Mumbai=true;
 $scope.gotofun=function(city){
   console.log(city);
   $scope.Mumbai= false;
-}
+  }
+  $scope.lat="";
+  $scope.long="";
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+     $scope.initMap =function() {
+       var map = new google.maps.Map(document.getElementById('map'), {
+         zoom: 4,
+         center: {lat: 19.141684, lng: 72.928714}  // Australia.
+       });
+
+       var directionsService = new google.maps.DirectionsService;
+       var directionsDisplay = new google.maps.DirectionsRenderer({
+         draggable: true,
+         map: map,
+         panel: document.getElementById('right-panel')
+       });
+
+       directionsDisplay.addListener('directions_changed', function() {
+         computeTotalDistance(directionsDisplay.getDirections());
+       });
+       $scope.lat="";
+       $scope.long="";
+       $cordovaGeolocation
+         .getCurrentPosition(posOptions)
+         .then(function (position) {
+          //  console.log("position", position);
+           var lat  = position.coords.latitude
+           var long = position.coords.longitude
+           $scope.lat=lat;
+           $scope.long=long;
+           $scope.position = position;
+           console.log("latlong1",lat,long);
+           console.log("latlong scope",$scope.lat,$scope.long);
+           var geocoder = new google.maps.Geocoder();
+           var latlng = new google.maps.LatLng($scope.lat, $scope.lng);
+           var request = {
+             latLng: latlng
+           };
+
+           console.log("position", $scope.position.coords.latitude, $scope.position.coords.longitude);
+
+
+
+         $scope.displayRoute($scope.position.coords.latitude+","+$scope.position.coords.longitude, '19.921684, 72.928714', directionsService,
+             directionsDisplay);
+         }, function(err) {
+           // error
+           console.log("err",err);
+
+         });
+
+     }
+
+$scope.displayRoute = function(origin, destination, service, display) {
+  console.log("origin",origin);
+       service.route({
+         origin: origin,
+         destination: destination,
+         travelMode: 'DRIVING',
+         avoidTolls: true
+       }, function(response, status) {
+         if (status === 'OK') {
+           display.setDirections(response);
+         } else {
+           alert('Could not display directions due to: ' + status);
+         }
+       });
+     }
+
+
+       $scope.computeTotalDistance = function(result) {
+       var total = 0;
+       var myroute = result.routes[0];
+       for (var i = 0; i < myroute.legs.length; i++) {
+         total += myroute.legs[i].distance.value;
+       }
+       total = total / 1000;
+       document.getElementById('total').innerHTML = total + ' km';
+     }
+
+
+
+//
+//        //old code
+//  $scope.marker = {
+//  center: {
+//     latitude:  19.045138599999998 ,
+//     longitude:  72.86327779999999
+//  }
+// }
+//
+// // instantiate google map objects for directions
+//
+// var directionsDisplay = new google.maps.DirectionsRenderer();
+// var directionsService = new google.maps.DirectionsService();
+// var geocoder = new google.maps.Geocoder();
+//
+//
+// // directions object -- with defaults
+//
+// $scope.directions = {
+// origin: $scope.marker.center.latitude+","+$scope.marker.center.longitude,
+// destination: "19.141684, 72.928714",
+//  showList: false
+//  }
+//  console.log("directions",$scope.directions);
+//
+//  // get directions using google maps api
+//  $scope.getDirections = function () {
+//   var request = {
+//   origin: $scope.directions.origin,
+//   destination: $scope.directions.destination,
+//   travelMode: google.maps.DirectionsTravelMode.DRIVING
+//  };
+//   directionsService.route(request, function (response, status) {
+//    if (status === google.maps.DirectionsStatus.OK) {
+//     directionsDisplay.setDirections(response);
+//     directionsDisplay.setMap($scope.map.control.getGMap());
+//     directionsDisplay.setPanel(document.getElementById('directionsList'));
+//     $scope.directions.showList = true;
+//   } else {
+//     alert('Google route unsuccesfull!');
+//   }
+//   });
+// }
   })
 
     .controller('WishlistCtrl', function($scope, $stateParams,MyServices) {
@@ -1007,6 +1216,7 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
+
   })
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {
 
@@ -1025,35 +1235,62 @@ var i=0;
 
 .controller('SignupCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
     var ionicpop = "";
+    // $.jStorage.set("cityid", "17");
+    // $.jStorage.set("city", "usa");
     $scope.oneTimepswd = function() {
       ionicpop = $ionicPopup.show({
         templateUrl: 'templates/modal/otp.html',
         scope: $scope
       });
     }
+
     $scope.toAvatar = function() {
       ionicpop.close();
       $state.go("noheader.avatar")
     };
 
     $scope.userForm = {};
+    $scope.userForm.BranchID = "17";
+    $scope.userForm.otp ="";
+
     $scope.formComplete = false;
     $scope.emailExist = false;
-    $scope.userSignup = function(formData) {
+    $scope.getotp={};
+    $scope.getotp.CustomerMobileNo ="";
+    $scope.getotp.OTPFor ="1";
+    $scope.getotp.BranchID ="17";
+
+
+    $scope.generateOtp =function(phone){
+      $scope.userForm.otp ="";
+      $scope.getotp.CustomerMobileNo =phone;
+      MyServices.generateOtp($scope.getotp, function(data) {
+        console.log(data);
+
+        if(data.value === true)
+        $scope.oneTimepswd();
+      })
+    }
+
+    $scope.CustomerRegistration = function(formData) {
+
       console.log("formData", formData);
-      if (formData) {
-        formData.city=$.jStorage.get("cityid");
-      }
-      MyServices.signUp(formData, function(data) {
+      // if (formData) {
+      //   formData.city=$.jStorage.get("cityid");
+      // }
+      MyServices.CustomerRegistration(formData, function(data) {
         console.log(data);
         if (data.value === true) {
             $.jStorage.set("loginDetail", data);
           $scope.formComplete = true;
+
           $timeout(function() {
             $scope.formComplete = false;
             $scope.emailExist = false;
             $scope.userForm = {};
-          }, 2000);
+            ionicpop.close();
+            $state.go("noheader.avatar")
+                    }, 2000);
         } else  {
           $scope.emailExist = true;
         }
@@ -1074,21 +1311,90 @@ var i=0;
         $scope.whenClose();
       }
     };
+    $scope.earn=[{
+img:'img/usa/bgusa.png'
+
+},
+{
+  img:'img/usa/bgusa.png'
+},{
+  img:'img/usa/bgusa.png'
+}]
+
   })
 
 
-.controller('LandingCtrl', function($scope, $stateParams, $ionicPopup, $state, $ionicPopup, MyServices, $timeout) {
+.controller('LandingCtrl', function($scope, $stateParams,  $state, $ionicPopup, MyServices, $timeout) {
   var ionicpop = "";
   $scope.oneTimepswd = function() {
     ionicpop = $ionicPopup.show({
-      templateUrl: 'templates/modal/otp.html',
+      templateUrl: 'templates/modal/otp1.html',
       scope: $scope
     });
+  }
+  $scope.password = function() {
+    $scope.popupmsg =false;
+
+    console.log("hi");
+    $scope.password = $ionicPopup.show({
+      templateUrl: 'templates/modal/password.html',
+      scope: $scope
+    });
+  }
+  $scope.closePopup = function() {
+    $scope.password.close();
+  }
+  $scope.CustomerForgetPassword = function(password) {
+    MyServices.CustomerForgetPassword(password, function(data) {
+      console.log(data);
+      if(data.value === true)
+      $scope.popupmsg =true;
+    })
   }
   $scope.toAvatar = function() {
     ionicpop.close();
     $state.go("app.account")
   };
+  $scope.getotp={};
+  $scope.getotp.CustomerMobileNo ="";
+  $scope.getotp.OTPFor ="2";
+  $scope.getotp.BranchID ="17";
+  $scope.userForm={};
+  $scope.generateOtp =function(userForm){
+    $scope.getotp.CustomerMobileNo =userForm.UserName;
+    MyServices.generateOtp($scope.getotp, function(data) {
+      console.log("$scope.getotp",$scope.getotp);
+      console.log(data);
+
+      if(data.value === true)
+      $scope.oneTimepswd();
+    })
+  }
+  $scope.VerifyCustomerLogin = function(formData) {
+    console.log("formData", formData);
+    // if (formData) {
+    //   formData.city=$.jStorage.get("cityid");
+    // }
+    MyServices.VerifyCustomerLogin(formData, function(data) {
+      console.log(data);
+      if (data.value === true) {
+          $.jStorage.set("loginDetail", data);
+        $scope.formComplete = true;
+
+        $timeout(function() {
+          $scope.formComplete = false;
+          $scope.emailExist = false;
+          $scope.userForm = {};
+          ionicpop.close();
+          $state.go("app.account")
+
+                  }, 2000);
+      } else  {
+        $scope.emailExist = true;
+      }
+
+    })
+  }
 })
 
   .controller('BonusCtrl', function($scope, $stateParams, MyServices) {})

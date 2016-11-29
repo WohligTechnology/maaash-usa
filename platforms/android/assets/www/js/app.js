@@ -32,6 +32,15 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
+    .state('app.leader', {
+   url: '/leadership-team',
+   views: {
+     'menuContent': {
+       templateUrl: 'templates/leadership.html',
+       controller: 'LeaderCtrl'
+     }
+   }
+ })
     .state('noheader', {
       url: '/no-header',
       abstract: true,
@@ -421,6 +430,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
+
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
@@ -431,7 +441,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/no-header/select-city');
+  $urlRouterProvider.otherwise('/no-header/login');
 })
 
 .directive('scrollDetector', function($window) {
@@ -478,6 +488,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
 })
+.filter('shorten', function () {
+ return function (value, limit) {
+     if (value)
+         if (value.length < limit) {
+             return value;
+         } else {
+             return value.slice(0, limit - 2) + "..";
+
+         }
+
+ }
+})
+
 .filter('youtubethumb', function () {
     return function (input, onlyid) {
         if (input) {
@@ -485,6 +508,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
     };
 })
+.filter('serverimage', function() {
+  return function(input) {
+    if (input) {
+      // console.log('serverimage: ', input);
+      // return input;
+      return imgpath + input;
+      // return "http://192.168.0.123/eurobackend/uploads"+input;
+    } else {
+      // return "img/logo.png";
+    }
+  };
+})
+
 .directive('onlyDigits', function () {
     return {
         require: 'ngModel',

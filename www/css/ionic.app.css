@@ -9899,6 +9899,9 @@ a.button {
   height: 100px;
   width: 100px; }
 
+.f20 {
+  font-size: 20px !important; }
+
 .font-light {
   font-weight: 300; }
 
@@ -10066,7 +10069,6 @@ h3.ion-ios-bell-outline {
     padding: 6px 12px;
     border: none;
     background-color: transparent;
-    color: #b0b0b0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; }
@@ -10130,7 +10132,7 @@ h3.ion-ios-bell-outline {
   padding: 44px 0 0; }
 
 .bar.bar-light {
-  background-color: transparent !important;
+  background-color: #000;
   border: none;
   background-size: 0; }
 
@@ -10270,7 +10272,8 @@ h3.ion-ios-bell-outline {
 .inside-smaash .inside {
   position: absolute;
   top: 30px;
-  right: -15px; }
+  right: -15px;
+  z-index: 99; }
 
 .inside-smaash .red-img {
   height: 220px; }
@@ -10278,6 +10281,13 @@ h3.ion-ios-bell-outline {
 .points-get {
   background: url("../img/usa/baby.png") no-repeat -55px -15px #fff002;
   height: 100%; }
+  .points-get p {
+    position: absolute;
+    top: 25px;
+    left: 50px; }
+  .points-get p + p {
+    top: 45px;
+    left: 90px; }
 
 .know-more {
   width: 49%;
@@ -10328,7 +10338,7 @@ h3.ion-ios-bell-outline {
   background: url("../img/card-number.png") no-repeat 95% 50%; }
 
 .recharge-main .amount {
-  background: url("../img/rupee.png") no-repeat 3% 50%; }
+  margin: 0 0px 0 10px; }
 
 .direction {
   background: url("../img/bgdirection.png");
@@ -10397,7 +10407,7 @@ h3.ion-ios-bell-outline {
     margin-top: -7px; }
 
 .deals-bg {
-  background: url("../img/bgdeals.png");
+  background: url("../img/usa/dels.jpg");
   background-size: cover; }
 
 .dealings .card {
@@ -10421,9 +10431,12 @@ h3.ion-ios-bell-outline {
     color: #fff;
     font-size: 18px; }
 
-.about-bg {
+.about-bg, .leader {
   background: url("../img/about.png");
   background-size: cover; }
+
+.leader {
+  background: url("../img/usa/leader.jpg"); }
 
 .about-text .card {
   overflow: hidden;
@@ -10557,8 +10570,11 @@ h3.ion-ios-bell-outline {
       position: absolute; }
 
 .cricket-bg {
-  background: url("../img/attractions.jpg");
+  background: url("../img/usa/buy-bg.png");
   background-size: cover; }
+  .cricket-bg .card {
+    background-color: transparent;
+    box-shadow: none; }
 
 .earn-bg {
   background: url("../img/orange1.jpg"); }
@@ -10679,7 +10695,7 @@ h3.ion-ios-bell-outline {
 
 .attractions .views button {
   background-color: #fff;
-  border: 1px solid #29a8df;
+  border: 1px solid #000;
   padding: 5px 15px; }
 
 .attractions .button-set button {
@@ -10947,9 +10963,13 @@ img[alt="pay"] {
   margin: 0;
   margin-left: 20px; }
 
-.attraction-bg, .beverage-bg {
-  background: url("../img/attractions.jpg");
-  background-size: cover; }
+.attraction-bg, .beverage-bg, .what-new {
+  background: url("../img/usa/buy-bg.png");
+  background-size: cover;
+  margin-top: 20px; }
+
+.what-new {
+  background: url("../img/attractions.jpg"); }
 
 .beverage-bg {
   background: url("../img/bgyellow.jpg"); }
@@ -10985,7 +11005,7 @@ img[alt="pay"] {
   padding: 10px; }
 
 .attract-new .views button {
-  padding: 5px 10px;
+  padding: 5px 8px;
   border-radius: 5px; }
 
 .attract-new .button-set button {
@@ -10995,7 +11015,8 @@ img[alt="pay"] {
   width: 58%; }
   .attract-new .button-set .love button {
     width: 100%;
-    margin-top: 0; }
+    margin-top: 0;
+    font-size: 12px; }
 
 .icos li {
   margin: 0 5px; }
@@ -11110,9 +11131,42 @@ img[alt="pay"] {
   margin-left: 20px; }
 
 .login-img {
-  background-image: url("../img/usa/bgusa.png");
   background-size: cover;
   background-repeat: no-repeat; }
+
+.login-div {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; }
+
+.reseting {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.buts {
+  width: 90px;
+  height: auto; }
+  .buts img {
+    width: 100%; }
+
+.dul .scroll-content {
+  padding: 0; }
+
+.dul .has-footer {
+  bottom: 0; }
+
+.dul .slider-pager {
+  bottom: 70px; }
+
+.accordion-list .custom-slider {
+  padding: 0 20px; }
+
+.color-black {
+  color: #000 !important; }
 
 .baring {
   margin-top: 30px; }
@@ -11141,3 +11195,118 @@ img[alt="pay"] {
   margin: 0 auto; }
   .usa-logo img {
     width: 100%; }
+
+.color-change .list:nth-of-type(6n+1) .karting-championship {
+  border: 2px solid #01a69a; }
+  .color-change .list:nth-of-type(6n+1) .karting-championship .new-detail .bluey {
+    color: #01a69a; }
+  .color-change .list:nth-of-type(6n+1) .karting-championship .new-detail .blue {
+    background-color: #01a69a; }
+  .color-change .list:nth-of-type(6n+1) .karting-championship .views button {
+    border: 1px solid #01a69a; }
+
+.color-change .list:nth-of-type(6n+2) .karting-championship {
+  border: 2px solid #662d91; }
+  .color-change .list:nth-of-type(6n+2) .karting-championship .new-detail .bluey {
+    color: #662d91; }
+  .color-change .list:nth-of-type(6n+2) .karting-championship .new-detail .blue {
+    background-color: #662d91; }
+  .color-change .list:nth-of-type(6n+2) .karting-championship .views button {
+    border: 1px solid #662d91; }
+
+.color-change .list:nth-of-type(6n+3) .karting-championship {
+  border: 2px solid #2a3890; }
+  .color-change .list:nth-of-type(6n+3) .karting-championship .new-detail .bluey {
+    color: #2a3890; }
+  .color-change .list:nth-of-type(6n+3) .karting-championship .new-detail .blue {
+    background-color: #2a3890; }
+  .color-change .list:nth-of-type(6n+3) .karting-championship .views button {
+    border: 1px solid #2a3890; }
+
+.color-change .list:nth-of-type(6n+4) .karting-championship {
+  border: 2px solid #32b544; }
+  .color-change .list:nth-of-type(6n+4) .karting-championship .new-detail .bluey {
+    color: #32b544; }
+  .color-change .list:nth-of-type(6n+4) .karting-championship .new-detail .blue {
+    background-color: #32b544; }
+  .color-change .list:nth-of-type(6n+4) .karting-championship .views button {
+    border: 1px solid #32b544; }
+
+.color-change .list:nth-of-type(6n+5) .karting-championship {
+  border: 2px solid #ea2b7c; }
+  .color-change .list:nth-of-type(6n+5) .karting-championship .new-detail .bluey {
+    color: #ea2b7c; }
+  .color-change .list:nth-of-type(6n+5) .karting-championship .new-detail .blue {
+    background-color: #ea2b7c; }
+  .color-change .list:nth-of-type(6n+5) .karting-championship .views button {
+    border: 1px solid #ea2b7c; }
+
+.color-change .list:nth-of-type(6n+6) .karting-championship {
+  border: 2px solid #29a8df; }
+  .color-change .list:nth-of-type(6n+6) .karting-championship .new-detail .bluey {
+    color: #29a8df; }
+  .color-change .list:nth-of-type(6n+6) .karting-championship .new-detail .blue {
+    background-color: #29a8df; }
+  .color-change .list:nth-of-type(6n+6) .karting-championship .views button {
+    border: 1px solid #29a8df; }
+
+.angular-google-map {
+  display: block; }
+
+.angular-google-map-container {
+  height: 150px; }
+
+.modal-download canvas {
+  width: 100%; }
+
+.modal-download input[type=text] {
+  display: inline-block;
+  margin: 10px 0; }
+
+.modal-download .button {
+  padding: 0 5px;
+  font-size: 12px;
+  margin: 0 1px; }
+
+<<<<<<< HEAD
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px; }
+
+#right-panel select, #right-panel input {
+  font-size: 15px; }
+
+#right-panel select {
+  width: 100%; }
+
+#right-panel i {
+  font-size: 12px; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+#map {
+  height: 100%;
+  float: left;
+  width: 80%;
+  height: 100vh; }
+
+#right-panel {
+  float: right;
+  display: block;
+  width: 100%;
+  height: 100%; }
+
+.panel {
+  height: 100%;
+  overflow: auto; }
+=======
+.otps {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+>>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d

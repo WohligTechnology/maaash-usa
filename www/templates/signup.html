@@ -8,7 +8,7 @@
       <ion-list>
         <div class="row">
           <div class="col-offset-10 col col-80">
-            <form name="user" ng-submit="userSignup(userForm);" ng-if="!formComplete">
+            <form name="user" ng-if="!formComplete">
               <label class="item item-input">
                 <input type="text" placeholder="Name" name="name" required ng-model="userForm.CustomerName">
               </label>
@@ -42,11 +42,20 @@
                 <input type="text" placeholder="Enter Pin Code" required ng-model="userForm.pincode" name="pin" only-Digits maxlength="6" minlength="6">
               </label>
               <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>
+
+              <label class="item item-input">
+                <input type="password" placeholder="Password" required ng-model="userForm.Password" name="password"  maxlength="14" minlength="8">
+              </label>
+              <label class="item item-input">
+                <input type="password" placeholder="Re-Enter Password" required ng-model="userForm.confirmPassword" name="password"  maxlength="14" minlength="8">
+              </label>
+              <p class="error-msg" ng-show="userForm.Password != userForm.confirmPassword">Password does not match.</p>
+
               <!-- <button type="submit" name="button" class="go full-width">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->
               <!-- <button type="submit" name="button" class="go full-width" > -->
-              <button type="submit" name="button" class="go full-width" ng-click="oneTimepswd();">
+              <button  name="button" class="go full-width" ng-click="generateOtp(userForm.CustomerMobile)">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="text-center color-white font-galano">OR</p>

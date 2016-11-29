@@ -48,6 +48,12 @@
         },
         "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "info.asankan.phonegap.smsplugin": {
+            "PACKAGE_NAME": "in.smaaash.app"
         }
     },
     "dependent_plugins": {

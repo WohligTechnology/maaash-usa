@@ -310,6 +310,46 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.fileOpener2"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+        "id": "cordova-plugin-geolocation.Coordinates",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "Coordinates"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "id": "cordova-plugin-geolocation.PositionError",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "PositionError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+        "id": "cordova-plugin-geolocation.Position",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "Position"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+        "id": "cordova-plugin-geolocation.geolocation",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
+    },
+    {
+        "file": "plugins/info.asankan.phonegap.smsplugin/www/smsplugin.js",
+        "id": "info.asankan.phonegap.smsplugin.smsplugin",
+        "pluginId": "info.asankan.phonegap.smsplugin",
+        "clobbers": [
+            "smsplugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -329,7 +369,9 @@ module.exports.metadata =
     "cordova-plugin-x-socialsharing": "5.1.3",
     "cordova-plugin-inappbrowser": "1.5.0",
     "cordova-plugin-camera": "2.3.0",
-    "cordova-plugin-file-opener2": "2.0.3"
+    "cordova-plugin-file-opener2": "2.0.3",
+    "cordova-plugin-geolocation": "2.4.0",
+    "info.asankan.phonegap.smsplugin": "0.2.0"
 }
 // BOTTOM OF METADATA
 });

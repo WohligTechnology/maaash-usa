@@ -24,22 +24,32 @@
   </ion-content>
 </ion-modal-view>-->
 
-<ion-view>
+<ion-view class="dul">
 
-<ion-content class="login-img">
-<div class="logins">
+<ion-content >
+
+  <ion-slide-box auto-play="true" delegate-handle="first" ng-init="disableSwipe()">
+              <ion-slide ng-repeat="img in earn track by $index">
+                <div class="custom-slider relate">
+<div class="logins ">
   <!--<img src="img/usa/bgusa.png" alt="" class="full-image" />-->
+   <img ng-src="{{img.img}}" alt="" class="img-responsive" width="">
       <div class="text-center login-div">
       <h3 class="text-uppercase font-america color-white ">WHAT'S NEXT IN GAMING,</h3>
       <h3 class="text-uppercase font-america  color-white">RACING,EATING &amp; AMAZING?</h3>
       <h4 class="color-white">Coming at you in December.</h4>
-    </div>
 
     <div class="skip">
       <p class="text-uppercase text-center color-white" ui-sref="app.home">skip > </p>
 
     </div>
+    </div>
+
 </div>
+                 
+                </div>
+              </ion-slide>
+            </ion-slide-box>
 </ion-content>
 
 

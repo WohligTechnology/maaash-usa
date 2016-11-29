@@ -16,15 +16,14 @@
                 <input type="text" onfocus="this.type='date'" name="dob" onblur="this.type='text'" placeholder="DOB" class="calendar" required ng-model="userForm.dob">
               </label>
               <p class="error-msg" ng-if="user.dob.$error.required && user.dob.$touched">Please Enter Your DOB.</p>-->
-              <label class="item item-input ">
+              <!--<label class="item item-input ">
                 <div class="custom-select calendar">
                   <select class="city" required ng-model="userForm.city">
                     <option ng-selected="true" value="">select city</option>
                     <option value="{{data._id}}" ng-repeat="data in getCities">{{data.name}}</option>
-                    <!-- <option value="noida">noida</option> -->
                   </select>
                 </div>
-              </label>
+              </label>-->
               <label class="item item-input ">
                 <div class="custom-select calendar">
                   <select class="people" required ng-model="userForm.noofpeople">

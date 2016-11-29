@@ -30,7 +30,11 @@
 // end fonts
 //background-colors
 $brand-purply:#662d91 !default;
+$brand-greenblu: #01a69a !default;
 $brand-darkblue: #2a3890!default;
+$brand-green: #32b544!default;
+$brand-pink: #ea2b7c!default;
+$brand-blue: #29a8df!default;
 // classes
 .mt5 {
   margin-top: 5px;
@@ -96,6 +100,10 @@ $brand-darkblue: #2a3890!default;
   height: 100px;
   width: 100px;
 }
+.f20{
+  font-size: 20px !important;
+}
+
 .font-light {
   font-weight: 300;
 }
@@ -114,6 +122,8 @@ $brand-darkblue: #2a3890!default;
 .color-white {
   color: #fff;
 }
+
+
 .font-america {
   font-family: "American Purpose";
 }
@@ -292,7 +302,7 @@ label{
     padding: 6px 12px;
     border: none;
     background-color: transparent;
-    color: #b0b0b0;
+    // color: #b0b0b0;
     @include appearance(none);
   }
 }
@@ -372,7 +382,7 @@ label{
   padding: 44px 0 0;
 }
 .bar.bar-light {
-  background-color: transparent !important;
+  background-color: #000;
   border: none;
   background-size: 0;
 }
@@ -535,6 +545,7 @@ label{
     position: absolute;
     top: 30px;
     right: -15px;
+    z-index: 99;
   }
   .red-img {
     height: 220px;
@@ -544,6 +555,15 @@ label{
   // background: url('../img/usa/baby.png') no-repeat -165px -10px #fff002;
   background: url('../img/usa/baby.png') no-repeat -55px -15px #fff002;
     height: 100%;
+    p{
+          position: absolute;
+    top: 25px;
+    left: 50px;
+    }
+    p+p{
+       top: 45px;
+       left: 90px;
+    }
 }
 .know-more {
   width: 49%;
@@ -613,7 +633,7 @@ label{
     background: url('../img/card-number.png') no-repeat 95% 50%;
   }
   .amount {
-    background: url('../img/rupee.png') no-repeat 3% 50%;
+ margin: 0 0px 0 10px;
   }
 }
 // recharge end
@@ -709,7 +729,7 @@ label{
 //detail-smaash
 //deals
 .deals-bg{
-  background: url('../img/bgdeals.png');
+  background: url('../img/usa/dels.jpg');
   background-size: cover;
 }
 .dealings{
@@ -738,11 +758,13 @@ label{
 }
 //about
 
-.about-bg{
+.about-bg,.leader{
   background: url('../img/about.png');
   background-size: cover;
 }
-
+.leader{
+   background: url('../img/usa/leader.jpg');
+}
 .about-text{
   .card{
     overflow: hidden;
@@ -948,8 +970,12 @@ background-color:    #fc5626;
 }
 }
 .cricket-bg{
-background: url('../img/attractions.jpg');
+background: url('../img/usa/buy-bg.png');
   background-size: cover;
+  .card{
+    background-color: transparent;
+    box-shadow: none;
+  }
 
 }
 .earn-bg{
@@ -1093,7 +1119,7 @@ padding: 0 10px;
   .views{
     button{
       background-color: #fff;
-      border: 1px solid #29a8df;
+      border: 1px solid #000;
       padding: 5px 15px;
     }
   }
@@ -1428,9 +1454,13 @@ img[alt="pay"] {
   }
 }
 //events
-.attraction-bg,.beverage-bg{
-  background: url('../img/attractions.jpg');
+.attraction-bg,.beverage-bg,.what-new{
+  background: url('../img/usa/buy-bg.png');
   background-size: cover;
+  margin-top: 20px;
+}
+.what-new{
+ background: url('../img/attractions.jpg');
 }
 .beverage-bg{
     background: url('../img/bgyellow.jpg');
@@ -1481,7 +1511,7 @@ img[alt="pay"] {
   }
   .views{
     button{
-      padding: 5px 10px;
+      padding: 5px 8px;
     border-radius: 5px;
     }
   }
@@ -1494,6 +1524,7 @@ img[alt="pay"] {
       button{
             width: 100%;
     margin-top: 0;
+    font-size: 12px;
       }
     }
   }
@@ -1645,11 +1676,58 @@ img[alt="pay"] {
 }
 
 .login-img{
-  background-image: url("../img/usa/bgusa.png");
+  // background-image: url("../img/usa/bgusa.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
+.login-div {
+  position: absolute;
+top: 20%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+}
+
+.reseting{
+  position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+    .buts{
+      width:90px;
+      height: auto;
+      img{
+        width: 100%;
+      }
+    }
+
+
+.dul{
+  .scroll-content{
+    padding: 0;
+  }
+  .has-footer{
+    bottom: 0;
+  }
+  .slider-pager{
+    bottom:70px;
+  }
+}
 //usa
+.accordion-list{
+  .custom-slider{
+    padding: 0 20px;
+  }
+//   .slider-pager{
+//   display: none;
+// }
+}
+
+.color-black{
+  color:#000 !important;
+}
 
  .baring{
        margin-top: 30px;
@@ -1678,7 +1756,7 @@ img[alt="pay"] {
     margin-right: 10px;
     }
     }
- 
+
   }
 }
 .usa-logo{
@@ -1690,3 +1768,186 @@ img[alt="pay"] {
   }
 }
 
+.color-change{
+
+  .list:nth-of-type(6n+1){
+    .karting-championship{
+      border:2px solid $brand-greenblu;
+.new-detail{
+  .bluey{
+color:$brand-greenblu;
+  }
+  .blue{
+background-color: $brand-greenblu;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-greenblu;
+  }
+}
+    }
+  }
+  .list:nth-of-type(6n+2){
+    .karting-championship{
+      border:2px solid $brand-purply;
+.new-detail{
+  .bluey{
+color:$brand-purply;
+  }
+  .blue{
+background-color: $brand-purply;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-purply;
+  }
+}
+    }
+  }
+    .list:nth-of-type(6n+3){
+        .karting-championship{
+          border:2px solid $brand-darkblue;
+.new-detail{
+  .bluey{
+color:$brand-darkblue;
+  }
+  .blue{
+ background-color:$brand-darkblue;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-darkblue;
+  }
+}
+    }
+    }
+        .list:nth-of-type(6n+4){
+        .karting-championship{
+          border:2px solid $brand-green;
+.new-detail{
+  .bluey{
+color:$brand-green;
+  }
+  .blue{
+ background-color:$brand-green;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-green;
+  }
+}
+    }
+    }
+        .list:nth-of-type(6n+5){
+        .karting-championship{
+          border:2px solid $brand-pink;
+.new-detail{
+  .bluey{
+color:$brand-pink;
+  }
+  .blue{
+ background-color:$brand-pink;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-pink;
+  }
+}
+    }
+    }
+        .list:nth-of-type(6n+6){
+        .karting-championship{
+          border:2px solid $brand-blue;
+.new-detail{
+  .bluey{
+color:$brand-blue;
+  }
+  .blue{
+ background-color:$brand-blue;
+  }
+}
+.views{
+  button{
+    border:1px solid $brand-blue;
+  }
+}
+    }
+    }
+
+  }
+  .angular-google-map {
+			display: block;
+}
+
+.angular-google-map-container {
+	height:150px;
+}
+.modal-download{
+canvas{
+  width: 100%;
+}
+
+input[type=text]{
+  display: inline-block;
+  margin: 10px 0;
+}
+.button {
+    padding: 0 5px;
+    font-size: 12px;
+     margin: 0 1px;
+}
+}
+<<<<<<< HEAD
+//map
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
+  float: left;
+width: 80%;
+  height: 100vh;
+}
+#right-panel {
+  float: right;
+  display: block;
+      width: 100%;
+  height: 100%;
+}
+.panel {
+  height: 100%;
+  overflow: auto;
+}
+//map end
+=======
+.otps{
+  position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+>>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d

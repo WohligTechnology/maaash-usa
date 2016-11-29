@@ -257,6 +257,25 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.fileOpener2"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+        "id": "cordova-plugin-geolocation.geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "id": "cordova-plugin-geolocation.PositionError",
+        "runs": true
+    },
+    {
+        "file": "plugins/info.asankan.phonegap.smsplugin/www/smsplugin.js",
+        "id": "info.asankan.phonegap.smsplugin.smsplugin",
+        "clobbers": [
+            "smsplugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -276,7 +295,9 @@ module.exports.metadata =
     "cordova-plugin-x-socialsharing": "5.1.3",
     "cordova-plugin-inappbrowser": "1.5.0",
     "cordova-plugin-camera": "2.3.0",
-    "cordova-plugin-file-opener2": "2.0.3"
+    "cordova-plugin-file-opener2": "2.0.3",
+    "cordova-plugin-geolocation": "2.4.0",
+    "info.asankan.phonegap.smsplugin": "0.2.0"
 };
 // BOTTOM OF METADATA
 });
