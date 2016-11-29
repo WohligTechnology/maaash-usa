@@ -10880,10 +10880,20 @@ img[alt="pay"] {
 .party {
   border: none; }
 
-.account-marker {
+.marker-silver {
   position: absolute;
   bottom: 24%;
   left: 22%; }
+
+.marker-gold {
+  position: absolute;
+  bottom: 40%;
+  left: 44%; }
+
+.marker-platinum {
+  position: absolute;
+  bottom: 50%;
+  left: 64%; }
 
 .new {
   background-color: #2da3d6; }
@@ -11187,7 +11197,9 @@ img[alt="pay"] {
     margin-left: 40px; }
     .hass-header .list .sidemenu-item img {
       vertical-align: top;
-      margin-right: 10px; }
+      margin-right: 10px;
+      height: 15px;
+      width: 15px; }
 
 .usa-logo {
   height: 79px;
@@ -11268,7 +11280,6 @@ img[alt="pay"] {
   font-size: 12px;
   margin: 0 1px; }
 
-<<<<<<< HEAD
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
@@ -11289,24 +11300,26 @@ html, body {
   padding: 0; }
 
 #map {
-  height: 100%;
   float: left;
-  width: 80%;
-  height: 100vh; }
+  width: 100%;
+  height: 65vh;
+  margin-top: 10px; }
 
 #right-panel {
-  float: right;
-  display: block;
-  width: 100%;
-  height: 100%; }
+  display: none; }
 
 .panel {
   height: 100%;
   overflow: auto; }
-=======
+
 .otps {
   position: absolute;
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%); }
->>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d
+
+.baring-skip {
+  display: none; }
+
+.menu-minus {
+  margin-top: -200px; }
