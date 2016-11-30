@@ -1352,10 +1352,20 @@ img[alt="pay"] {
 .party {
   border: none;
 }
-.account-marker {
+.marker-silver {
   position: absolute;
   bottom: 24%;
   left: 22%;
+}
+.marker-gold {
+  position: absolute;
+  bottom: 40%;
+  left: 44%;
+}
+.marker-platinum {
+  position: absolute;
+  bottom: 50%;
+  left: 64%;
 }
 .new {
   background-color: #2da3d6;
@@ -1748,15 +1758,17 @@ width: 100%;
          background-color: transparent;
     }
   }
+
   .list{
     margin-left: 40px;
     .sidemenu-item{
    img{
       vertical-align: top;
     margin-right: 10px;
+    height: 15px;
+    width: 15px;
     }
     }
-
   }
 }
 .usa-logo{
@@ -1902,6 +1914,10 @@ input[type=text]{
      margin: 0 1px;
 }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01b6176b92aa0b83ecb84386985ab1e40ed1d242
 //map
 #right-panel {
   font-family: 'Roboto','sans-serif';
@@ -1926,16 +1942,13 @@ html, body {
   padding: 0;
 }
 #map {
-  height: 100%;
-  float: left;
-width: 80%;
-  height: 100vh;
+float: left;
+width: 100%;
+height: 65vh;
+margin-top: 10px;
 }
 #right-panel {
-  float: right;
-  display: block;
-      width: 100%;
-  height: 100%;
+      display: none;
 }
 .panel {
   height: 100%;
@@ -1948,5 +1961,13 @@ width: 80%;
     top: 0%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.baring-skip{
+  display: none;
+}
+
+.menu-minus{
+  margin-top: -200px;
 }
 

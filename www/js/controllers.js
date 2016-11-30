@@ -202,9 +202,11 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   }
 
 $scope.credentials={};
-  $scope.CustomerResetPassword = function(password) {
-    $scope.credentials=password;
 $scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
+  $scope.CustomerResetPassword = function(password) {
+    console.log(password);
+
+console.log($scope.credentials);
     MyServices.CustomerResetPassword($scope.credentials, function(data) {
       console.log(data);
       if(data.value === true)
@@ -409,7 +411,7 @@ $scope.userSignup=function(userForm){
       $cordovaSocialSharing
         .share($scope.SingleExploreSmaaash.hometext,$scope.SingleExploreSmaaash.description, image, '') // Share via native share sheet
         .then(function(result) {
-          // Success!
+console.log("done");
         }, function(err) {
           // An error occured. Show a message to the user
         });
@@ -646,7 +648,9 @@ $scope.userSignup=function(userForm){
       // Success! Image data is here
       console.log(resultImage);
       $scope.imagetobeup = resultImage[0];
-      my
+      $scope.profilePic=$scope.imagetobeup ;
+  $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
+  console.log("$scope.uploadMyPhoto",$scope.uploadMyPhoto);
       $scope.uploadPhoto(adminurl + "upload/", function(data) {
         console.log(data);
         console.log(JSON.parse(data.response));
@@ -658,28 +662,7 @@ $scope.userSignup=function(userForm){
     });
   }
 
-  //  $scope.getImageSaveContact = function() {
-  //      // Image picker will load images according to these settings
-  //      var options = {
-  //          maximumImagesCount: 1, // Max number of selected images, I'm using only one for this example
-  //          width: 800,
-  //          height: 800,
-  //          quality: 80            // Higher is better
-  //      };
-  //
-  //      $cordovaImagePicker.getPictures(options).then(function (results) {
-  //          // Loop through acquired images
-  //          for (var i = 0; i < results.length; i++) {
-  //              $scope.collection.selectedImage = results[i];   // We loading only one image so we can use it like this
-  //
-  //              window.plugins.Base64.encodeFile($scope.collection.selectedImage, function(base64){  // Encode URI to Base64 needed for contacts plugin
-  //                  $scope.collection.selectedImage = base64;
-  //              });
-  //          }
-  //      }, function(error) {
-  //          console.log('Error: ' + JSON.stringify(error));    // In case of error
-  //      });
-  //  };
+
 
 
   $scope.uploadPhoto = function(serverpath, callback) {
@@ -691,7 +674,7 @@ $scope.userSignup=function(userForm){
       .then(function(result) {
         console.log(result);
         callback(result);
-        $ionicLoading.hide();
+        // $ionicLoading.hide();
         //$scope.addretailer.store_image = $scope.filename2;
       }, function(err) {
         // Error
@@ -718,30 +701,16 @@ $scope.userSignup=function(userForm){
       console.log("hi1");
 
       $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      $scope.profilePic=$scope.imgURI ;
+      $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
+
+
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
 
-  $scope.choosePhoto = function() {
-    var options = {
-      quality: 75,
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit: true,
-      encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
-      popoverOptions: CameraPopoverOptions,
-      saveToPhotoAlbum: false
-    };
 
-    $cordovaCamera.getPicture(options).then(function(imageData) {
-      $scope.imgURI = "data:image/jpeg;base64," + imageData;
-    }, function(err) {
-      // An error occured. Show a message to the user
-    });
-  }
 
 })
 
@@ -1048,51 +1017,6 @@ $scope.displayRoute = function(origin, destination, service, display) {
        document.getElementById('total').innerHTML = total + ' km';
      }
 
-
-
-//
-//        //old code
-//  $scope.marker = {
-//  center: {
-//     latitude:  19.045138599999998 ,
-//     longitude:  72.86327779999999
-//  }
-// }
-//
-// // instantiate google map objects for directions
-//
-// var directionsDisplay = new google.maps.DirectionsRenderer();
-// var directionsService = new google.maps.DirectionsService();
-// var geocoder = new google.maps.Geocoder();
-//
-//
-// // directions object -- with defaults
-//
-// $scope.directions = {
-// origin: $scope.marker.center.latitude+","+$scope.marker.center.longitude,
-// destination: "19.141684, 72.928714",
-//  showList: false
-//  }
-//  console.log("directions",$scope.directions);
-//
-//  // get directions using google maps api
-//  $scope.getDirections = function () {
-//   var request = {
-//   origin: $scope.directions.origin,
-//   destination: $scope.directions.destination,
-//   travelMode: google.maps.DirectionsTravelMode.DRIVING
-//  };
-//   directionsService.route(request, function (response, status) {
-//    if (status === google.maps.DirectionsStatus.OK) {
-//     directionsDisplay.setDirections(response);
-//     directionsDisplay.setMap($scope.map.control.getGMap());
-//     directionsDisplay.setPanel(document.getElementById('directionsList'));
-//     $scope.directions.showList = true;
-//   } else {
-//     alert('Google route unsuccesfull!');
-//   }
-//   });
-// }
   })
 
     .controller('WishlistCtrl', function($scope, $stateParams,MyServices) {
@@ -1262,7 +1186,7 @@ var i=0;
 
 
     $scope.generateOtp =function(phone){
-      $scope.userForm.otp ="";
+      $scope.userForm.OTP ="";
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
@@ -1325,12 +1249,15 @@ img:'img/usa/bgusa.png'
 
 
 .controller('LandingCtrl', function($scope, $stateParams,  $state, $ionicPopup, MyServices, $timeout) {
-  var ionicpop = "";
+  $scope.ionicpop = "";
   $scope.oneTimepswd = function() {
-    ionicpop = $ionicPopup.show({
+    $scope.ionicpop = $ionicPopup.show({
       templateUrl: 'templates/modal/otp1.html',
       scope: $scope
     });
+  }
+  $scope.closePopup = function() {
+    $scope.ionicpop.close();
   }
   $scope.password = function() {
     $scope.popupmsg =false;
@@ -1370,8 +1297,13 @@ img:'img/usa/bgusa.png'
       $scope.oneTimepswd();
     })
   }
+  $scope.login={};
   $scope.VerifyCustomerLogin = function(formData) {
     console.log("formData", formData);
+    $scope.login=formData;
+    $scope.login.IsOTPValidation="1";
+    console.log("formData", $scope.login);
+
     // if (formData) {
     //   formData.city=$.jStorage.get("cityid");
     // }
@@ -1385,7 +1317,7 @@ img:'img/usa/bgusa.png'
           $scope.formComplete = false;
           $scope.emailExist = false;
           $scope.userForm = {};
-          ionicpop.close();
+          $scope.ionicpop.close();
           $state.go("app.account")
 
                   }, 2000);
