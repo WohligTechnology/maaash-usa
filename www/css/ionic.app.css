@@ -10085,7 +10085,8 @@ h3.ion-ios-bell-outline {
   background-color: transparent; }
 
 .popup-head {
-  border: none; }
+  border: none;
+  display: none; }
 
 .otp-content {
   position: absolute;
@@ -10111,11 +10112,18 @@ h3.ion-ios-bell-outline {
   top: -12px;
   right: -8px; }
 
+.my-custom-popup {
+  background-image: url("../img/box-pop.png"); }
+
 .headline .popup-content {
   padding: 15px; }
   .headline .popup-content p {
-    font-size: 13px;
+    font-size: 11px;
     line-height: 18px; }
+
+.headline .wid {
+  width: 75%;
+  margin: 0 auto; }
 
 .menu-open .ion-navicon:before {
   content: "\f2d7" !important; }

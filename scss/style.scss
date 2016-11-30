@@ -325,6 +325,7 @@ label{
 }
 .popup-head {
   border: none;
+  display: none;
 }
 // otp
 .otp-content {
@@ -356,13 +357,22 @@ label{
   top: -12px;
   right: -8px;
 }
+ .my-custom-popup{
+      background-image: url("../img/box-pop.png");
+  }
 .headline {
+ 
   .popup-content {
+    // background-image: url("../img/box-pop.png");
     padding: 15px;
     p {
-      font-size: 13px;
+      font-size: 11px;
       line-height: 18px;
     }
+  }
+  .wid{
+    width: 75%;
+    margin: 0 auto;
   }
 }
 .menu-open {
