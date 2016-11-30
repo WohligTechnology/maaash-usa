@@ -1915,6 +1915,8 @@ input[type=text]{
 }
 }
 
+
+
 //map
 #right-panel {
   font-family: 'Roboto','sans-serif';
@@ -1952,13 +1954,14 @@ margin-top: 10px;
   overflow: auto;
 }
 //map end
+
 .otps{
   position: absolute;
     top: 0%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-//menu
+
 .baring-skip{
   display: none;
 }
@@ -1966,3 +1969,4 @@ margin-top: 10px;
 .menu-minus{
   margin-top: -200px;
 }
+
