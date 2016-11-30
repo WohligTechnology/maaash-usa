@@ -649,14 +649,14 @@ console.log("done");
       console.log(resultImage);
       $scope.imagetobeup = resultImage[0];
       $scope.profilePic=$scope.imagetobeup ;
-  $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
+  $scope.uploadMyPhoto = $filter('uploadpath')(imagetobeup);
   console.log("$scope.uploadMyPhoto",$scope.uploadMyPhoto);
-      $scope.uploadPhoto(adminurl + "upload/", function(data) {
-        console.log(data);
-        console.log(JSON.parse(data.response));
-        var parsedImage = JSON.parse(data.response);
-        $scope.personal.profilePicture = parsedImage.data[0];
-      });
+      // $scope.uploadPhoto(adminurl + "upload/", function(data) {
+      //   console.log(data);
+      //   console.log(JSON.parse(data.response));
+      //   var parsedImage = JSON.parse(data.response);
+      //   $scope.personal.profilePicture = parsedImage.data[0];
+      // });
     }, function(err) {
       // An error occured. Show a message to the user
     });
@@ -702,8 +702,6 @@ console.log("done");
 
       $scope.imgURI = "data:image/jpeg;base64," + imageData;
       $scope.profilePic=$scope.imgURI ;
-      $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
-
 
     }, function(err) {
       // An error occured. Show a message to the user
@@ -1101,11 +1099,6 @@ var i=0;
   });
   })
 
-
-
-
-
-
 .controller('OrderCtrl', function($scope, $stateParams) {
 
 })
@@ -1145,7 +1138,7 @@ var i=0;
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {
 
   })
-  .controller('RechargeCtrl', function($scope, $stateParams, $ionicPopup) {
+  .controller('RechargeCtrl', function($scope, $stateParams, $ionicPopup,MyServices) {
     $scope.popHeadline = function() {
       $scope.headlienPop = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1154,6 +1147,25 @@ var i=0;
     }
     $scope.closePopup = function() {
       $scope.headlienPop.close();
+    }
+    $scope.Recharge={};
+
+    $scope.RechargeCard = function(formData) {
+      console.log("formData", formData);
+      $scope.Recharge=formData;
+      $scope.Recharge.PGReturnURL="http://104.155.129.33:82/signup/returnUrlFunction";
+      $scope.Recharge.CustomerID=$.jStorage.get("loginDetail").data.CustomerID;
+      $scope.Recharge.BranchID="17";
+
+      console.log("formData", $scope.Recharge);
+
+
+      MyServices.RechargeCard(formData, function(data) {
+        console.log(data);
+        if (data.value === true) {
+          console.log("formData", data);
+        }
+      })
     }
   })
 

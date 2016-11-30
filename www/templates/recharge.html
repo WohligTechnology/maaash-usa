@@ -7,16 +7,16 @@
           <p class=" text-center color-white font-galano">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <form>
             <label class="item item-input">
-              <input type="text" placeholder="Name on card">
+              <input type="text" placeholder="Name on card" ng-model="Recharge.name" required>
             </label>
             <label class="item item-input">
-              <input type="text" placeholder="Card Number" class="card-no">
+              <input type="text" placeholder="Card Number" class="card-no" ng-model="Recharge.CustomerCardNo" required maxlength="19" minlength="16">
             </label>
             <label class="item item-input">
               <span class="amount">$</span>
-              <input type="text" placeholder="Amount" >
+              <input type="text" placeholder="Amount" only-Digits ng-model="Recharge.RechargeAmount" required>
             </label>
-            <button type="submit" name="button" class="go full-width" ng-click="popHeadline();">
+            <button type="submit" name="button" class="go full-width" ng-click="RechargeCard(Recharge);">
               <img src="img/go.png" alt="" class="img-responsive">
             </button>
           </form>

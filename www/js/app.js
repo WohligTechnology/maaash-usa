@@ -483,6 +483,17 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
     };
 })
+.filter('uploadpath1', function() {
+    return function(image) {
+        if (image && image != "") {
+            if (image.indexOf('content:') == -1 && image.indexOf('/var/mobile') == -1) {
+                return imgpath + image + "&height=100";
+            } else {
+                return "img/sm.png";
+            }
+        }
+    }
+})
 .filter('htmlToPlaintext', function () {
     return function (text) {
         return text ? String(text).replace(/<[^>]+>/gm, '') : '';
