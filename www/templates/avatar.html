@@ -8,11 +8,13 @@
       <h3 class="text-uppercase text-center  city  font-america m-clear">Upload profile photo</h3>
       <div class="photo text-center">
         <div class="row">
-          <div class="col-80 col-offset-20">
+          <div class="col-80 col-offset-10">
             <div class="row">
 <div class="col-33 col-offset-25">
    <div class="pick-img">
-                    <img ng-src="{{imagetobeup}}" alt=""  class="img-responsive" ng-click="uploadProfilePic();">
+                    <!-- <img ng-src="{{userForm.profilePic }}" alt=""  class="img-responsive" > -->
+                    <img ng-src="{{userForm.profilePic | uploadpath }}" alt=""  class="img-responsive" >
+                    <img src="img/addphoto.png" alt=""  ng-if = "!userForm.profilePic"class="img-responsive" >
                   </div>
 </div>
             </div>
@@ -28,7 +30,7 @@
                            </div> -->
                   <!-- <img ng-src="{{collection.selectedImage}}" alt=""  class="img-responsive" ng-click="getImageSaveContact();"> -->
                   <div class="pick-img">
-                    <img ng-src="{{imagetobeup}}" alt=""  class="img-responsive" ng-click="uploadProfilePic();">
+                    <img src="img/addphoto.png" alt=""  class="img-responsive" ng-click="uploadProfilePic();">
                   </div>
                 <!-- </div> -->
               </div>
@@ -42,7 +44,7 @@
 
                            </div> -->
                      <div class="pick-img">
-                  <img ng-src="{{imgURI  }}" alt="" class="img-responsive" ng-click="takePhotoCamera();">
+                  <img ng-src="img/takephoto.png" alt="" class="img-responsive" ng-click="takePhotoCamera();">
                     </div>
                   <!-- <div class="uploaded-pic">
                     <img src="" alt="" class="img-responsive">
@@ -54,41 +56,41 @@
         </div>
         <span class=" block font-galano">OR</span>
         <span class=" block text-uppercase mt10 mb10 font-galano">Select your avatar</span>
-        <div class="avatar-holder" ui-sref="app.home">
+        <div class="avatar-holder" >
           <div class="avatar-box">
             <div class="row">
-              <div class="col-50" ui-sref="app.account">
-<div class="avatars">
+              <div class="col-50" >
+<div class="avatars"  ng-click="getAvtar('583c0c54ace35247109b2a27.png')" >
 </div>
               </div>
-              <div class="col-50" ui-sref="app.account">
-<div class="avatarss">
+              <div class="col-50" >
+<div class="avatarss" ng-click="getAvtar('583c0cbaace35247109b2a32.png')">
 </div>
               </div>
             </div>
                  <div class="row">
-              <div class="col-50" ui-sref="app.account">
-<div class="avatars1">
+              <div class="col-50" >
+<div class="avatars1" ng-click="getAvtar('583c0d42ace35247109b2a42.png')">
 </div>
               </div>
-              <div class="col-50" ui-sref="app.account">
-<div class="avatarss1">
+              <div class="col-50" >
+<div class="avatarss1" ng-click="getAvtar('583c0951ace35247109b29c0.png')">
 </div>
               </div>
             </div>
                  <div class="row" >
-              <div class="col-50" ui-sref="app.account">
-<div class="avatars2">
+              <div class="col-50" >
+<div class="avatars2" ng-click="getAvtar('583c0cf0ace35247109b2a39.png')">
 </div>
               </div>
-              <div class="col-50" ui-sref="app.account">
-<div class="avatarss2">
+              <div class="col-50" >
+<div class="avatarss2" ng-click="getAvtar('583c0d77ace35247109b2a49.png')">
 </div>
               </div>
             </div>
           </div>
         </div>
-        <span class="block  mt10 mb10 font-galano" ui-sref="app.home">SKIP</span>
+        <span class="block  mt10 mb10 font-galano" ui-sref="app.account">SKIP</span>
       </div>
     </div>
   </ion-content>

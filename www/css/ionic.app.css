@@ -10795,7 +10795,7 @@ img[alt="pay"] {
   background: url("../img/amrit.png") no-repeat; }
   .profile .profile-info .profile-img {
     left: 0;
-    top: -45px; }
+    top: -30px; }
   .profile .profile-info .plan {
     left: 70px;
     top: 25px; }
@@ -10867,7 +10867,8 @@ img[alt="pay"] {
   .profile-info .profile-img {
     width: 100px;
     height: 100px;
-    top: -34px;
+    overflow: hidden;
+    top: -10px;
     left: -35px; }
   .profile-info .plan {
     position: absolute;

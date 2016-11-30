@@ -21,13 +21,14 @@
 <div class="baring" ng-class="">
   <ion-header class="bar-profile sidemenu-profile">
      <div class="profile-img">
-                  <img src="img/profile-img.jpg" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
+                  <img src="img/profile-img.jpg" ng-if="!userForm.profilePic" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
+                  <img ng-src="{{userForm.profilePic|uploadpath}}" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
                 </div>
 
 
          <div class="name text-center">
-                  <h4 class=" text-in-shadow color-white font-america">Amrit Bhamrah</h4>
-                  <span class=" font-america">Cricketer</span>
+                  <h4 class=" text-in-shadow color-white font-america" >{{userForm.CustomerName}}</h4>
+                  <!-- <span class=" font-america">Cricketer</span> -->
                 </div>
                   <div class="name text-center">
                   <h4 class=" inline-block  font-america">33500</h4>

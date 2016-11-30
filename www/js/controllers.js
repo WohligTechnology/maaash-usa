@@ -21,12 +21,24 @@ angular.module('starter.controllers', ['ngCordova'])
   //     }
   //
   // };
+  var jstoreage =  $.jStorage.get("loginDetail");
+  var _id = jstoreage.data._id;
+  console.log("iddd", _id);
+  $scope.userForm ={};
+    MyServices.getProfile(_id, function(data) {
+      if (data.value) {
+          console.log("data0",data);
+          $scope.userForm =data.data;
+      } else {}
+
+    });
   $scope.logout =function(){
     MyServices.logout(function(data){
       console.log(data);
         $state.go("noheader.login");
     });
   };
+
   $scope.getCross = "";
   $scope.whenClose = function() {
     console.log("clickabe");
@@ -624,7 +636,7 @@ console.log("done");
     // }
 })
 
-.controller('SelectAvatarCtrl', function($scope, $stateParams, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $cordovaCamera) {
+.controller('SelectAvatarCtrl', function($scope, $stateParams, $state , $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $cordovaCamera,MyServices,$filter) {
 
   $scope.startloading = function() {
     $ionicLoading.show({
@@ -634,9 +646,18 @@ console.log("done");
   $scope.collection = {
     selectedImage: ''
   };
+    $scope.userForm={};
+    var jstoreage =  $.jStorage.get("loginDetail");
 
-  $scope.collection.selectedImage = "img/addphoto.png";
-  $scope.imagetobeup = "img/addphoto.png";
+    var _id = jstoreage.data._id;
+$scope.userForm.profilePic="";
+  MyServices.getProfile(_id, function(data) {
+    if (data.value) {
+        console.log("data0",data);
+        $scope.userForm =data.data;
+    } else {}
+
+  });
 
   var options = {
     maximumImagesCount: 1,
@@ -647,43 +668,53 @@ console.log("done");
     $cordovaImagePicker.getPictures(options).then(function(resultImage) {
       // Success! Image data is here
       console.log(resultImage);
-      $scope.imagetobeup = resultImage[0];
-      $scope.profilePic=$scope.imagetobeup ;
-  $scope.uploadMyPhoto = $filter('uploadpath')(imagetobeup);
-  console.log("$scope.uploadMyPhoto",$scope.uploadMyPhoto);
-      // $scope.uploadPhoto(adminurl + "upload/", function(data) {
-      //   console.log(data);
-      //   console.log(JSON.parse(data.response));
-      //   var parsedImage = JSON.parse(data.response);
-      //   $scope.personal.profilePicture = parsedImage.data[0];
-      // });
+      $scope.userForm.profilePic = resultImage[0];
+      $scope.updateProfile($scope.userForm.profilePic) ;
+      $scope.uploadImage($scope.userForm.profilePic);
+
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
 
+  $scope.getAvtar = function(avtar) {
+        if (avtar) {
+            $scope.userForm.profilePic = avtar;
+            $scope.updateProfile($scope.userForm) ;
 
+        }
+    }
+    //Upload Image
+     $scope.uploadImage = function(imageURI) {
+       console.log('imageURI',imageURI);
+       // $scope.showLoading('Uploading Image...', 10000);
+       $cordovaFileTransfer.upload(adminurl + 'upload', imageURI)
+         .then(function(result) {
+           // Success!
+           console.log(result.response);
+           result.response = JSON.parse(result.response);
+           $scope.userForm.profilePic = result.response.data[0];
+           $scope.updateProfile($scope.userForm.profilePic) ;
 
-
-  $scope.uploadPhoto = function(serverpath, callback) {
-    console.log("function called");
-    // if ($scope.imagetobeup) {
-    //     $scope.startloading();
-    // }
-    $cordovaFileTransfer.upload(serverpath, $scope.imagetobeup, options)
-      .then(function(result) {
-        console.log(result);
-        callback(result);
-        // $ionicLoading.hide();
-        //$scope.addretailer.store_image = $scope.filename2;
-      }, function(err) {
-        // Error
-        console.log(err);
-      }, function(progress) {
-        // constant progress updates
-      });
-  };
-  $scope.imgURI = "img/takephoto.png";
+           // $scope.submitData($scope.formData);
+           // $scope.submitProfile($scope.profileData);
+         }, function(err) {
+           // Error
+           $scope.hideLoading();
+           $scope.showLoading('Error!', 2000);
+         }, function(progress) {
+           // constant progress updates
+         });
+     };
+     $scope.updateProfile = function(userForm) {
+       MyServices.updateProfile(userForm, function(data) {
+         console.log(data);
+         if(data.value === true){
+           $scope.popupmsg =true;
+          //  $state.go('app.account');
+         }
+       })
+     }
   $scope.takePhotoCamera = function() {
     var options = {
       quality: 75,
@@ -700,16 +731,16 @@ console.log("done");
     $cordovaCamera.getPicture(options).then(function(imageData) {
       console.log("hi1");
 
-      $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      // $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      $scope.userForm.profilePic = "data:image/jpeg;base64," + imageData;
       $scope.profilePic=$scope.imgURI ;
+      $scope.updateProfile($scope.userForm.profilePic) ;
+
 
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
-
-
-
 })
 
 .controller('BuyCtrl', function($scope, $stateParams) {
@@ -1123,7 +1154,7 @@ var i=0;
 
 })
 
-.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
+.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices) {
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1133,6 +1164,17 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
+    var jstoreage =  $.jStorage.get("loginDetail");
+    var _id = jstoreage.data._id;
+    $scope.userForm ={};
+
+    MyServices.getProfile(_id, function(data) {
+      if (data.value) {
+          console.log("data0",data);
+          $scope.userForm =data.data;
+      } else {}
+
+    });
 
   })
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {

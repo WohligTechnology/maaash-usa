@@ -1249,7 +1249,7 @@ img[alt="pay"] {
     background: url("../img/amrit.png") no-repeat;
    .profile-img{
      left: 0;
-     top: -45px;
+     top: -30px;
    }
    .plan{
      left: 70px;
@@ -1335,7 +1335,8 @@ img[alt="pay"] {
   .profile-img {
     width: 100px;
     height: 100px;
-    top: -34px;
+    overflow: hidden;
+    top: -10px;
     left: -35px;
   }
   .plan {
@@ -1969,4 +1970,3 @@ margin-top: 10px;
 .menu-minus{
   margin-top: -200px;
 }
-

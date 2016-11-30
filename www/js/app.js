@@ -462,7 +462,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
 
 .filter('uploadpath', function() {
     return function(input, width, height, style) {
-      console.log(input);
+      console.log("in uploadpath",input);
         var other = "";
         if (width && width != "") {
             other += "&width=" + width;
@@ -475,7 +475,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
         if (input) {
             if (input.indexOf('https://') == -1) {
-                return imgpath + "?file=" + input + other;
+                return imgpath + input + other;
 
             } else {
                 return input;
