@@ -103,7 +103,10 @@ $brand-blue: #29a8df!default;
 .f20{
   font-size: 20px !important;
 }
-
+.f16{
+  font-size: 16px;
+  margin-top: 20px;
+}
 .font-light {
   font-weight: 300;
 }
@@ -498,11 +501,13 @@ label{
   height: 70px;
   border-radius: 100%;
   position: absolute;
-  top: -10px;
+  top: -45px;
   left: -15px;
   z-index: 2;
   img {
     border-radius: 100%;
+    height: 100%;
+    width: 100%;
   }
 }
 }
@@ -562,9 +567,10 @@ label{
   }
 }
 .points-get {
-  // background: url('../img/usa/baby.png') no-repeat -165px -10px #fff002;
-  background: url('../img/usa/baby.png') no-repeat -55px -15px #fff002;
+  background: url(../img/usa/baby.png) no-repeat #fff002;
     height: 100%;
+    background-position: 100% 100%;
+    background-size: cover;
     p{
           position: absolute;
     top: 25px;

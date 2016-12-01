@@ -21,6 +21,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //     }
   //
   // };
+  if($.jStorage.get("loginDetail")!=null){
   var jstoreage =  $.jStorage.get("loginDetail");
   var _id = jstoreage.data._id;
   console.log("iddd", _id);
@@ -32,6 +33,8 @@ angular.module('starter.controllers', ['ngCordova'])
       } else {}
 
     });
+  }
+
   $scope.logout =function(){
     MyServices.logout(function(data){
       console.log(data);
@@ -1164,6 +1167,7 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
+    if( $.jStorage.get("loginDetail")!=null){
     var jstoreage =  $.jStorage.get("loginDetail");
     var _id = jstoreage.data._id;
     $scope.userForm ={};
@@ -1175,6 +1179,8 @@ var i=0;
       } else {}
 
     });
+    }
+
 
   })
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {
