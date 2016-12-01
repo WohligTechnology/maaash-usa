@@ -1,0 +1,67 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "pushwoosh-cordova-plugin": {
+            "LOG_LEVEL": "DEBUG",
+            "IOS_FOREGROUND_ALERT_TYPE": "NONE",
+            "ANDROID_FOREGROUND_PUSH": "false",
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "info.asankan.phonegap.smsplugin": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "in.smaaash.app"
+        }
+    }
+}
