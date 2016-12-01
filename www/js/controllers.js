@@ -1270,9 +1270,15 @@ var i=0;
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
+        $scope.errormsg= "false";
 
-        if(data.value === true)
-        $scope.oneTimepswd();
+        if(data.value === true){
+          $scope.oneTimepswd();
+        }
+        else{
+          $scope.errormsg= "true";
+          $scope.errortext=data.data.GenerateOTPTable[0].Message;
+        }
       })
     }
 
@@ -1303,7 +1309,7 @@ var i=0;
     }
   })
 
-  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
+  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout,$ionicSideMenuDelegate) {
     $scope.closeAll = function(val) {
       $state.go(val);
       if ($ionicSideMenuDelegate.isOpenLeft()) {
@@ -1373,8 +1379,15 @@ img:'img/usa/bgusa.png'
       console.log("$scope.getotp",$scope.getotp);
       console.log(data);
 
-      if(data.value === true)
-      $scope.oneTimepswd();
+      $scope.errormsg= "false";
+
+      if(data.value === true){
+        $scope.oneTimepswd();
+      }
+      else{
+        $scope.errormsg= "true";
+        $scope.errortext=data.data.GenerateOTPTable[0].Message;
+      }
     })
   }
   $scope.login={};
@@ -1403,6 +1416,7 @@ img:'img/usa/bgusa.png'
                   }, 2000);
       } else  {
         $scope.emailExist = true;
+        
       }
 
     })

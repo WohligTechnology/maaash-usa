@@ -1,0 +1,66 @@
+<!--<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Login</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" name ="username " ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Log in</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>-->
+
+<ion-view class="dul">
+
+<ion-content >
+
+  <ion-slide-box auto-play="true" delegate-handle="first" ng-init="disableSwipe()">
+              <ion-slide ng-repeat="img in earn track by $index">
+                <div class="custom-slider relate">
+<div class="logins ">
+  <!--<img src="img/usa/bgusa.png" alt="" class="full-image" />-->
+   <img ng-src="{{img.img}}" alt="" class="img-responsive" width="">
+      <div class="text-center login-div">
+      <h3 class="text-uppercase font-america color-white ">WHAT'S NEXT IN GAMING,</h3>
+      <h3 class="text-uppercase font-america  color-white">RACING,EATING &amp; AMAZING?</h3>
+      <h4 class="color-white">Coming at you in December.</h4>
+
+    <div class="skip">
+      <p class="text-uppercase text-center color-white" ui-sref="app.home">skip > </p>
+
+    </div>
+    </div>
+
+</div>
+                 
+                </div>
+              </ion-slide>
+            </ion-slide-box>
+</ion-content>
+
+
+
+  <ion-footer-bar class="foot">
+
+  <ion-tabs class="tabs-icon-only">
+  <ion-tab title="signups" icon-on="foot-tab signups" icon-off="foot-tab signups" ng-click="closeAll('noheader.signup')">
+    </ion-tab>
+    <ion-tab title="login" icon-on="foot-tab login" icon-off="foot-tab login" ng-click="closeAll('noheader.landing')">
+    </ion-tab>
+  </ion-tabs>
+</ion-footer-bar>
+</ion-view>
