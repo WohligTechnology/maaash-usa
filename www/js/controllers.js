@@ -21,24 +21,47 @@ angular.module('starter.controllers', ['ngCordova'])
   //     }
   //
   // };
+  $scope.login=false;
+
   if($.jStorage.get("loginDetail")!=null){
+    $state.go("app.account");
+
   var jstoreage =  $.jStorage.get("loginDetail");
   var _id = jstoreage.data._id;
   console.log("iddd", _id);
+  $scope.points="3500";
+  $scope.login=true;
+  console.log("hkdsflkdsjxflsdjl",$scope.login);
+
   $scope.userForm ={};
     MyServices.getProfile(_id, function(data) {
       if (data.value) {
           console.log("data0",data);
           $scope.userForm =data.data;
       } else {}
-
     });
   }
+  else{
+    $state.go("noheader.login");
+
+    $scope.login=false;
+  }
+
+    $scope.account =function(){
+      if($.jStorage.get("loginDetail")==null){
+        $state.go("noheader.login");
+}else{
+  $state.go("app.account");
+
+}
+    };
+
 
   $scope.logout =function(){
     MyServices.logout(function(data){
       console.log(data);
-        $state.go("noheader.login");
+      if(data.value)
+        $state.go('noheader.login');
     });
   };
 
@@ -160,6 +183,10 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, MyServices, $ionicSlideBoxDelegate) {
+  // if($.jStorage.get("loginDetail")!=null){
+  //   console.log("hello");
+  //   $state.go("app.account");
+  // }
   $scope.homeslider = [
     'img/banners/banner.jpg',
     'img/banners/banner.jpg',
@@ -172,11 +199,11 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   } else {
     $scope.showSignUp = false;
   };
+
   MyServices.getSlider(function(data) {
     $scope.mySlides = data.data;
     var i = 1;
     _.each($scope.mySlides, function(n) {
-
       n.ordering = i;
       i++;
     });
@@ -195,7 +222,7 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   var jstoreage =  $.jStorage.get("loginDetail");
   var _id = jstoreage.data._id;
   console.log("iddd", _id);
-  $scope.startloading() ;
+  // $scope.startloading() ;
 
     MyServices.getProfile(_id, function(data) {
       $scope.startloading() ;
@@ -1169,7 +1196,32 @@ var i=0;
 
 })
 
-.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices,$ionicLoading) {
+.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices,$ionicLoading,$state) {
+
+  if( $.jStorage.get("loginDetail")!=null){
+
+  var jstoreage =  $.jStorage.get("loginDetail");
+  console.log("jstoreage",jstoreage);
+
+  var _id = jstoreage.data._id;
+  $scope.userForm ={};
+    $state.go("app.account");
+  MyServices.getProfile(_id, function(data) {
+    // $scope.startloading();
+    if (data.value) {
+      // $ionicLoading.hide();
+        console.log("data0",data);
+        $scope.userForm =data.data;
+    } else {}
+
+  });
+}else{
+    $state.go("noheader.login");
+    console.log("jstoreage",jstoreage);
+
+}
+
+
   $scope.startloading = function() {
     $ionicLoading.show({
         template: '<ion-spinner class="spinner-light"></ion-spinner>'
@@ -1184,22 +1236,7 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
-    if( $.jStorage.get("loginDetail")!=null){
-    var jstoreage =  $.jStorage.get("loginDetail");
-    var _id = jstoreage.data._id;
-    $scope.userForm ={};
 
-    MyServices.getProfile(_id, function(data) {
-      $scope.startloading();
-      if (data.value) {
-        $ionicLoading.hide();
-
-          console.log("data0",data);
-          $scope.userForm =data.data;
-      } else {}
-
-    });
-    }
 
 
   })
@@ -1310,6 +1347,15 @@ var i=0;
   })
 
   .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout,$ionicSideMenuDelegate) {
+    console.log('herermmmmm',$.jStorage);
+    if( $.jStorage.get("loginDetail")!=null){
+    var jstoreage =  $.jStorage.get("loginDetail");
+    console.log("data0",jstoreage);
+      $state.go("app.account");
+  }else{
+      $state.go("noheader.login");
+  }
+
     $scope.closeAll = function(val) {
       $state.go(val);
       if ($ionicSideMenuDelegate.isOpenLeft()) {
@@ -1321,15 +1367,16 @@ var i=0;
         $scope.whenClose();
       }
     };
+
     $scope.earn=[{
 img:'img/usa/bgusa.png'
-
 },
 {
   img:'img/usa/bgusa.png'
 },{
   img:'img/usa/bgusa.png'
 }]
+
 
   })
 
@@ -1416,7 +1463,7 @@ img:'img/usa/bgusa.png'
                   }, 2000);
       } else  {
         $scope.emailExist = true;
-        
+
       }
 
     })

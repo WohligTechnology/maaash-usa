@@ -27,11 +27,12 @@
 
 
          <div class="name text-center">
-                  <h4 class=" text-in-shadow color-white font-america" >{{userForm.CustomerName}}</h4>
+                  <h4 class=" text-in-shadow color-white font-america" ng-if="userForm.CustomerName">{{userForm.CustomerName}}</h4>
+                  <h4 class=" text-in-shadow color-white font-america" ng-if="!userForm.CustomerName">Name</h4>
                   <!-- <span class=" font-america">Cricketer</span> -->
                 </div>
                   <div class="name text-center">
-                  <h4 class=" inline-block  font-america">33500</h4>
+                  <h4 class=" inline-block  font-america">{{points}}</h4>
                   <span class="  font-america">Points</span>
                 </div>
    </ion-header>
@@ -78,9 +79,13 @@
          <img src="/img/usa/icons/contact.png" class="loyalty"></i>
       contact us
        </ion-item>
-        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();">
+        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();" ng-show="login" ng-hide="!login">
          <img src="/img/usa/icons/logout.png" class="loyalty" ></i>
-     log out
+     log out{{login}}
+       </ion-item>
+        <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="noheader.landing" ng-show="!login" ng-hide="login">
+         <img src="/img/usa/icons/logout.png" class="loyalty" ></i>
+     login
        </ion-item>
      </ion-list>
    </ion-content>
@@ -117,7 +122,7 @@
     </ion-tab>
     <ion-tab title="Buy" icon-on="foot-tab buy" icon-off="foot-tab buy" ng-click="closeAll('app.buy');" menu-close>
     </ion-tab>
-    <ion-tab title="My Account" ng-click="closeAll('app.account');" icon-on="foot-tab account" icon-off="foot-tab account" menu-close>
+    <ion-tab title="My Account" ng-click="account();" icon-on="foot-tab account" icon-off="foot-tab account" menu-close>
     </ion-tab>
     <ion-tab title="Check in" icon-on="foot-tab check" icon-off="foot-tab check" ng-click="closeAll('app.home');" menu-close>
     </ion-tab>

@@ -219,6 +219,7 @@ withCredentials: true
        },
        logout: function(callback) {
            $.jStorage.flush();
+           console.log("$.jStorage",$.jStorage);
             //  $.jStorage.set("loginDetail",null);
             //  $.jStorage.set("loginId",null);
             //  $.jStorage.set("loggedInUser",null);
