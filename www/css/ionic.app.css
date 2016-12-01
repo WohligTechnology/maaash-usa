@@ -9902,6 +9902,10 @@ a.button {
 .f20 {
   font-size: 20px !important; }
 
+.f16 {
+  font-size: 16px;
+  margin-top: 20px; }
+
 .font-light {
   font-weight: 300; }
 
@@ -10085,7 +10089,8 @@ h3.ion-ios-bell-outline {
   background-color: transparent; }
 
 .popup-head {
-  border: none; }
+  border: none;
+  display: none; }
 
 .otp-content {
   position: absolute;
@@ -10111,11 +10116,18 @@ h3.ion-ios-bell-outline {
   top: -12px;
   right: -8px; }
 
+.my-custom-popup {
+  background-image: url("../img/box-pop.png"); }
+
 .headline .popup-content {
   padding: 15px; }
   .headline .popup-content p {
-    font-size: 13px;
+    font-size: 11px;
     line-height: 18px; }
+
+.headline .wid {
+  width: 75%;
+  margin: 0 auto; }
 
 .menu-open .ion-navicon:before {
   content: "\f2d7" !important; }
@@ -10227,11 +10239,13 @@ h3.ion-ios-bell-outline {
   height: 70px;
   border-radius: 100%;
   position: absolute;
-  top: -10px;
+  top: -45px;
   left: -15px;
   z-index: 2; }
   .relate .profile-img img, .profile-strip .profile-img img {
-    border-radius: 100%; }
+    border-radius: 100%;
+    height: 100%;
+    width: 100%; }
 
 .sidemenu-profile .profile-img {
   width: 70px;
@@ -10279,8 +10293,10 @@ h3.ion-ios-bell-outline {
   height: 220px; }
 
 .points-get {
-  background: url("../img/usa/baby.png") no-repeat -55px -15px #fff002;
-  height: 100%; }
+  background: url(../img/usa/baby.png) no-repeat #fff002;
+  height: 100%;
+  background-position: 100% 100%;
+  background-size: cover; }
   .points-get p {
     position: absolute;
     top: 25px;
@@ -10795,7 +10811,7 @@ img[alt="pay"] {
   background: url("../img/amrit.png") no-repeat; }
   .profile .profile-info .profile-img {
     left: 0;
-    top: -45px; }
+    top: -30px; }
   .profile .profile-info .plan {
     left: 70px;
     top: 25px; }
@@ -10867,8 +10883,9 @@ img[alt="pay"] {
   .profile-info .profile-img {
     width: 100px;
     height: 100px;
-    top: -34px;
-    left: -35px; }
+    overflow: hidden;
+    top: -10px;
+    left: -45px; }
   .profile-info .plan {
     position: absolute;
     top: 45px;

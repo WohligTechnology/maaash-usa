@@ -21,12 +21,27 @@ angular.module('starter.controllers', ['ngCordova'])
   //     }
   //
   // };
+  if($.jStorage.get("loginDetail")!=null){
+  var jstoreage =  $.jStorage.get("loginDetail");
+  var _id = jstoreage.data._id;
+  console.log("iddd", _id);
+  $scope.userForm ={};
+    MyServices.getProfile(_id, function(data) {
+      if (data.value) {
+          console.log("data0",data);
+          $scope.userForm =data.data;
+      } else {}
+
+    });
+  }
+
   $scope.logout =function(){
     MyServices.logout(function(data){
       console.log(data);
         $state.go("noheader.login");
     });
   };
+
   $scope.getCross = "";
   $scope.whenClose = function() {
     console.log("clickabe");
@@ -170,12 +185,24 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices,$ionicLoading) {
+  $scope.startloading = function() {
+    console.log("hi in loader");
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-light"></ion-spinner>'
+    });
+};
   var jstoreage =  $.jStorage.get("loginDetail");
   var _id = jstoreage.data._id;
   console.log("iddd", _id);
+  $scope.startloading() ;
+
     MyServices.getProfile(_id, function(data) {
+      $scope.startloading() ;
+
       if (data.value) {
+        $ionicLoading.hide();
+
           console.log("data0",data);
           $scope.userForm =data.data;
            $scope.userForm.dob= new Date(data.data.dob);
@@ -624,7 +651,7 @@ console.log("done");
     // }
 })
 
-.controller('SelectAvatarCtrl', function($scope, $stateParams, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $cordovaCamera) {
+.controller('SelectAvatarCtrl', function($scope, $stateParams, $state , $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $cordovaCamera,MyServices,$filter) {
 
   $scope.startloading = function() {
     $ionicLoading.show({
@@ -634,9 +661,18 @@ console.log("done");
   $scope.collection = {
     selectedImage: ''
   };
+    $scope.userForm={};
+    var jstoreage =  $.jStorage.get("loginDetail");
 
-  $scope.collection.selectedImage = "img/addphoto.png";
-  $scope.imagetobeup = "img/addphoto.png";
+    var _id = jstoreage.data._id;
+$scope.userForm.profilePic="";
+  MyServices.getProfile(_id, function(data) {
+    if (data.value) {
+        console.log("data0",data);
+        $scope.userForm =data.data;
+    } else {}
+
+  });
 
   var options = {
     maximumImagesCount: 1,
@@ -647,43 +683,53 @@ console.log("done");
     $cordovaImagePicker.getPictures(options).then(function(resultImage) {
       // Success! Image data is here
       console.log(resultImage);
-      $scope.imagetobeup = resultImage[0];
-      $scope.profilePic=$scope.imagetobeup ;
-  $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
-  console.log("$scope.uploadMyPhoto",$scope.uploadMyPhoto);
-      $scope.uploadPhoto(adminurl + "upload/", function(data) {
-        console.log(data);
-        console.log(JSON.parse(data.response));
-        var parsedImage = JSON.parse(data.response);
-        $scope.personal.profilePicture = parsedImage.data[0];
-      });
+      $scope.userForm.profilePic = resultImage[0];
+      $scope.updateProfile($scope.userForm.profilePic) ;
+      $scope.uploadImage($scope.userForm.profilePic);
+
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
 
+  $scope.getAvtar = function(avtar) {
+        if (avtar) {
+            $scope.userForm.profilePic = avtar;
+            $scope.updateProfile($scope.userForm) ;
 
+        }
+    }
+    //Upload Image
+     $scope.uploadImage = function(imageURI) {
+       console.log('imageURI',imageURI);
+       // $scope.showLoading('Uploading Image...', 10000);
+       $cordovaFileTransfer.upload(adminurl + 'upload', imageURI)
+         .then(function(result) {
+           // Success!
+           console.log(result.response);
+           result.response = JSON.parse(result.response);
+           $scope.userForm.profilePic = result.response.data[0];
+           $scope.updateProfile($scope.userForm.profilePic) ;
 
-
-  $scope.uploadPhoto = function(serverpath, callback) {
-    console.log("function called");
-    // if ($scope.imagetobeup) {
-    //     $scope.startloading();
-    // }
-    $cordovaFileTransfer.upload(serverpath, $scope.imagetobeup, options)
-      .then(function(result) {
-        console.log(result);
-        callback(result);
-        // $ionicLoading.hide();
-        //$scope.addretailer.store_image = $scope.filename2;
-      }, function(err) {
-        // Error
-        console.log(err);
-      }, function(progress) {
-        // constant progress updates
-      });
-  };
-  $scope.imgURI = "img/takephoto.png";
+           // $scope.submitData($scope.formData);
+           // $scope.submitProfile($scope.profileData);
+         }, function(err) {
+           // Error
+           $scope.hideLoading();
+           $scope.showLoading('Error!', 2000);
+         }, function(progress) {
+           // constant progress updates
+         });
+     };
+     $scope.updateProfile = function(userForm) {
+       MyServices.updateProfile(userForm, function(data) {
+         console.log(data);
+         if(data.value === true){
+           $scope.popupmsg =true;
+          //  $state.go('app.account');
+         }
+       })
+     }
   $scope.takePhotoCamera = function() {
     var options = {
       quality: 75,
@@ -700,18 +746,16 @@ console.log("done");
     $cordovaCamera.getPicture(options).then(function(imageData) {
       console.log("hi1");
 
-      $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      // $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      $scope.userForm.profilePic = "data:image/jpeg;base64," + imageData;
       $scope.profilePic=$scope.imgURI ;
-      $scope.uploadMyPhoto = $filter('uploadpath')(profilePic);
+      $scope.updateProfile($scope.userForm.profilePic) ;
 
 
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
-
-
-
 })
 
 .controller('BuyCtrl', function($scope, $stateParams) {
@@ -1101,11 +1145,6 @@ var i=0;
   });
   })
 
-
-
-
-
-
 .controller('OrderCtrl', function($scope, $stateParams) {
 
 })
@@ -1130,7 +1169,12 @@ var i=0;
 
 })
 
-.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
+.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices,$ionicLoading) {
+  $scope.startloading = function() {
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-light"></ion-spinner>'
+    });
+};
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1140,12 +1184,29 @@ var i=0;
     $scope.closePopup = function() {
       $scope.checkPlan.close();
     }
+    if( $.jStorage.get("loginDetail")!=null){
+    var jstoreage =  $.jStorage.get("loginDetail");
+    var _id = jstoreage.data._id;
+    $scope.userForm ={};
+
+    MyServices.getProfile(_id, function(data) {
+      $scope.startloading();
+      if (data.value) {
+        $ionicLoading.hide();
+
+          console.log("data0",data);
+          $scope.userForm =data.data;
+      } else {}
+
+    });
+    }
+
 
   })
   .controller('ConfirmOrderCtrl', function($scope, $stateParams) {
 
   })
-  .controller('RechargeCtrl', function($scope, $stateParams, $ionicPopup) {
+  .controller('RechargeCtrl', function($scope, $stateParams, $ionicPopup,MyServices) {
     $scope.popHeadline = function() {
       $scope.headlienPop = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1154,6 +1215,25 @@ var i=0;
     }
     $scope.closePopup = function() {
       $scope.headlienPop.close();
+    }
+    $scope.Recharge={};
+
+    $scope.RechargeCard = function(formData) {
+      console.log("formData", formData);
+      $scope.Recharge=formData;
+      $scope.Recharge.PGReturnURL="http://104.155.129.33:82/signup/returnUrlFunction";
+      $scope.Recharge.CustomerID=$.jStorage.get("loginDetail").data.CustomerID;
+      $scope.Recharge.BranchID="17";
+
+      console.log("formData", $scope.Recharge);
+
+
+      MyServices.RechargeCard(formData, function(data) {
+        console.log(data);
+        if (data.value === true) {
+          console.log("formData", data);
+        }
+      })
     }
   })
 
@@ -1190,9 +1270,15 @@ var i=0;
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
+        $scope.errormsg= "false";
 
-        if(data.value === true)
-        $scope.oneTimepswd();
+        if(data.value === true){
+          $scope.oneTimepswd();
+        }
+        else{
+          $scope.errormsg= "true";
+          $scope.errortext=data.data.GenerateOTPTable[0].Message;
+        }
       })
     }
 
@@ -1223,7 +1309,7 @@ var i=0;
     }
   })
 
-  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
+  .controller('LoginCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout,$ionicSideMenuDelegate) {
     $scope.closeAll = function(val) {
       $state.go(val);
       if ($ionicSideMenuDelegate.isOpenLeft()) {
@@ -1293,8 +1379,15 @@ img:'img/usa/bgusa.png'
       console.log("$scope.getotp",$scope.getotp);
       console.log(data);
 
-      if(data.value === true)
-      $scope.oneTimepswd();
+      $scope.errormsg= "false";
+
+      if(data.value === true){
+        $scope.oneTimepswd();
+      }
+      else{
+        $scope.errormsg= "true";
+        $scope.errortext=data.data.GenerateOTPTable[0].Message;
+      }
     })
   }
   $scope.login={};
@@ -1323,6 +1416,7 @@ img:'img/usa/bgusa.png'
                   }, 2000);
       } else  {
         $scope.emailExist = true;
+        
       }
 
     })

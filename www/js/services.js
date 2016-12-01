@@ -1,9 +1,9 @@
  // var adminurl = "http://192.168.0.104:1337/"; //local
 
- var adminurl = "http://104.155.129.33:82/";  //server
+ var adminurl = "http://104.155.129.33:94/";  //server
  // var imgpath = adminurl + "uploadfile/getupload?file=";
  var imgurl = adminurl + "upload/";
- var imgpath = imgurl + "readFile";
+ var imgpath = imgurl + "readFile?file=";
  var uploadurl = imgurl;
 
   $.jStorage.set("idOfCity", '577f4d106b78e0bc03724800');
@@ -151,6 +151,16 @@ withCredentials: true
              method: 'POST',
              withCredentials: true,
              data: otp
+
+         }).success(callback);
+     },
+     RechargeCard: function(recharge,callback) {
+
+         $http({
+             url: adminurl + 'signup/RechargeCard',
+             method: 'POST',
+             withCredentials: true,
+             data: recharge
 
          }).success(callback);
      },
