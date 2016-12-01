@@ -22,7 +22,7 @@
   <ion-header class="bar-profile sidemenu-profile">
      <div class="profile-img">
                   <img src="img/profile-img.jpg" ng-if="!userForm.profilePic" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
-                  <img ng-src="{{userForm.profilePic|uploadpath}}" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
+                  <img ng-src="{{userForm.profilePic|uploadpath}}" alt="profile-image" class="img-responsive" ng-if="userForm.profilePic" ng-click="uploadProfilePic();">
                 </div>
 
 

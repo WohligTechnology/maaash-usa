@@ -182,12 +182,24 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices,$ionicLoading) {
+  $scope.startloading = function() {
+    console.log("hi in loader");
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-light"></ion-spinner>'
+    });
+};
   var jstoreage =  $.jStorage.get("loginDetail");
   var _id = jstoreage.data._id;
   console.log("iddd", _id);
+  $scope.startloading() ;
+
     MyServices.getProfile(_id, function(data) {
+      $scope.startloading() ;
+
       if (data.value) {
+        $ionicLoading.hide();
+
           console.log("data0",data);
           $scope.userForm =data.data;
            $scope.userForm.dob= new Date(data.data.dob);
@@ -1154,7 +1166,12 @@ var i=0;
 
 })
 
-.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices) {
+.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup,MyServices,$ionicLoading) {
+  $scope.startloading = function() {
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-light"></ion-spinner>'
+    });
+};
     $scope.getPlan = function() {
       $scope.checkPlan = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1169,7 +1186,10 @@ var i=0;
     $scope.userForm ={};
 
     MyServices.getProfile(_id, function(data) {
+      $scope.startloading();
       if (data.value) {
+        $ionicLoading.hide();
+
           console.log("data0",data);
           $scope.userForm =data.data;
       } else {}
