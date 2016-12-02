@@ -411,15 +411,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
-    // .state('noheader.signup', {
-    //   url: '/signup',
-    //   views: {
-    //     'content': {
-    //       templateUrl: 'templates/signup.html',
-    //       controller: 'SignupCtrl'
-    //     }
-    //   }
-    // })
+
     .state('noheader.avatar', {
       url: '/avatar',
       views: {
@@ -429,8 +421,6 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
-
-
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
@@ -462,7 +452,6 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
 
 .filter('uploadpath', function() {
     return function(input, width, height, style) {
-      console.log("in uploadpath",input);
         var other = "";
         if (width && width != "") {
             other += "&width=" + width;

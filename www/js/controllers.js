@@ -274,7 +274,7 @@ console.log($scope.credentials);
 
 })
 
-.controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter) {
+.controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter,$ionicSlideBoxDelegate) {
   $scope.getPlan = function(galleryimg) {
     $scope.galleryimages=galleryimg;
     $scope.checkPlan = $ionicPopup.show({
@@ -302,16 +302,22 @@ console.log($scope.credentials);
   });
 
 
-  $scope.closePopup = function() {
+  $scope.closePopupgallery = function() {
     $scope.checkPlan.close();
   }
   $scope.foodBeveragesId = "57bc4b48eb9c91f1025a3b57";
   MyServices.getSingleExploreSmaaash($scope.foodBeveragesId, function(data) {
     $scope.drinkParty = data.data;
     console.log("  $scope.drinkParty", $scope.drinkParty);
-
   });
+$scope.selected =function(id){
+  console.log(id);
+  $scope.carousel = id;
+}
+$scope.nextSlide = function(id) {
+  $ionicSlideBoxDelegate.slide( id , [500]);
 
+}
 
   var options = "location=no,toolbar=yes";
   var target = "_blank";
@@ -785,8 +791,40 @@ $scope.userForm.profilePic="";
   }
 })
 
-.controller('BuyCtrl', function($scope, $stateParams) {
+.controller('BuyCtrl', function($scope, $stateParams,$ionicPopup,$state) {
+  $scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     cssClass: 'text-center',
+     buttons: [{
+       text: 'Ok',
+       type: 'button-assertive'
+     }],
 
+     template: 'Please login'
+   });
+
+   alertPopup.then(function(res) {
+     $scope.closeModals();
+   });
+  };
+  $scope.getPlan = function() {
+    $scope.checkPlan = $ionicPopup.show({
+      templateUrl: 'templates/modal/alert.html',
+      scope: $scope
+    });
+  };
+  $scope.closePopup = function() {
+    $scope.checkPlan.close();
+  }
+
+  $scope.Rechargeopen = function() {
+    if ($.jStorage.get("loginDetail") != null) {
+      console.log("hellooo",$.jStorage.get("loginDetail") );
+    $state.go('app.recharge');
+    }
+    else{
+      $scope.getPlan();
+    }}
 })
 
 .controller('ContactCtrl', function($scope, $stateParams) {
@@ -1244,6 +1282,7 @@ var i=0;
 
   })
   .controller('RechargeCtrl', function($scope, $stateParams, $ionicPopup,MyServices) {
+
     $scope.popHeadline = function() {
       $scope.headlienPop = $ionicPopup.show({
         templateUrl: 'templates/modal/headline.html',
@@ -1389,7 +1428,7 @@ img:'img/usa/bgusa.png'
       scope: $scope
     });
   }
-  $scope.closePopup = function() {
+  $scope.closePopupfor = function() {
     $scope.ionicpop.close();
   }
   $scope.password = function() {
@@ -1421,6 +1460,29 @@ img:'img/usa/bgusa.png'
   $scope.getotp.BranchID ="17";
   $scope.userForm={};
   $scope.generateOtp =function(userForm){
+    console.log(userForm,"****");
+    $scope.getotp.CustomerMobileNo =userForm.UserName;
+    MyServices.generateOtp($scope.getotp, function(data) {
+      console.log("$scope.getotp",$scope.getotp);
+      console.log(data);
+
+      $scope.errormsg= "false";
+
+      if(data.value === true){
+        $scope.oneTimepswd();
+      }
+      else{
+        $scope.errormsg= "true";
+        $scope.errortext=data.data.GenerateOTPTable[0].Message;
+      }
+    })
+  }
+  $scope.resendOtp =function(userForm){
+    console.log(userForm,"****");
+    if (userForm) {
+      $scope.closePopupfor();
+      userForm.OTP="";
+    }
     $scope.getotp.CustomerMobileNo =userForm.UserName;
     MyServices.generateOtp($scope.getotp, function(data) {
       console.log("$scope.getotp",$scope.getotp);

@@ -80,11 +80,11 @@
       contact us
        </ion-item>
 
-        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();" ng-show="login" ng-hide="!login">
+        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();" ng-if="userForm.CustomerName">
          <img src="img/usa/icons/logout.png" class="loyalty" ></i>
      log out
        </ion-item>
-        <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="noheader.landing" ng-show="!login" ng-hide="login">
+        <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="noheader.landing" ng-if="!userForm.CustomerName">
          <img src="img/usa/icons/logout.png" class="loyalty" ></i>
      login
    </ion-item>
