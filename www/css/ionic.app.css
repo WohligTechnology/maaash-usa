@@ -10240,7 +10240,7 @@ h3.ion-ios-bell-outline {
   border-radius: 100%;
   position: absolute;
   top: -45px;
-  left: -15px;
+  left: 0;
   z-index: 2; }
   .relate .profile-img img, .profile-strip .profile-img img {
     border-radius: 100%;
@@ -10885,11 +10885,12 @@ img[alt="pay"] {
     height: 100px;
     overflow: hidden;
     top: -30px;
-    left: -27px; }
+    left: 0;
+    z-index: 0; }
   .profile-info .plan {
     position: absolute;
     top: 45px;
-    left: 25px;
+    left: 40px;
     z-index: 3; }
 
 .new,
