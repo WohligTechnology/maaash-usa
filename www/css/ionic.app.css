@@ -11338,5 +11338,9 @@ html, body {
 .baring-skip {
   display: none; }
 
+.skip-button {
+  line-height: 12px;
+  padding: 10px; }
+
 .menu-minus {
   margin-top: -200px; }

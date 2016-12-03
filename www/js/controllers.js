@@ -1314,20 +1314,19 @@ var i=0;
   })
 
 .controller('SignupCtrl', function($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
-    var ionicpop = "";
+    $scope.ionicpop = "";
     // $.jStorage.set("cityid", "17");
     // $.jStorage.set("city", "usa");
     $scope.oneTimepswd = function() {
-      ionicpop = $ionicPopup.show({
+      $scope.ionicpop = $ionicPopup.show({
         templateUrl: 'templates/modal/otp.html',
         scope: $scope
       });
     }
 
-    $scope.toAvatar = function() {
-      ionicpop.close();
-      $state.go("noheader.avatar")
-    };
+    $scope.closePopup = function() {
+      $scope.ionicpop.close();
+    }
 
     $scope.userForm = {};
     $scope.userForm.BranchID = "17";
@@ -1342,7 +1341,26 @@ var i=0;
 
 
     $scope.generateOtp =function(phone){
-      $scope.userForm.OTP ="";
+      $scope.getotp.CustomerMobileNo =phone;
+      MyServices.generateOtp($scope.getotp, function(data) {
+        console.log(data);
+        $scope.errormsg= "false";
+
+        if(data.value === true){
+          $scope.oneTimepswd();
+        }
+        else{
+          $scope.errormsg= "true";
+          $scope.errortext=data.data.GenerateOTPTable[0].Message;
+        }
+      })
+    }
+    $scope.resendOtp =function(phone){
+      console.log(phone,"****");
+      if (phone) {
+        $scope.closePopup();
+        phone.OTP="";
+      }
       $scope.getotp.CustomerMobileNo =phone;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
