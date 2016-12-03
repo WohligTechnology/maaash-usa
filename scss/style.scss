@@ -502,7 +502,7 @@ label{
   border-radius: 100%;
   position: absolute;
   top: -45px;
-  left: -15px;
+ left: 0;
   z-index: 2;
   img {
     border-radius: 100%;
@@ -1349,16 +1349,26 @@ img[alt="pay"] {
   top: -40px;
   background: url('../img/account-profile.png') no-repeat;
   .profile-img {
+    // width: 100px;
+    // height: 100px;
+    // overflow: hidden;
+    // top: -30px;
+    // left: -27px;
     width: 100px;
     height: 100px;
     overflow: hidden;
     top: -30px;
-    left: -27px;
+    left: 0;
+    z-index: 0;
   }
   .plan {
+    // position: absolute;
+    // top: 45px;
+    // left: 25px;
+    // z-index: 3;
     position: absolute;
     top: 45px;
-    left: 25px;
+    left: 40px;
     z-index: 3;
   }
 }
