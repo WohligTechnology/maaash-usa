@@ -10,6 +10,11 @@
  angular.module('starter.services', [])
 
  .factory('MyServices', function($http) {
+    var loginDetail = $.jStorage.get("loginDetail");
+    if (!loginDetail) {
+      loginDetail = {};
+      console.log("setuser dhskfj",loginDetail);
+    }
 
    return {
 
@@ -23,7 +28,16 @@
              withCredentials: true,
              data: data
          }).success(callback);
-     },
+       },
+       setUser: function (data) {
+        _.assignIn(loginDetail, data);
+       $.jStorage.set("loginDetail", loginDetail);
+       console.log("setuser 656",loginDetail);
+      },
+
+        getUser: function () {
+          return loginDetail;
+        },
      CustomerForgetPassword: function(credentials, callback) {
           $http({
               url: adminurl + 'signup/CustomerForgetPassword',

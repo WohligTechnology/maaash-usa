@@ -1,7 +1,7 @@
-<ion-side-menus class="header ">
+<ion-side-menus class="header " ng-controller="AppCtrl">
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar bar-light  nav-title-slide-ios">
-      <ion-nav-buttons side="left" class="color-white">
+      <ion-nav-buttons side="left" class="color-white" >
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
@@ -16,7 +16,7 @@
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
-<ion-side-menu side="left" class=" menus buy-recharge">
+<ion-side-menu side="left" class=" menus buy-recharge" >
   <div class="buy-recharge">
 <div class="baring" ng-class="">
   <ion-header class="bar-profile sidemenu-profile">
@@ -26,15 +26,15 @@
                 </div>
 
 
-         <div class="name text-center">
+         <div class=" text-center">
                   <h4 class=" text-in-shadow color-white font-america" ng-if="userForm.CustomerName">{{userForm.CustomerName}}</h4>
                   <h4 class=" text-in-shadow color-white font-america" ng-if="!userForm.CustomerName">Name</h4>
                   <!-- <span class=" font-america">Cricketer</span> -->
                 </div>
-                  <div class="name text-center">
+                  <!-- <div class="name text-center">
                   <h4 class=" inline-block  font-america">{{points}}</h4>
                   <span class="  font-america">Points</span>
-                </div>
+                </div> -->
    </ion-header>
   </div>
 
@@ -48,7 +48,7 @@
        <ion-item menu-close href="#"  class ="sidemenu-item font-america" ui-sref="app.event">
          <!--<i class="ion-navicon-round"></i>-->
           <img src="img/usa/icons/explore.png" ></i>
-        event
+        events
        </ion-item>
        <ion-item menu-close href="#"  class ="sidemenu-item font-america" ui-sref="app.earn">
          <!--<i class="ion-navicon-round"></i>-->
@@ -59,10 +59,10 @@
            <img src="img/usa/icons/about.png" ></i>
            about smaaash
        </ion-item>
-       <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="app.cart">
+       <!-- <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="app.cart">
          <img src="img/usa/icons/cart.png" ></i>
       my cart
-       </ion-item>
+       </ion-item> -->
        <ion-item menu-close href="#" class ="sidemenu-item font-america" ui-sref="app.direction">
           <img src="img/usa/icons/direction.png" ></i>
         directions
@@ -79,8 +79,7 @@
          <img src="img/usa/icons/contact.png" class="loyalty"></i>
       contact us
        </ion-item>
-
-        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();" ng-if="userForm.CustomerName">
+        <ion-item menu-close href="#" class ="sidemenu-item font-america" ng-click="logout();" >
          <img src="img/usa/icons/logout.png" class="loyalty" ></i>
      log out
        </ion-item>
@@ -88,8 +87,6 @@
          <img src="img/usa/icons/logout.png" class="loyalty" ></i>
      login
    </ion-item>
-
-
      </ion-list>
    </ion-content>
   </div>
@@ -133,4 +130,3 @@
     </ion-tab>
   </ion-tabs>
 </ion-footer-bar>
---

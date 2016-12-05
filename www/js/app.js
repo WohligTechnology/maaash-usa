@@ -95,7 +95,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-       .state('app.beverage', {
+    .state('app.beverage', {
       url: '/beverage',
       views: {
         'menuContent': {
@@ -105,7 +105,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-          .state('app.party', {
+    .state('app.party', {
       url: '/party/:id',
       views: {
         'menuContent': {
@@ -124,7 +124,6 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
-
     .state('app.home', {
       url: '/home',
       views: {

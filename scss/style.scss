@@ -1368,7 +1368,7 @@ img[alt="pay"] {
     // z-index: 3;
     position: absolute;
     top: 45px;
-    left: 40px;
+    left: 60px;
     z-index: 3;
   }
 }
@@ -1513,6 +1513,9 @@ img[alt="pay"] {
       }
     }
 
+}
+.name{
+  margin-left: 10%;
 }
 .beverage-bg{
   .restaurant-detail{
@@ -1996,9 +1999,13 @@ margin-top: 10px;
   display: none;
 }
 .skip-button{
-  line-height: 12px;
+  line-height: 0px;
   padding: 10px;
+   color: white!important;
 }
 .menu-minus{
   margin-top: -200px;
+}
+.a-call{
+  right: 4%!important;
 }

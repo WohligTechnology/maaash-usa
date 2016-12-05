@@ -1,59 +1,45 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate,MyServices) {
+console.log("app controller in menu");
+$scope.userForm = MyServices.getUser();
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  // $scope.logout = function() {
-  //   console.log("im in");
-  //     if ($.jStorage.get("loginDetail") != null) {
-  //         MyServices.logout(function(data) {
-  //             // location.reload();
-  //             $state.go("home");
-  //         })
-  //     } else {
-  //
-  //     }
-  //
-  // };
   $scope.login=false;
 
-  if($.jStorage.get("loginDetail")!=null){
-    $state.go("app.account");
-
-  var jstoreage =  $.jStorage.get("loginDetail");
-  var _id = jstoreage.data._id;
-  console.log("iddd", _id);
-  $scope.points="3500";
-  $scope.login=true;
-  console.log("hkdsflkdsjxflsdjl",$scope.login);
-
-  $scope.userForm ={};
-    MyServices.getProfile(_id, function(data) {
-      if (data.value) {
-          console.log("data0",data);
-          $scope.userForm =data.data;
-      } else {}
-    });
-  }
-  else{
-    $state.go("noheader.login");
-
-    $scope.login=false;
-  }
-
+  // if($.jStorage.get("loginDetail")!=null){
+  //   $state.go("app.account");
+  //
+  // var jstoreage =  $.jStorage.get("loginDetail");
+  // // var _id = jstoreage.data._id;
+  // // console.log("iddd", _id);
+  // $scope.points="3500";
+  // $scope.login=true;
+  // console.log("hkdsflkdsjxflsdjl",$scope.login);
+  //
+  // $scope.userForm1 ={};
+  // $scope.userForm1 =$.jStorage.get("loginDetail");
+  // console.log("$scope.userForm1", $scope.userForm1);
+  //
+  //   // MyServices.getProfile(_id, function(data) {
+  //   //   if (data.value) {
+  //   //       console.log("data0",data);
+  //   //       $scope.userForm =data.data;
+  //   //   } else {}
+  //   // });
+  // }
+  // else{
+  //   $state.go("noheader.login");
+  //
+  //   $scope.login=false;
+  // }
     $scope.account =function(){
       if($.jStorage.get("loginDetail")==null){
         $state.go("noheader.login");
-}else{
-  $state.go("app.account");
+        }else{
+          $state.go("app.account");
 
-}
+        }
     };
 
 
@@ -451,7 +437,7 @@ $scope.userSignup=function(userForm){
       $scope.read ="Read More";
       $scope.more =false;
 
-      $scope.readmore =function(){
+      $scope.readmore =function(id){
         if(!$scope.more)
         {
           $scope.read ="Read Less";
@@ -1331,7 +1317,6 @@ var i=0;
     $scope.userForm = {};
     $scope.userForm.BranchID = "17";
     $scope.userForm.otp ="";
-
     $scope.formComplete = false;
     $scope.emailExist = false;
     $scope.getotp={};
@@ -1355,26 +1340,26 @@ var i=0;
         }
       })
     }
-    $scope.resendOtp =function(phone){
-      console.log(phone,"****");
-      if (phone) {
-        $scope.closePopup();
-        phone.OTP="";
-      }
-      $scope.getotp.CustomerMobileNo =phone;
-      MyServices.generateOtp($scope.getotp, function(data) {
-        console.log(data);
-        $scope.errormsg= "false";
-
-        if(data.value === true){
-          $scope.oneTimepswd();
-        }
-        else{
-          $scope.errormsg= "true";
-          $scope.errortext=data.data.GenerateOTPTable[0].Message;
-        }
-      })
-    }
+    // $scope.resendOtp =function(phone){
+    //   console.log(phone,"****");
+    //   if (phone) {
+    //     $scope.closePopup();
+    //     phone.OTP="";
+    //   }
+    //   $scope.getotp.CustomerMobileNo =phone;
+    //   MyServices.generateOtp($scope.getotp, function(data) {
+    //     console.log(data);
+    //     $scope.errormsg= "false";
+    //
+    //     if(data.value === true){
+    //       $scope.oneTimepswd();
+    //     }
+    //     else{
+    //       $scope.errormsg= "true";
+    //       $scope.errortext=data.data.GenerateOTPTable[0].Message;
+    //     }
+    //   })
+    // }
 
     $scope.CustomerRegistration = function(formData) {
 
@@ -1433,12 +1418,19 @@ img:'img/usa/bgusa.png'
 },{
   img:'img/usa/bgusa.png'
 }]
+$scope.logout =function(){
+  MyServices.logout(function(data){
+    console.log(data);
+    if(data.value)
+      $state.go('app.home');
+  });
+};
 
 
   })
 
 
-.controller('LandingCtrl', function($scope, $stateParams,  $state, $ionicPopup, MyServices, $timeout) {
+.controller('LandingCtrl', function($scope, $stateParams, $ionicLoading, $state, $ionicPopup, MyServices, $timeout) {
   $scope.ionicpop = "";
   $scope.oneTimepswd = function() {
     $scope.ionicpop = $ionicPopup.show({
@@ -1517,6 +1509,16 @@ img:'img/usa/bgusa.png'
       }
     })
   }
+
+  $scope.showLoading = function (value, time) {
+    $ionicLoading.show({
+      template: value,
+      duration: time
+    });
+  };
+  $scope.hideLoading = function () {
+    $ionicLoading.hide();
+  };
   $scope.login={};
   $scope.VerifyCustomerLogin = function(formData) {
     console.log("formData", formData);
@@ -1530,7 +1532,11 @@ img:'img/usa/bgusa.png'
     MyServices.VerifyCustomerLogin(formData, function(data) {
       console.log(data);
       if (data.value === true) {
-          $.jStorage.set("loginDetail", data);
+
+   MyServices.setUser(data.data);
+   $scope.$broadcast('scroll.refreshComplete');
+
+          //$.jStorage.set("loginDetail", data);
         $scope.formComplete = true;
 
         $timeout(function() {
@@ -1543,7 +1549,8 @@ img:'img/usa/bgusa.png'
                   }, 2000);
       } else  {
         $scope.emailExist = true;
-
+        $scope.$broadcast('scroll.refreshComplete');
+        $scope.showLoading('Error Updating Profile!', 1000);
       }
 
     })

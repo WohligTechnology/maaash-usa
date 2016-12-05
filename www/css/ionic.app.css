@@ -10890,7 +10890,7 @@ img[alt="pay"] {
   .profile-info .plan {
     position: absolute;
     top: 45px;
-    left: 40px;
+    left: 60px;
     z-index: 3; }
 
 .new,
@@ -11008,6 +11008,9 @@ img[alt="pay"] {
     padding: 0 10px; }
     .beverage-bg .restaurant-name img {
       width: 100%; }
+
+.name {
+  margin-left: 10%; }
 
 .beverage-bg .restaurant-detail h3 {
   color: #f23cb2; }
@@ -11340,8 +11343,12 @@ html, body {
   display: none; }
 
 .skip-button {
-  line-height: 12px;
-  padding: 10px; }
+  line-height: 0px;
+  padding: 10px;
+  color: white !important; }
 
 .menu-minus {
   margin-top: -200px; }
+
+.a-call {
+  right: 4% !important; }
