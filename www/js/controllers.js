@@ -180,21 +180,21 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 
 .controller('HomeCtrl', function($scope, $stateParams, MyServices, $ionicSlideBoxDelegate) {
   var jstoreage =  $.jStorage.get("loginDetail");
-  var _id = jstoreage._id;
-  console.log("iddd", _id);
-  // $scope.startloading() ;
+  if(jstoreage){
+    var _id = jstoreage.data_id;
+    console.log("iddd", _id);
+    // $scope.startloading() ;
+      MyServices.getProfile(_id, function(data) {
+        $scope.startloading() ;
+        if (data.value) {
+          $ionicLoading.hide();
+            console.log("data0",data);
+            $scope.userForm =data.data;
+             $scope.userForm.dob= new Date(data.data.dob);
+        } else {}
+      });
+  }
 
-
-
-    MyServices.getProfile(_id, function(data) {
-      $scope.startloading() ;
-      if (data.value) {
-        $ionicLoading.hide();
-          console.log("data0",data);
-          $scope.userForm =data.data;
-           $scope.userForm.dob= new Date(data.data.dob);
-      } else {}
-    });
   $scope.homeslider = [
     'img/banners/banner.jpg',
     'img/banners/banner.jpg',
@@ -1341,7 +1341,7 @@ var i=0;
 
   var _id = jstoreage._id;
   $scope.userForm ={};
-    $state.go("app.account");
+    // $state.go("app.account");
   MyServices.getProfile(_id, function(data) {
     // $scope.startloading();
     if (data.value) {
@@ -1507,7 +1507,7 @@ var i=0;
     if( $.jStorage.get("loginDetail")!=null){
     var jstoreage =  $.jStorage.get("loginDetail");
     console.log("data0",jstoreage);
-      $state.go("app.account");
+      $state.go("app.home");
   }else{
       $state.go("noheader.login");
   }
@@ -1532,11 +1532,13 @@ img:'img/usa/bgusa.png'
 },{
   img:'img/usa/bgusa.png'
 }]
-$scope.logout =function(){
+$scope.logoutforskip =function(){
   MyServices.logout(function(data){
     console.log(data);
     if(data.value)
+    {
       $state.go('app.home');
+    }
   });
 };
 
@@ -1570,16 +1572,20 @@ $scope.logout =function(){
   }
   $scope.CustomerForgetPassword = function(password) {
     console.log(password.CustomerEmail);
-    if (password.CustomerEmail != null && password.CustomerMobileNo != null) {
+    if (password.CustomerEmail != null && password.CustomerMobileNo != null ) {
       MyServices.CustomerForgetPassword(password, function(data) {
         console.log(data);
-        if(data.value === true)
-        $scope.popupmsg =true;
+        if(data.value === true){
+          $scope.popupmsg =true;
+          password.CustomerEmail = "" ;
+          password.CustomerMobileNo = "" ;
+        }else{
+          $scope.error="enter correct details";
+        }
       })
-      $scope.error="";
     }
     else{
-      $scope.error="Please enter details";
+      $scope.error="enter correct details";
     }
   }
   $scope.toAvatar = function() {
