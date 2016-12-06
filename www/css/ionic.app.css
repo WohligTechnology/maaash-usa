@@ -9922,7 +9922,7 @@ a.button {
   cursor: pointer; }
 
 .color-white {
-  color: #fff; }
+  color: #fff !important; }
 
 .font-america {
   font-family: "American Purpose"; }
@@ -10295,7 +10295,7 @@ h3.ion-ios-bell-outline {
 .points-get {
   background: url(../img/about-smaaash.jpg) no-repeat #fff002;
   height: 100%;
-  background-position: 100% 100%;
+  background-position: center;
   background-size: cover; }
   .points-get p {
     position: absolute;
@@ -11290,7 +11290,7 @@ img[alt="pay"] {
   .color-change .list:nth-of-type(6n+6) .karting-championship .views button {
     border: 1px solid #29a8df; }
 
-.angular-google-map {
+.angular-google-map, .sorry {
   display: block; }
 
 .angular-google-map-container {
@@ -11374,3 +11374,7 @@ html, body {
 
 .a-call {
   right: 4% !important; }
+
+.payments {
+  background-color: transparent;
+  border: none; }

@@ -123,7 +123,7 @@ $brand-blue: #29a8df!default;
   cursor: pointer;
 }
 .color-white {
-  color: #fff;
+  color: #fff !important;
 }
 
 
@@ -1925,7 +1925,7 @@ color:$brand-blue;
     }
 
   }
-  .angular-google-map {
+  .angular-google-map,.sorry {
 			display: block;
 }
 
@@ -2028,4 +2028,8 @@ margin-top: 10px;
 }
 .a-call{
   right: 4%!important;
+}
+.payments{
+  background-color: transparent;
+  border:none;
 }
