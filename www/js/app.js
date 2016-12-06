@@ -84,6 +84,25 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
+        .state('app.sorry', {
+      url: '/sorry',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/sorry.html',
+          controller: 'SorryCtrl'
+        }
+      }
+    })
+
+        .state('app.thank', {
+      url: '/thank',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/thank.html',
+          controller: 'ThankCtrl'
+        }
+      }
+    })
 
    .state('app.contact', {
       url: '/contact-us',
