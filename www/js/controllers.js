@@ -3,7 +3,18 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate,MyServices) {
 console.log("app controller in menu");
 $scope.userForm = MyServices.getUser();
+if($scope.userForm){
+  $scope.login=true;
+  console.log($scope.login,"ifsdkj");
+  $state.go("app.account");
 
+}else{
+  $scope.login=false;
+  console.log($scope.login,"elsejhdskj");
+  $state.go("noheader.login");
+
+
+}
 
   $scope.login=false;
 
@@ -44,6 +55,7 @@ $scope.userForm = MyServices.getUser();
 
 
   $scope.logout =function(){
+    $scope.userForm={};
     MyServices.logout(function(data){
       console.log(data);
       if(data.value)
@@ -206,22 +218,23 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
     });
 };
   var jstoreage =  $.jStorage.get("loginDetail");
-  var _id = jstoreage.data._id;
+  var _id = jstoreage._id;
   console.log("iddd", _id);
   // $scope.startloading() ;
+ $scope.userForm = MyServices.getUser();
 
-    MyServices.getProfile(_id, function(data) {
-      $scope.startloading() ;
 
-      if (data.value) {
-        $ionicLoading.hide();
-
-          console.log("data0",data);
-          $scope.userForm =data.data;
-           $scope.userForm.dob= new Date(data.data.dob);
-      } else {}
-
-    });
+    // MyServices.getProfile(_id, function(data) {
+    //   $scope.startloading() ;
+    //
+    //   if (data.value) {
+    //     $ionicLoading.hide();
+    //       console.log("data0",data);
+    //       $scope.userForm =data.data;
+    //        $scope.userForm.dob= new Date(data.data.dob);
+    //   } else {}
+    //
+    // });
 
   $scope.reset = function() {
     $scope.popupmsg =false;
@@ -242,7 +255,7 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   }
 
 $scope.credentials={};
-$scope.credentials.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
+$scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
   $scope.CustomerResetPassword = function(password) {
     console.log(password);
 
@@ -683,7 +696,7 @@ console.log("done");
     $scope.userForm={};
     var jstoreage =  $.jStorage.get("loginDetail");
 
-    var _id = jstoreage.data._id;
+    var _id = jstoreage._id;
 $scope.userForm.profilePic="";
   MyServices.getProfile(_id, function(data) {
     if (data.value) {
@@ -1227,7 +1240,7 @@ var i=0;
   var jstoreage =  $.jStorage.get("loginDetail");
   console.log("jstoreage",jstoreage);
 
-  var _id = jstoreage.data._id;
+  var _id = jstoreage._id;
   $scope.userForm ={};
     $state.go("app.account");
   MyServices.getProfile(_id, function(data) {
