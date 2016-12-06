@@ -11020,6 +11020,10 @@ img[alt="pay"] {
   padding: 0;
   line-height: 0; }
 
+.direction-modal {
+  padding: 0 13px;
+  line-height: 28px; }
+
 .explore-smaash, .evento {
   background: url("../img/explore-smaash.jpg");
   background-size: cover; }

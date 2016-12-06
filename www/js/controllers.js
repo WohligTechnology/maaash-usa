@@ -791,21 +791,7 @@ $scope.userForm.profilePic="";
 })
 
 .controller('BuyCtrl', function($scope, $stateParams,$ionicPopup,$state) {
-  $scope.showAlert = function() {
-   var alertPopup = $ionicPopup.alert({
-     cssClass: 'text-center',
-     buttons: [{
-       text: 'Ok',
-       type: 'button-assertive'
-     }],
 
-     template: 'Please login'
-   });
-
-   alertPopup.then(function(res) {
-     $scope.closeModals();
-   });
-  };
   $scope.getPlan = function() {
     $scope.checkPlan = $ionicPopup.show({
       templateUrl: 'templates/modal/alert.html',
@@ -1039,7 +1025,7 @@ $scope.userForm.profilePic="";
     }
 
   })
-  .controller('DirectionCtrl', function($scope, $stateParams,$cordovaGeolocation,MyServices,$window) {
+  .controller('DirectionCtrl', function($scope, $stateParams,$cordovaGeolocation,MyServices,$window,$ionicPopup) {
     $scope.Mumbai=true;
 $scope.gotofun=function(city){
   console.log(city);
@@ -1093,11 +1079,22 @@ $scope.gotofun=function(city){
          }, function(err) {
            // error
            console.log("err",err);
+           $scope.getPlan();
+           console.log("hello",err);
+
 
          });
 
      }
-
+     $scope.getPlan = function() {
+       $scope.checkPlan = $ionicPopup.show({
+         templateUrl: 'templates/modal/map.html',
+         scope: $scope
+       });
+     };
+     $scope.closePopup = function() {
+       $scope.checkPlan.close();
+     }
 $scope.displayRoute = function(origin, destination, service, display) {
   console.log("origin",origin);
        service.route({
