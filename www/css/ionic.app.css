@@ -10328,6 +10328,8 @@ h3.ion-ios-bell-outline {
 .menu .buy-recharge {
   background: url("../img/usa/buy-bg.png") no-repeat;
   background-size: cover; }
+  .menu .buy-recharge .hass-header {
+    top: 130px; }
 
 .recharge-list {
   margin: 15px 0 0; }
