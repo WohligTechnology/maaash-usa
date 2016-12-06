@@ -287,6 +287,14 @@ console.log($scope.credentials);
 
 })
 
+.controller('SorryCtrl', function($scope, $stateParams) {
+
+})
+
+.controller('ThankCtrl', function($scope, $stateParams) {
+
+})
+
 .controller('BeverageCtrl', function($scope, $stateParams, MyServices ,$ionicPopup,$filter,$ionicSlideBoxDelegate) {
   $scope.getPlan = function(galleryimg) {
     $scope.galleryimages=galleryimg;
