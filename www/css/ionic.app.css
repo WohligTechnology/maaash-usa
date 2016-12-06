@@ -11307,9 +11307,7 @@ img[alt="pay"] {
   margin: 0 1px; }
 
 .order-bg .header .col {
-  background-color: #777;
-  color: #fff;
-  text-shadow: 2px 2px 2px #000; }
+  background-color: #777; }
 
 .order-bg .col {
   border: solid 1px #000;

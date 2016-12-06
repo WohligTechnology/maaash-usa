@@ -2,7 +2,7 @@
   <ion-content class="attraction-bg attractions about-text attract-new what-new color-change">
     <div class="order-main text-center ">
       <h3 class="text-center text-uppercase text-in-shadow font-america ">whats new ?</h3> </div>
-    <div class="list card" ng-repeat=" data in SingleExploreSmaaash">
+    <div class="list card" ng-repeat=" data in SingleExploreSmaaash track by $index">
       <div class="karting-championship">
         <div class="brand-blue relate">
           <img ng-src="{{data.image | uploadpath}}" class="img-responsive" alt="">
@@ -16,16 +16,16 @@
           </div>
           <div class="button-set clearfix">
             <ul class="social-icons list-inline  inline-block pull-left icos">
-              <p class="inline-block" ng-click="shareProduct()">Share</p>
-              <li class="inline-block" ng-click="shareProduct()">
+              <p class="inline-block" ng-click="shareProduct($index)">Share</p>
+              <li class="inline-block" ng-click="shareProduct($index)">
                 <h3 class="ion-social-facebook"></h3>
                <!--<ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>-->
 
               </li>
-              <li class="inline-block" ng-click="shareProduct()">
+              <li class="inline-block" ng-click="shareProduct($index)">
                 <h3 class="ion-social-twitter"></h3>
               </li>
-              <li class="inline-block" ng-click="shareProduct()">
+              <li class="inline-block" ng-click="shareProduct($index)">
                 <h3 class="ion-social-googleplus-outline"></h3>
               </li>
             </ul>
@@ -36,11 +36,11 @@
             <p class="color-black" ng-bind-html="data.description | htmlToPlaintext | shorten :130" ng-if="!more"></p>
             <p class="color-black" ng-bind-html="data.description | htmlToPlaintext " ng-if="more"></p>
           </div>
-          <div class="love" >
+          <!-- <div class="love" >
             <button class="text-uppercase" ng-click="addedToWishList(data._id)">
               <span class="ion text-uppercase" ng-class="{'ion-ios-heart-outline':!isInWishlist(data._id),'ion-heart':isInWishlist(data._id)}"> would love to try</span>
             </button>
-          </div>
+          </div> -->
 
         </div>
       </div>

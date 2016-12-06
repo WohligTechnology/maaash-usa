@@ -3,22 +3,27 @@
     <div class="order-main text-center">
         <h3 class="text-center text-uppercase text-in-shadow font-america">My Orders</h3>
       </div>
-   <div class="list">
- <div class="row header">
-          <div class="col font-america font-bold">Transaction Id</div>
-          <div class="col font-america font-bold">Type</div>
-          <div class="col font-america font-bold">Points Earned</div>
-          <div class="col font-america font-bold">Values in Rs</div>
+   <div class="list" ng-if="!msg" >
+        <div class="row header" >
+          <div class="col ">Transaction Id</div>
+          <div class="col ">Type</div>
+          <div class="col ">Points Earned</div>
+          <div class="col ">Values in Dollars</div>
         </div>
-        <div class="row">
-          <div class="col ">1080000900</div>
-          <div class="col ">social share</div>
-          <div class="col ">70</div>
-          <div class="col ">+35</div>
+        <div class="row" ng-repeat ="data in bookingDetails">
+          <div class="col " ng-if="data.objtype === 'Booking' ">{{data.CNRNo}}</div>
+          <div class="col " ng-if="data.objtype === 'Recharge' ">{{data.RechargeID}}</div>
+          <div class="col " ng-if="data.objtype === 'Booking' ">{{data.objtype}}</div>
+          <div class="col " ng-if="data.objtype === 'Recharge' ">{{data.objtype}}</div>
+          <div class="col ">-</div>
+          <div class="col "ng-if="data.objtype === 'Recharge' ">${{data.RechargeAmt}}</div>
+          <div class="col "ng-if="data.objtype === 'Booking' ">${{data.PayableAmount}}</div>
         </div>
    </div>
-       
-   
+   <h3 class="text-center" ng-if="msg">No orders found.</h3>
+
+
+
     <!--<ion-list no-lines>
   <ion-item class="game-orders pointer">
     <div class="close"><img src="img/close-popup.png" alt="close-popup" class="img-responsive"></div>

@@ -53,11 +53,14 @@
               <input type="email" placeholder="Email Id" ng-model="userForm.CustomerEmail" readonly>
             </label>
             <label class="item item-input">
-              <input type="text" placeholder="Pin code" ng-model="userForm.pincode" class="editing">
+              <input type="text" placeholder="Pin code" ng-model="userForm.pincode" class="editing" maxlength="6">
             </label>
             <button type="submit" name="button" class="go full-width" ng-click="updateProfile(userForm)" >
               <img src="img/update.png" alt="" class="img-responsive">
             </button>
+            <p class="color-white text-center" ng-if="popupmsg">
+              profile updated successfully
+            </p>
             <p class="color-white text-center" ng-click="reset();">
               Reset password?
             </p>

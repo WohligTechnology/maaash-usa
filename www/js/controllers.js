@@ -12,8 +12,6 @@ if($scope.userForm){
   $scope.login=false;
   console.log($scope.login,"elsejhdskj");
   $state.go("noheader.login");
-
-
 }
 
   $scope.login=false;
@@ -181,10 +179,22 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, MyServices, $ionicSlideBoxDelegate) {
-  // if($.jStorage.get("loginDetail")!=null){
-  //   console.log("hello");
-  //   $state.go("app.account");
-  // }
+  var jstoreage =  $.jStorage.get("loginDetail");
+  var _id = jstoreage._id;
+  console.log("iddd", _id);
+  // $scope.startloading() ;
+
+
+
+    MyServices.getProfile(_id, function(data) {
+      $scope.startloading() ;
+      if (data.value) {
+        $ionicLoading.hide();
+          console.log("data0",data);
+          $scope.userForm =data.data;
+           $scope.userForm.dob= new Date(data.data.dob);
+      } else {}
+    });
   $scope.homeslider = [
     'img/banners/banner.jpg',
     'img/banners/banner.jpg',
@@ -211,6 +221,8 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 })
 
 .controller('ProfileCtrl', function($scope, $stateParams, $ionicPopup ,MyServices,$ionicLoading) {
+  $scope.popupmsg =false;
+
   $scope.startloading = function() {
     console.log("hi in loader");
     $ionicLoading.show({
@@ -221,20 +233,18 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
   var _id = jstoreage._id;
   console.log("iddd", _id);
   // $scope.startloading() ;
- $scope.userForm = MyServices.getUser();
 
 
-    // MyServices.getProfile(_id, function(data) {
-    //   $scope.startloading() ;
-    //
-    //   if (data.value) {
-    //     $ionicLoading.hide();
-    //       console.log("data0",data);
-    //       $scope.userForm =data.data;
-    //        $scope.userForm.dob= new Date(data.data.dob);
-    //   } else {}
-    //
-    // });
+
+    MyServices.getProfile(_id, function(data) {
+      $scope.startloading() ;
+      if (data.value) {
+        $ionicLoading.hide();
+          console.log("data0",data);
+          $scope.userForm =data.data;
+           $scope.userForm.dob= new Date(data.data.dob);
+      } else {}
+    });
 
   $scope.reset = function() {
     $scope.popupmsg =false;
@@ -250,7 +260,11 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
     MyServices.updateProfile(userForm, function(data) {
       console.log(data);
       if(data.value === true)
-      $scope.popupmsg =true;
+      {
+        $scope.popupmsg =true;
+        MyServices.setUser(data.data);
+
+      }
     })
   }
 
@@ -464,11 +478,12 @@ $scope.userSignup=function(userForm){
       }
 
 
-      $scope.shareProduct = function() {
-      var image = $filter("serverimage")($scope.SingleExploreSmaaash.image);
+      $scope.shareProduct = function(index) {
+        console.log($scope.SingleExploreSmaaash[index].hometext);
+      var image = $filter('serverimage')($scope.SingleExploreSmaaash[index].image);
       console.log(image);
       $cordovaSocialSharing
-        .share($scope.SingleExploreSmaaash.hometext,$scope.SingleExploreSmaaash.description, image, '') // Share via native share sheet
+        .share($scope.SingleExploreSmaaash[index].hometext,$scope.SingleExploreSmaaash[index].description, image, '') // Share via native share sheet
         .then(function(result) {
 console.log("done");
         }, function(err) {
@@ -1038,7 +1053,7 @@ $scope.gotofun=function(city){
      $scope.initMap =function() {
        var map = new google.maps.Map(document.getElementById('map'), {
          zoom: 4,
-         center: {lat: 19.141684, lng: 72.928714}  // Australia.
+         center: {lat: 44.854850, lng: -93.242306}  // Australia.
        });
 
        var directionsService = new google.maps.DirectionsService;
@@ -1074,7 +1089,7 @@ $scope.gotofun=function(city){
 
 
 
-         $scope.displayRoute($scope.position.coords.latitude+","+$scope.position.coords.longitude, '19.921684, 72.928714', directionsService,
+         $scope.displayRoute($scope.position.coords.latitude+","+$scope.position.coords.longitude, '44.854850, -93.242306', directionsService,
              directionsDisplay);
          }, function(err) {
            // error
@@ -1206,7 +1221,94 @@ var i=0;
   });
   })
 
-.controller('OrderCtrl', function($scope, $stateParams) {
+.controller('OrderCtrl', function($scope, $stateParams,MyServices) {
+  $scope.CustID = "202";
+ // $scope.customerBookingDetails = {
+ //     "GetCustomerBookingDetails": {
+ //         "CustomerBooking": [{
+ //             "Status": 1,
+ //             "Message": "Get Booking Data",
+ //             "BranchName": "Mumbai",
+ //             "PackageName": "Travel Agents - WeekDay",
+ //             "PackagePhoto": "http://192.168.0.41/Smaaash/Upload/ImageNotFound.jpg",
+ //             "BookingDate": "22-11-2016",
+ //             "VisitDate": "30-11-2016",
+ //             "CNRNo": 511,
+ //             "PayableAmount": 999,
+ //             "IsCustomerCard": 1
+ //         }, {
+ //             "Status": 1,
+ //             "Message": "Get Booking Data",
+ //             "BranchName": "Mumbai",
+ //             "PackageName": "Travel Agents - WeekDay",
+ //             "PackagePhoto": "http://192.168.0.41/Smaaash/Upload/ImageNotFound.jpg",
+ //             "BookingDate": "22-11-2016",
+ //             "VisitDate": "01-12-2016",
+ //             "CNRNo": 510,
+ //             "PayableAmount": 999,
+ //             "IsCustomerCard": 1
+ //         }],
+ //         "CustomerCardRecharge": [{
+ //             "Status": 1,
+ //             "Message": "Get Card Recharge Data",
+ //             "BranchName": "Mumbai",
+ //             "CustomerName": "piyush",
+ //             "RechargeDate": "26-11-2016",
+ //             "RechargeID": 3,
+ //             "RechargeAmt": 2000
+ //         }, {
+ //             "Status": 1,
+ //             "Message": "Get Card Recharge Data",
+ //             "BranchName": "Mumbai",
+ //             "CustomerName": "piyush",
+ //             "RechargeDate": "26-11-2016",
+ //             "RechargeID": 2,
+ //             "RechargeAmt": 100
+ //         }, {
+ //             "Status": 1,
+ //             "Message": "Get Card Recharge Data",
+ //             "BranchName": "Mumbai",
+ //             "CustomerName": "piyush",
+ //             "RechargeDate": "26-11-2016",
+ //             "RechargeID": 1,
+ //             "RechargeAmt": 500
+ //         }]
+ //     }
+ // }
+ //
+ //        $scope.bookingDetails = [];
+ //        $scope.custBooking = $scope.customerBookingDetails.GetCustomerBookingDetails.CustomerBooking;
+ //        $scope.CustCardRecharge = $scope.customerBookingDetails.GetCustomerBookingDetails.CustomerCardRecharge;
+ //        $scope.bookingDetails = $scope.custBooking.concat($scope.CustCardRecharge);
+ //        _.each($scope.bookingDetails, function(value) {
+ //            if (value.Message === "Get Booking Data") {
+ //                value.objtype = "Booking";
+ //            } else if (value.Message === "Get Card Recharge Data") {
+ //                value.objtype = "Recharge";
+ //            };
+ //
+ //        });
+        $scope.msg = false;
+        $scope.CustID = $.jStorage.get("loginDetail").CustomerID;
+        MyServices.GetCustomerBookingDetails($scope.CustID, function(data) {
+            if (data.value === true) {
+              console.log("orderif");
+                $scope.custBooking = data.GetCustomerBookingDetails.CustomerBooking;
+                $scope.CustCardRecharge = data.GetCustomerBookingDetails.CustomerCardRecharge;
+                $scope.bookingDetails = $scope.custBooking.concat($scope.CustCardRecharge);
+                _.each($scope.bookingDetails, function(value) {
+                    if (value.Message === "Get Booking Data") {
+                        value.objtype = "Booking";
+                    } else if (value.Message === "Get Card Recharge Data") {
+                        value.objtype = "Recharge";
+                    };
+                });
+            } else if (data.value === false) {
+                $scope.msg = true;
+            }
+        })
+
+
 
 })
 
@@ -1380,7 +1482,9 @@ var i=0;
       MyServices.CustomerRegistration(formData, function(data) {
         console.log(data);
         if (data.value === true) {
-            $.jStorage.set("loginDetail", data);
+            // $.jStorage.set("loginDetail", data);
+            MyServices.setUser(data.data);
+
           $scope.formComplete = true;
 
           $timeout(function() {
@@ -1443,6 +1547,7 @@ $scope.logout =function(){
 .controller('LandingCtrl', function($scope, $stateParams, $ionicLoading, $state, $ionicPopup, MyServices, $timeout) {
   $scope.ionicpop = "";
   $scope.oneTimepswd = function() {
+    $scope.popupmsg =false;
     $scope.ionicpop = $ionicPopup.show({
       templateUrl: 'templates/modal/otp1.html',
       scope: $scope
@@ -1452,23 +1557,30 @@ $scope.logout =function(){
     $scope.ionicpop.close();
   }
   $scope.password = function() {
+    console.log('inside modal');
     $scope.popupmsg =false;
-
-    console.log("hi");
-    $scope.password = $ionicPopup.show({
+    $scope.error="";
+    $scope.password10 = $ionicPopup.show({
       templateUrl: 'templates/modal/password.html',
       scope: $scope
     });
   }
   $scope.closePopup = function() {
-    $scope.password.close();
+    $scope.password10.close();
   }
   $scope.CustomerForgetPassword = function(password) {
-    MyServices.CustomerForgetPassword(password, function(data) {
-      console.log(data);
-      if(data.value === true)
-      $scope.popupmsg =true;
-    })
+    console.log(password.CustomerEmail);
+    if (password.CustomerEmail != null && password.CustomerMobileNo != null) {
+      MyServices.CustomerForgetPassword(password, function(data) {
+        console.log(data);
+        if(data.value === true)
+        $scope.popupmsg =true;
+      })
+      $scope.error="";
+    }
+    else{
+      $scope.error="Please enter details";
+    }
   }
   $scope.toAvatar = function() {
     ionicpop.close();

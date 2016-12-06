@@ -60,6 +60,16 @@ return $http.get("http://maps.googleapis.com/maps/api/geocode/jsonlatlng=40.7142
 withCredentials: true
 
 },
+GetCustomerBookingDetails: function(custId, callback) {
+        var data = {
+            CustID: custId
+        };
+        $http({
+            url: adminurl + 'signup/GetCustomerBookingDetails',
+            method: 'POST',
+            data: data
+        }).success(callback);
+    },
      getProfile: function( _id ,callback) {
 
           $http({
@@ -206,7 +216,7 @@ withCredentials: true
        addToWishList: function(id, callback) {
            console.log("nAV", id);
            var data = {
-               user: $.jStorage.get("loginDetail").data._id,
+               user: $.jStorage.get("loginDetail")._id,
                wishList: {
                    exploresmash: id,
                    city: $.jStorage.get("idOfCity")
@@ -222,7 +232,7 @@ withCredentials: true
        showWishList: function(callback) {
            // console.log("nAV", id);
            var data = {
-               user: $.jStorage.get("loginDetail").data._id,
+               user: $.jStorage.get("loginDetail")._id,
            };
            $http({
                url: adminurl + 'signup/showWishList',
@@ -246,7 +256,7 @@ withCredentials: true
        removeFromWishList: function(id,callback) {
          console.log("inNav",id);
            var data = {
-               user: $.jStorage.get("loginDetail").data._id,
+               user: $.jStorage.get("loginDetail")._id,
                _id:id
            };
            $http({
