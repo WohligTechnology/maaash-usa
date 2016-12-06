@@ -490,7 +490,7 @@ $scope.userSignup=function(userForm){
       var image = $filter('serverimage')($scope.SingleExploreSmaaash[index].image);
       console.log(image);
       $cordovaSocialSharing
-        .share($scope.SingleExploreSmaaash[index].hometext,$scope.SingleExploreSmaaash[index].description, image, '') // Share via native share sheet
+        .share($scope.SingleExploreSmaaash[index].hometext, image, '') // Share via native share sheet
         .then(function(result) {
 console.log("done");
         }, function(err) {
