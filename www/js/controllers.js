@@ -63,7 +63,6 @@ if($scope.userForm){
 
   $scope.getCross = "";
   $scope.whenClose = function() {
-    console.log("clickabe");
     if ($scope.getCross == "") {
       $scope.getCross = "m-cross";
     } else {
