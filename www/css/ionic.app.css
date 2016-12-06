@@ -10862,7 +10862,8 @@ img[alt="pay"] {
   padding: 0; }
 
 .account-info .img-holder img {
-  border: 2px solid #fff; }
+  border: 2px solid #fff;
+  margin-top: -4px; }
 
 .account-info .order img {
   margin-left: -2px; }
@@ -11300,6 +11301,23 @@ img[alt="pay"] {
   padding: 0 5px;
   font-size: 12px;
   margin: 0 1px; }
+
+.order-bg .header .col {
+  background-color: #777;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000; }
+
+.order-bg .col {
+  border: solid 1px #000;
+  border-bottom-style: none;
+  border-right-style: none;
+  background-color: #fff; }
+
+.order-bg .col:last-child {
+  border-right: solid 1px grey; }
+
+.order-bg .row:last-child .col {
+  border-bottom: solid 1px grey; }
 
 #right-panel {
   font-family: 'Roboto','sans-serif';

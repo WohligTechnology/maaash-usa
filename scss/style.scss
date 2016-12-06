@@ -1330,9 +1330,11 @@ img[alt="pay"] {
   }
   .img-holder img {
     border: 2px solid #fff;
+     margin-top: -4px;
   }
   .order img {
     margin-left: -2px;
+   
   }
   .profile img {
     margin-top: -4px;
@@ -1349,11 +1351,6 @@ img[alt="pay"] {
   top: -40px;
   background: url('../img/account-profile.png') no-repeat;
   .profile-img {
-    // width: 100px;
-    // height: 100px;
-    // overflow: hidden;
-    // top: -30px;
-    // left: -27px;
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -1362,10 +1359,6 @@ img[alt="pay"] {
     z-index: 0;
   }
   .plan {
-    // position: absolute;
-    // top: 45px;
-    // left: 25px;
-    // z-index: 3;
     position: absolute;
     top: 45px;
     left: 60px;
@@ -1947,7 +1940,29 @@ input[type=text]{
      margin: 0 1px;
 }
 }
+//order
+.order-bg{
+  .header .col {
+    background-color:#777;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
 
+.col {
+    border: solid 1px #000;
+    border-bottom-style: none;
+    border-right-style: none;
+     background-color:#fff;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
+}
 
 
 //map
