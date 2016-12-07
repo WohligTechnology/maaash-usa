@@ -125,9 +125,7 @@ $brand-blue: #29a8df!default;
 .color-white {
   color: #fff !important;
 }
-.hass-headers{
-  top:44px!important;
-}
+
 
 .font-america {
   font-family: "American Purpose";
@@ -1783,7 +1781,9 @@ width: 100%;
  position: relative;
 }
  }
-
+.header-slide{
+    top:40px;
+}
 .hass-header{
   top:170px;
   .item{
@@ -2022,7 +2022,7 @@ margin-top: 10px;
 }
 .skip-button{
   line-height: 0px;
-  padding: 10px;
+  padding: 25px;
    color: white!important;
 }
 .menu-minus{

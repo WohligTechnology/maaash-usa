@@ -1,10 +1,10 @@
 <ion-view>
-  <ion-content class="home hass-headers">
+  <ion-content class="home header-slide">
     <div class="home-main">
-      <ion-slide-box on-slide-changed="slideHasChanged($index)"  >
+      <ion-slide-box on-slide-changed="slideHasChanged($index)"  auto-play="true">
         <ion-slide ng-repeat="slide in mySlides track by $index">
           <div class="img-bx">
-            <img ng-src="{{slide.image | uploadpath}}" alt="No Image Slider" class="full-image">
+            <img ng-src="{{slide.image | uploadpath }}" alt="No Image Slider" class="full-image">
           </div>
         </ion-slide>
       </ion-slide-box>
@@ -52,7 +52,7 @@
               </div>
             </div>
             <div class="col col-75">
-              <div class="points-get relate" ui-sref="app.about">
+              <div class="points-get relate" ui-sre>
                 <!-- <p class="text-center  font-america">how to get loyalty points ?</p>
                 <p class="text-center  font-galano">Know More</p>
                 <img src="img/bg-strip.png" alt="">

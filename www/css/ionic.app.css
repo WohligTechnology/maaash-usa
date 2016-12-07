@@ -9924,9 +9924,6 @@ a.button {
 .color-white {
   color: #fff !important; }
 
-.hass-headers {
-  top: 44px !important; }
-
 .font-america {
   font-family: "American Purpose"; }
 
@@ -11217,6 +11214,9 @@ img[alt="pay"] {
     padding: 0px 0px 0px 0px;
     position: relative; }
 
+.header-slide {
+  top: 40px; }
+
 .hass-header {
   top: 170px; }
   .hass-header .item {
@@ -11369,7 +11369,7 @@ html, body {
 
 .skip-button {
   line-height: 0px;
-  padding: 10px;
+  padding: 25px;
   color: white !important; }
 
 .menu-minus {
