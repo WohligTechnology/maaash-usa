@@ -2,9 +2,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices) {
   console.log("APP is called",$.jStorage.get("loginDetail"));
+  if($.jStorage.get("loginDetail")){
+
     MyServices.getProfile($.jStorage.get("loginDetail")._id,function(data) {
       $scope.userForm = data.data;
     });
+  }
     if ($scope.userForm) {
       $scope.login = true;
       $state.go("app.account");
