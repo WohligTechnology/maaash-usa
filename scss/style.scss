@@ -338,7 +338,10 @@ label{
   @include transform(translate(-30%,-70%));
   p {
     margin-bottom: 15px;
-    font-size: 14px;
+    font-size: 18px;
+    &:active{
+      color: yellow !important;
+    }
   }
   label {
     margin-bottom: 7px;
@@ -2034,4 +2037,21 @@ margin-top: 10px;
 .payments{
   background-color: transparent;
   border:none;
+}
+.resgistration {
+  p{
+    margin: 0;
+  }
+  .otpss{
+     margin-bottom: 0;
+    input{
+ margin-bottom: 0;
+   height: 28px;
+    }
+   
+  }
+  span{
+    font-size: 12px;
+  }
+
 }
