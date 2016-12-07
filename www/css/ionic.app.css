@@ -10100,7 +10100,9 @@ h3.ion-ios-bell-outline {
   transform: translate(-30%, -70%); }
   .otp-content p {
     margin-bottom: 15px;
-    font-size: 14px; }
+    font-size: 18px; }
+    .otp-content p:active {
+      color: yellow !important; }
   .otp-content label {
     margin-bottom: 7px; }
     .otp-content label input {
@@ -11381,3 +11383,15 @@ html, body {
 .payments {
   background-color: transparent;
   border: none; }
+
+.resgistration p {
+  margin: 0; }
+
+.resgistration .otpss {
+  margin-bottom: 0; }
+  .resgistration .otpss input {
+    margin-bottom: 0;
+    height: 28px; }
+
+.resgistration span {
+  font-size: 12px; }
