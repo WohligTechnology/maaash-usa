@@ -9924,6 +9924,9 @@ a.button {
 .color-white {
   color: #fff !important; }
 
+.hass-headers {
+  top: 44px !important; }
+
 .font-america {
   font-family: "American Purpose"; }
 
