@@ -4,10 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','starter.controllers', 'starter.services','ngCordova','pdf'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'pdf'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform) {
+  $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 
@@ -33,14 +33,14 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       controller: 'AppCtrl'
     })
     .state('app.leader', {
-   url: '/leadership-team',
-   views: {
-     'menuContent': {
-       templateUrl: 'templates/leadership.html',
-       controller: 'LeaderCtrl'
-     }
-   }
- })
+      url: '/leadership-team',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/leadership.html',
+          controller: 'LeaderCtrl'
+        }
+      }
+    })
     .state('noheader', {
       url: '/no-header',
       abstract: true,
@@ -75,7 +75,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-    .state('app.cricket', {
+  .state('app.cricket', {
       url: '/cricket/:id',
       views: {
         'menuContent': {
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
-        .state('app.sorry', {
+    .state('app.sorry', {
       url: '/sorry',
       views: {
         'menuContent': {
@@ -94,47 +94,47 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-        .state('app.thank', {
-      url: '/thank',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/thank.html',
-          controller: 'ThankCtrl'
-        }
+  .state('app.thank', {
+    url: '/thank',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/thank.html',
+        controller: 'ThankCtrl'
       }
-    })
+    }
+  })
 
-   .state('app.contact', {
-      url: '/contact-us',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/contact.html',
-          controller: 'ContactCtrl'
-        }
+  .state('app.contact', {
+    url: '/contact-us',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/contact.html',
+        controller: 'ContactCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.beverage', {
-      url: '/beverage',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/beverage.html',
-          controller: 'BeverageCtrl'
-        }
+  .state('app.beverage', {
+    url: '/beverage',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/beverage.html',
+        controller: 'BeverageCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.party', {
-      url: '/party/:id',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/party.html',
-          controller: 'PartyCtrl'
-        }
+  .state('app.party', {
+    url: '/party/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/party.html',
+        controller: 'PartyCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.partyform', {
+  .state('app.partyform', {
       url: '/partyform',
       views: {
         'menuContent': {
@@ -171,38 +171,38 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-       .state('app.events', {
-      url: '/events',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/events.html',
-          controller: 'EventsCtrl'
-        }
+  .state('app.events', {
+    url: '/events',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/events.html',
+        controller: 'EventsCtrl'
       }
-    })
+    }
+  })
 
 
-    .state('app.attraction', {
-      url: '/attractions/:id',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/attractions.html',
-          controller: 'AttractionsCtrl'
-        }
+  .state('app.attraction', {
+    url: '/attractions/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/attractions.html',
+        controller: 'AttractionsCtrl'
       }
-    })
+    }
+  })
 
   .state('app.whatsnew', {
-      url: '/whats-new/:id',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/whats-new.html',
-          controller: 'NewCtrl'
-        }
+    url: '/whats-new/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/whats-new.html',
+        controller: 'NewCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.exploresmaash', {
+  .state('app.exploresmaash', {
       url: '/exploresmaash',
       views: {
         'menuContent': {
@@ -230,79 +230,79 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-    .state('app.deals', {
-      url: '/deals',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/deals.html',
-          controller: 'DealsCtrl'
-        }
+  .state('app.deals', {
+    url: '/deals',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/deals.html',
+        controller: 'DealsCtrl'
       }
-    })
+    }
+  })
 
-     .state('app.game', {
-      url: '/game',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/game.html',
-          controller: 'GpurchaseCtrl'
-        }
+  .state('app.game', {
+    url: '/game',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/game.html',
+        controller: 'GpurchaseCtrl'
       }
-    })
+    }
+  })
 
-         .state('app.merchandise', {
-      url: '/merchandise',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/merchandise.html',
-          controller: 'MerchandiseCtrl'
-        }
+  .state('app.merchandise', {
+    url: '/merchandise',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/merchandise.html',
+        controller: 'MerchandiseCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.about', {
-      url: '/about',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/about.html',
-          controller: 'AboutCtrl'
-        }
+  .state('app.about', {
+    url: '/about',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/about.html',
+        controller: 'AboutCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.cart', {
-      url: '/cart',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/cart.html',
-          controller: 'CartCtrl'
-        }
+  .state('app.cart', {
+    url: '/cart',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cart.html',
+        controller: 'CartCtrl'
       }
-    })
+    }
+  })
 
-      .state('app.earn', {
-      url: '/earn',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/earn.html',
-          controller: 'EarnCtrl'
-        }
+  .state('app.earn', {
+    url: '/earn',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/earn.html',
+        controller: 'EarnCtrl'
       }
-    })
+    }
+  })
 
 
-    .state('app.profile', {
-      url: '/profile',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/profile.html',
-          controller: 'ProfileCtrl'
-        }
+  .state('app.profile', {
+    url: '/profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
       }
-    })
+    }
+  })
 
 
-    .state('app.confirmorder', {
+  .state('app.confirmorder', {
       url: '/confirmorder',
       views: {
         'menuContent': {
@@ -330,49 +330,49 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-    .state('app.offers', {
-      url: '/offers',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/offers.html',
-          controller: 'OffersCtrl'
-        }
+  .state('app.offers', {
+    url: '/offers',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/offers.html',
+        controller: 'OffersCtrl'
       }
-    })
+    }
+  })
 
-     .state('app.tournaments', {
-      url: '/tournaments',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/tournament.html',
-          controller: 'TournamentCtrl'
-        }
+  .state('app.tournaments', {
+    url: '/tournaments',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/tournament.html',
+        controller: 'TournamentCtrl'
       }
-    })
+    }
+  })
 
-       .state('app.challenges', {
-      url: '/challenges',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/challenges.html',
-          controller: 'ChallengesCtrl'
-        }
+  .state('app.challenges', {
+    url: '/challenges',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/challenges.html',
+        controller: 'ChallengesCtrl'
       }
-    })
+    }
+  })
 
 
 
-    .state('app.wishlist', {
-      url: '/wishlist',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/wishlist.html',
-          controller: 'WishlistCtrl'
-        }
+  .state('app.wishlist', {
+    url: '/wishlist',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/wishlist.html',
+        controller: 'WishlistCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.recharge', {
+  .state('app.recharge', {
       url: '/recharge',
       views: {
         'menuContent': {
@@ -387,8 +387,8 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         'content': {
           templateUrl: 'templates/select-city.html',
           controller: 'SelectCityCtrl'
-          }
         }
+      }
     })
     .state('noheader.signup', {
       url: '/signup',
@@ -400,37 +400,37 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
       }
     })
 
-      .state('noheader.landing', {
-      url: '/landing',
-      views: {
-        'content': {
-          templateUrl: 'templates/landing.html',
-          controller: 'LandingCtrl'
-        }
+  .state('noheader.landing', {
+    url: '/landing',
+    views: {
+      'content': {
+        templateUrl: 'templates/landing.html',
+        controller: 'LandingCtrl'
       }
-    })
+    }
+  })
 
-         .state('noheader.login', {
-      url: '/login',
-      views: {
-        'content': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
-        }
+  .state('noheader.login', {
+    url: '/login',
+    views: {
+      'content': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
       }
-    })
+    }
+  })
 
-        .state('noheader.bonus', {
-      url: '/bonus',
-      views: {
-        'content': {
-          templateUrl: 'templates/bonus.html',
-          controller: 'BonusCtrl'
-        }
+  .state('noheader.bonus', {
+    url: '/bonus',
+    views: {
+      'content': {
+        templateUrl: 'templates/bonus.html',
+        controller: 'BonusCtrl'
       }
-    })
+    }
+  })
 
-    .state('noheader.avatar', {
+  .state('noheader.avatar', {
       url: '/avatar',
       views: {
         'content': {
@@ -439,27 +439,27 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
         }
       }
     })
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+    .state('app.single', {
+      url: '/playlists/:playlistId',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/playlist.html',
+          controller: 'PlaylistCtrl'
+        }
       }
-    }
-  });
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/no-header/login');
 })
 
-.directive('scrollDetector', function($window) {
+.directive('scrollDetector', function ($window) {
   return {
-    restrict : 'A',
+    restrict: 'A',
 
-    link: function(scope, element, attrs) {
-      element.on('scroll', function() {
+    link: function (scope, element, attrs) {
+      element.on('scroll', function () {
         console.log('Scrolled');
-        console.log(element.prop( 'offsetTop' ));
+        console.log(element.prop('offsetTop'));
       });
     }
   };
@@ -468,102 +468,102 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services','ng
 
 
 
-.filter('uploadpath', function() {
-    return function(input, width, height, style) {
-        var other = "";
-        if (width && width != "") {
-            other += "&width=" + width;
-        }
-        if (height && height != "") {
-            other += "&height=" + height;
-        }
-        if (style && style != "") {
-            other += "&style=" + style;
-        }
-        if (input) {
-            if (input.indexOf('https://') == -1) {
-                return imgpath + input + other;
+.filter('uploadpath', function () {
+    return function (input, width, height, style) {
+      var other = "";
+      if (width && width != "") {
+        other += "&width=" + width;
+      }
+      if (height && height != "") {
+        other += "&height=" + height;
+      }
+      if (style && style != "") {
+        other += "&style=" + style;
+      }
+      if (input) {
+        if (input.indexOf('https://') == -1) {
+          return imgpath + input + other;
 
-            } else {
-                return input;
-            }
+        } else {
+          return input;
         }
+      }
     };
-})
-.filter('uploadpath1', function() {
-    return function(image) {
-        if (image && image != "") {
-            if (image.indexOf('content:') == -1 && image.indexOf('/var/mobile') == -1) {
-                return imgpath + image + "&height=100";
-            } else {
-                return "img/sm.png";
-            }
+  })
+  .filter('uploadpath1', function () {
+    return function (image) {
+      if (image && image != "") {
+        if (image.indexOf('content:') == -1 && image.indexOf('/var/mobile') == -1) {
+          return imgpath + image + "&height=100";
+        } else {
+          return "img/sm.png";
         }
+      }
     }
-})
-.filter('htmlToPlaintext', function () {
+  })
+  .filter('htmlToPlaintext', function () {
     return function (text) {
-        return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+      return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
-})
-.filter('shorten', function () {
- return function (value, limit) {
-     if (value)
-         if (value.length < limit) {
-             return value;
-         } else {
-             return value.slice(0, limit - 2) + "..";
+  })
+  .filter('shorten', function () {
+    return function (value, limit) {
+      if (value)
+        if (value.length < limit) {
+          return value;
+        } else {
+          return value.slice(0, limit - 2) + "..";
 
-         }
+        }
 
- }
-})
+    }
+  })
 
 .filter('youtubethumb', function () {
     return function (input, onlyid) {
-        if (input) {
-            return "http://img.youtube.com/vi/" + input + "/hqdefault.jpg";
-        }
+      if (input) {
+        return "http://img.youtube.com/vi/" + input + "/hqdefault.jpg";
+      }
     };
-})
-.filter('serverimage', function() {
-  return function(input) {
-    if (input) {
-      // console.log('serverimage: ', input);
-      // return input;
-      return imgpath + input;
-      // return "http://192.168.0.123/eurobackend/uploads"+input;
-    } else {
-      // return "img/logo.png";
-    }
-  };
-})
+  })
+  .filter('serverimage', function () {
+    return function (input) {
+      if (input) {
+        // console.log('serverimage: ', input);
+        // return input;
+        return imgpath + input;
+        // return "http://192.168.0.123/eurobackend/uploads"+input;
+      } else {
+        // return "img/logo.png";
+      }
+    };
+  })
 
 .directive('onlyDigits', function () {
-    return {
-        require: 'ngModel',
-        restrict: 'A',
-        link: function (scope, element, attr, ctrl) {
-            var digits;
+  return {
+    require: 'ngModel',
+    restrict: 'A',
+    link: function (scope, element, attr, ctrl) {
+      var digits;
 
-            function inputValue(val) {
-                if (val) {
-                    if (attr.type == "tel") {
-                        digits = val.replace(/[^0-9\+\\]/g, '');
-                    } else {
-                        digits = val.replace(/[^0-9\-\\]/g, '');
-                    }
+      function inputValue(val) {
+        if (val) {
+          if (attr.type == "tel") {
+            digits = val.replace(/[^0-9\+\\]/g, '');
+          } else {
+            digits = val.replace(/[^0-9\-\\]/g, '');
+          }
 
 
-                    if (digits !== val) {
-                        ctrl.$setViewValue(digits);
-                        ctrl.$render();
-                    }
-                    return parseInt(digits, 10);
-                }
-                return undefined;
-            }
-            ctrl.$parsers.push(inputValue);
+          if (digits !== val) {
+            ctrl.$setViewValue(digits);
+            ctrl.$render();
+          }
+          return parseInt(digits, 10);
         }
-    };
+        return undefined;
+      }
+      ctrl.$parsers.push(inputValue);
+    }
+  };
 });
