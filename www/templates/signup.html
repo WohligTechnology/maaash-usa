@@ -8,7 +8,7 @@
       <ion-list>
         <div class="row">
           <div class="col-offset-10 col col-80">
-            <form name="user" ng-if="!formComplete">
+            <form name="user" ng-if="!formComplete" ng-submit="generateOtp(userForm.CustomerMobile)">
               <label class="item item-input">
                 <input type="text" placeholder="Name" name="name" required ng-model="userForm.CustomerName">
               </label>
@@ -49,13 +49,14 @@
               <label class="item item-input">
                 <input type="password" placeholder="Re-Enter Password" required ng-model="userForm.confirmPassword" name="password"  maxlength="14" minlength="8">
               </label>
-              <p class="error-msg" ng-show="userForm.CustomerPassword != userForm.confirmPassword">Password does not match.</p>
+              <p class="error-msg" ng-show=" userForm.CustomerPassword != userForm.confirmPassword">Password does not match.</p>
+              <p class="error-msg" ng-show="user.CustomerPassword.$error.required ">password should be longer than 8 characters</p>
 
               <!-- <button type="submit" name="button" class="go full-width">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->
               <!-- <button type="submit" name="button" class="go full-width" > -->
-              <button  name="button" class="go full-width" ng-click="generateOtp(userForm.CustomerMobile)">
+              <button  name="button" class="go full-width" >
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="error-msg" ng-if="errormsg">{{errortext}}</p>

@@ -8,6 +8,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.userForm = data.data;
     });
   }
+  $scope.$root.canDrag = false;
     if ($scope.userForm) {
       $scope.login = true;
       $state.go("app.account");
@@ -1464,26 +1465,26 @@ angular.module('starter.controllers', ['ngCordova'])
         }
       })
     }
-    // $scope.resendOtp =function(phone){
-    //   console.log(phone,"****");
-    //   if (phone) {
-    //     $scope.closePopup();
-    //     phone.OTP="";
-    //   }
-    //   $scope.getotp.CustomerMobileNo =phone;
-    //   MyServices.generateOtp($scope.getotp, function(data) {
-    //     console.log(data);
-    //     $scope.errormsg= "false";
-    //
-    //     if(data.value === true){
-    //       $scope.oneTimepswd();
-    //     }
-    //     else{
-    //       $scope.errormsg= "true";
-    //       $scope.errortext=data.data.GenerateOTPTable[0].Message;
-    //     }
-    //   })
-    // }
+    $scope.resendOtp =function(phone){
+      console.log(phone,"****");
+      if (phone) {
+        $scope.closePopup();
+        phone.OTP="";
+      }
+      $scope.getotp.CustomerMobileNo =phone;
+      MyServices.generateOtp($scope.getotp, function(data) {
+        console.log(data);
+        $scope.errormsg= "false";
+    
+        if(data.value === true){
+          $scope.oneTimepswd();
+        }
+        else{
+          $scope.errormsg= "true";
+          $scope.errortext=data.data.GenerateOTPTable[0].Message;
+        }
+      })
+    }
 
   $scope.CustomerRegistration = function (formData) {
 

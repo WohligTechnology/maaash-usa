@@ -14,7 +14,7 @@
    <div class="pick-img">
                     <!-- <img ng-src="{{userForm.profilePic }}" alt=""  class="img-responsive" > -->
                     <img ng-src="{{userForm.profilePic | uploadpath }}" alt=""  class="img-responsive" >
-                    <img src="img/addphoto.png" alt=""  ng-if = "!userForm.profilePic"class="img-responsive" >
+                    <img src="img/addphoto.png" alt=""  ng-if = "!userForm.profilePic" class="img-responsive" >
                   </div>
 </div>
             </div>
@@ -90,8 +90,9 @@
             </div>
           </div>
         </div>
-        <span class="block  mt10 mb10 font-galano" ui-sref="app.account">SKIP</span>
-      </div>
+        <span class="block  mt10 mb10 font-galano" ui-sref="app.account" ng-if = "!userForm.profilePic">SKIP</span>
+              <span class="block  mt10 mb10 font-galano" ui-sref="app.account" ng-if = "userForm.profilePic">Next</span>
+</div>
     </div>
   </ion-content>
 </ion-view>
