@@ -1403,7 +1403,7 @@ var i=0;
     $scope.RechargeCard = function(formData) {
       console.log("formData", formData);
       $scope.Recharge=formData;
-      $scope.Recharge.PGReturnURL="http://104.155.129.33:82/signup/returnUrlFunction";
+      $scope.Recharge.PGReturnURL="http://104.155.129.33:94/signup/returnUrlFunctionForMobile";
       $scope.Recharge.CustomerID=$.jStorage.get("loginDetail").data.CustomerID;
       $scope.Recharge.BranchID="17";
 
@@ -1414,6 +1414,10 @@ var i=0;
         console.log(data);
         if (data.value === true) {
           console.log("formData", data);
+          $state.go("app.thank");
+        }
+        else{
+          $state.go("app.sorry");
         }
       })
     }
@@ -1500,7 +1504,7 @@ var i=0;
             $scope.emailExist = false;
             $scope.userForm = {};
             ionicpop.close();
-            $state.go("noheader.avatar")
+            $state.go("noheader.avatar");
                     }, 2000);
         } else  {
           $scope.emailExist = true;
