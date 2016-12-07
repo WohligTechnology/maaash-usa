@@ -1,10 +1,10 @@
 <ion-view>
-  <ion-content class="home">
+  <ion-content class="home has-header">
     <div class="home-main">
-      <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)"  >
         <ion-slide ng-repeat="slide in mySlides track by $index">
           <div class="img-bx">
-            <img src="img/usa/home-bg.png" alt="No Image Slider" class="full-image">
+            <img ng-src="{{slide.image | uploadpath}}" alt="No Image Slider" class="full-image">
           </div>
         </ion-slide>
       </ion-slide-box>

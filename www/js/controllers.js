@@ -184,7 +184,7 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
     console.log("iddd", _id);
     // $scope.startloading() ;
       MyServices.getProfile(_id, function(data) {
-        $scope.startloading() ;
+        // $scope.startloading() ;
         if (data.value) {
           $ionicLoading.hide();
             console.log("data0",data);
@@ -209,6 +209,7 @@ para:'Brain child of the multi-faceted Mr. Shripal Morakhia, Smaaash offers a lo
 
   MyServices.getSlider(function(data) {
     $scope.mySlides = data.data;
+    console.log("data",data.data);
     var i = 1;
     _.each($scope.mySlides, function(n) {
       n.ordering = i;
