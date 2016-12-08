@@ -1483,12 +1483,12 @@ angular.module('starter.controllers', ['ngCordova'])
    $scope.getotp.CustomerMobileNo = phone.CustomerMobile;
         MyServices.generateOtp($scope.getotp, function (data) {
           console.log("generateOtp",data);
-          $scope.errormsg = "false";
+
 
           if (data.value === true) {
             $scope.oneTimepswd();
           } else {
-            $scope.errormsg = true;
+            // $scope.errormsg = true;
             $scope.errortext = data.data.GenerateOTPTable[0].Message;
           }
         })
@@ -1502,24 +1502,25 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(phone,"****");
       if (phone) {
         $scope.closePopup();
+        $scope.errormsg=false;
         phone.OTP="";
       }
       $scope.getotp.CustomerMobileNo =phone.CustomerMobile;
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
-        $scope.errormsg= "false";
+        // $scope.errormsg= "false";
         $scope.error="";
 
         if(data.value === true){
           $scope.oneTimepswd();
         }
         else{
-          $scope.errormsg= "true";
-          $scope.errortext=data.data.GenerateOTPTable[0].Message;
+          // $scope.errormsg= "true";
+          // $scope.errortext=data.data.GenerateOTPTable[0].Message;
         }
       })
     }
-
+$scope.errormsg=false;
   $scope.CustomerRegistration = function (formData) {
       console.log("formData", formData);
     if (formData) {
@@ -1537,7 +1538,7 @@ angular.module('starter.controllers', ['ngCordova'])
           }, 2000);
         } else {
           $scope.emailExist = true;
-          $scope.error = data.data;
+        $scope.errormsg = true;;
   $state.go('noheader.signup');
         }
 
