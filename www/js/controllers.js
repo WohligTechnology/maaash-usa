@@ -1451,11 +1451,13 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.getotp.BranchID = "17";
   $scope.variables.letIn = true;
 
-  $scope.generateOtp = function (phone) {
-<<<<<<< HEAD
+    $scope.generateOtp = function (phone) {
+      console.log("in fun",phone);
       if($scope.variables.letIn){
         $scope.variables.letIn = false;
-        $scope.getotp.CustomerMobileNo = phone;
+      if(phone.CustomerPassword === phone.confirmPassword){
+        $scope.invalPass =false;
+   $scope.getotp.CustomerMobileNo = phone.CustomerMobile;
         MyServices.generateOtp($scope.getotp, function (data) {
           console.log(data);
           $scope.errormsg = "false";
@@ -1467,29 +1469,12 @@ angular.module('starter.controllers', ['ngCordova'])
             $scope.errortext = data.data.GenerateOTPTable[0].Message;
           }
         })
+      }else{
+        $scope.invalPass = true;
       }
-=======
-    console.log("in fun",phone);
-    if(phone.CustomerPassword === phone.confirmPassword){
-      $scope.invalPass =false;
- $scope.getotp.CustomerMobileNo = phone.CustomerMobile;
-      MyServices.generateOtp($scope.getotp, function (data) {
-        console.log(data);
-        $scope.errormsg = "false";
+    }
 
-        if (data.value === true) {
-          $scope.oneTimepswd();
-        } else {
-          $scope.errormsg = "true";
-          $scope.errortext = data.data.GenerateOTPTable[0].Message;
-        }
-      })
-    }else{
-      $scope.invalPass = true;
-    }
-     
->>>>>>> 8cf9f9a954df3ff92a02afc5c4867b5adeb507a3
-    }
+      }
     $scope.resendOtp =function(phone){
       console.log(phone,"****");
       if (phone) {
@@ -1500,12 +1485,8 @@ angular.module('starter.controllers', ['ngCordova'])
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
         $scope.errormsg= "false";
-<<<<<<< HEAD
-
-=======
         $scope.error="";
-    
->>>>>>> 8cf9f9a954df3ff92a02afc5c4867b5adeb507a3
+
         if(data.value === true){
           $scope.oneTimepswd();
         }
@@ -1539,8 +1520,8 @@ angular.module('starter.controllers', ['ngCordova'])
         }, 2000);
       } else {
         $scope.emailExist = true;
-        $scope.error = data.data.Registration[0].Message;
-
+        $scope.error = data.data;
+$state.go('noheader.signup');
       }
 
     })
