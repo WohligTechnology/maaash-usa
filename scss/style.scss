@@ -174,19 +174,24 @@ $brand-blue: #29a8df!default;
     background-size: 100%;
   }
   .explore {
-    background-image: url('../img/explore.jpg');
+    background: url('../img/explore.jpg') #7e89d2 no-repeat;
+    background-position: 50%;
   }
   .buy {
-    background-image: url('../img/buy.jpg');
+    background: url('../img/buy.jpg') #7e89d2 no-repeat;
+    background-position: 50%;
   }
   .account {
-    background-image: url('../img/account.jpg');
+    background: url('../img/account.jpg') #7e89d2 no-repeat;
+    background-position: 50%;
   }
   .check {
-    background-image: url('../img/usa/checkin.jpg');
+    background: url('../img/usa/checkin.jpg') #7e89d2 no-repeat;
+    background-position: 50%;
   }
   .contact {
-    background-image: url('../img/contactus.jpg');
+    background: url('../img/contactus.jpg') #7e89d2 no-repeat;
+    background-position: 50%;
   }
 }
 .header {
@@ -1604,7 +1609,11 @@ img[alt="pay"] {
   max-width: 100%;
 }
 .tabs-icon-only {
-  .tab-item { max-width: 100%; }
+  .tab-item { max-width: 100%;
+i{
+  background-size: contain;
+}
+  }
 }
 
 
