@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices) {
+.controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices,$filter) {
   console.log("APP is called",$.jStorage.get("loginDetail"));
   if($.jStorage.get("loginDetail")){
 
@@ -19,7 +19,6 @@ angular.module('starter.controllers', ['ngCordova'])
     }
 
     $scope.login = false;
-
     // if($.jStorage.get("loginDetail")!=null){
     //   $state.go("app.account");
     //
@@ -196,7 +195,6 @@ angular.module('starter.controllers', ['ngCordova'])
       } else {}
     });
   }
-
   $scope.homeslider = [
     'img/banners/banner.jpg',
     'img/banners/banner.jpg',
@@ -1425,7 +1423,7 @@ angular.module('starter.controllers', ['ngCordova'])
     }
   })
 
-.controller('SignupCtrl', function ($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout) {
+.controller('SignupCtrl', function ($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout,$filter) {
   $scope.ionicpop = "";
   // $.jStorage.set("cityid", "17");
   // $.jStorage.set("city", "usa");
@@ -1435,7 +1433,29 @@ angular.module('starter.controllers', ['ngCordova'])
       scope: $scope
     });
   }
-
+    $scope.validEmail = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+  //Password Validator
+// $scope.valid1 = false;
+// $scope.valid2 = false;
+// $scope.passwordValidator = function (password) {
+//   $scope.passwordInvalid = true;
+//   if (password && password.length >= 8 && password.length <= 15) {
+//     $scope.valid1 = true;
+//   } else {
+//     $scope.valid1 = false;
+//   }
+//   if (/([a-zA-Z])/.test(password) && /([0-9])/.test(password)) {
+//     $scope.valid2 = true;
+//   } else {
+//     $scope.valid2 = false;
+//   }
+//   if ($scope.valid1 && $scope.valid2) {
+//     $scope.passwordInvalid = false;
+//   } else {
+//     $scope.passwordInvalid = true;
+//   }
+// };
+  $scope.maxDate = $filter('date')(new Date(), 'yyyy-MM-dd');
   $scope.closePopup = function () {
     $scope.ionicpop.close();
   }

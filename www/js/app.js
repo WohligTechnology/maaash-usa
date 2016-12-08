@@ -566,4 +566,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       ctrl.$parsers.push(inputValue);
     }
   };
+})
+.directive('noPaste', function ($filter, $ionicScrollDelegate) {
+  return {
+    scope: {},
+    link: function (scope, element) {
+      element.on('cut copy paste', function (event) {
+        event.preventDefault();
+      });
+    }
+  };
 });
