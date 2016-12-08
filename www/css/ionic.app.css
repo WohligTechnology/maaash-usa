@@ -11517,3 +11517,6 @@ html {
 .max-h {
   max-height: 100%;
   max-width: none; }
+
+.what-new .button-set button {
+  width: 40%; }
