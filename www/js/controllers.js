@@ -1482,13 +1482,14 @@ angular.module('starter.controllers', ['ngCordova'])
         $scope.invalPass =false;
    $scope.getotp.CustomerMobileNo = phone.CustomerMobile;
         MyServices.generateOtp($scope.getotp, function (data) {
+            $scope.variables.letIn = true;
           console.log("generateOtp",data);
 
 
           if (data.value === true) {
             $scope.oneTimepswd();
           } else {
-            // $scope.errormsg = true;
+            $scope.errormsg = true;
             $scope.errortext = data.data.GenerateOTPTable[0].Message;
           }
         })

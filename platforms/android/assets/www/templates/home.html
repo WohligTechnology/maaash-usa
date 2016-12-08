@@ -1,10 +1,11 @@
 <ion-view>
-  <ion-content class="home">
+  <ion-content class="home header-slide">
     <div class="home-main">
-      <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)"  auto-play="true">
         <ion-slide ng-repeat="slide in mySlides track by $index">
           <div class="img-bx">
-            <img src="img/usa/home-bg.png" alt="No Image Slider" class="full-image">
+            <img ng-if="slide.appImage && slide.appImage != ''" ng-src="{{slide.appImage | uploadpath }}" alt="No Image Slider" class="full-image">
+            <img ng-if="!(slide.appImage && slide.appImage != '')" ng-src="{{slide.image | uploadpath }}" alt="No Image Slider" class="full-image">
           </div>
         </ion-slide>
       </ion-slide-box>
@@ -13,21 +14,22 @@
           <div class="row">
             <div class="col col-25">
               <div class="profile-img">
-                <img src="img/profile-img.jpg" alt="" class="img-responsive">
+                <img src="img/profile-img.jpg" alt="" class="max-h img-responsive" ng-if="!userForm.profilePic">
+                <img ng-src="{{userForm.profilePic|uploadpath}}" alt="" class=" max-h img-responsive" ng-if="userForm.profilePic">
+
               </div>
             </div>
             <div class="col col-75">
               <div class="clearfix relate">
                 <div class="name pull-left">
-                  <div class="" ng-if="!showSignUp">
-                    <h4 class="m-clear text-in-shadow color-white font-america">{{user.name}}</h4>
-                    <span class="text-in-shadow color-white font-america">Cricketer</span> 
-                  </div>
+
                   <div class="" ng-if="showSignUp">
-                    <h4 class="mt10 text-in-shadow color-white font-america" ui-sref="noheader.signup">SIGN UP</h4>
+                    <h4 class="mt10 text-in-shadow color-white font-america" ui-sref="noheader.signup" ng-if="!userForm.CustomerName">SIGN UP</h4>
+                    <h4 class="m-clear text-in-shadow color-white font-america" ng-if="userForm.CustomerName">{{userForm.CustomerName}}</h4>
+
                   </div>
                 </div>
-                <div class="slash">
+                <!-- <div class="slash">
                   <span class="text-in-shadow font-galano color-white">/</span>
                 </div>
                 <div class="name pull-right" ng-if="!showSignUp">
@@ -37,7 +39,7 @@
                 <div class="name pull-right" ng-if="showSignUp">
                   <h4 class="m-clear text-in-shadow color-white font-america">0</h4>
                   <span class="text-in-shadow color-white font-america">Points</span>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -51,16 +53,16 @@
               </div>
             </div>
             <div class="col col-75">
-              <div class="points-get relate">
-                <p class="text-center  font-america">how to get loyalty points ?</p>
+              <div class="points-get relate" ui-sre>
+                <!-- <p class="text-center  font-america">how to get loyalty points ?</p>
                 <p class="text-center  font-galano">Know More</p>
-                <!-- <img src="img/bg-strip.png" alt=""> -->
-                <!--<div class="know-more">
+                <img src="img/bg-strip.png" alt="">
+                <div class="know-more">
                   <img src="img/know-more.png" alt="" class="img responsive">
                 </div>
                 <div class="lady-baga">
                   <img src="img/usa/baby.png" alt="" class="img-responsive">
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

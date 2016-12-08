@@ -9902,6 +9902,10 @@ a.button {
 .f20 {
   font-size: 20px !important; }
 
+.f16 {
+  font-size: 16px;
+  margin-top: 20px; }
+
 .font-light {
   font-weight: 300; }
 
@@ -9918,7 +9922,7 @@ a.button {
   cursor: pointer; }
 
 .color-white {
-  color: #fff; }
+  color: #fff !important; }
 
 .font-america {
   font-family: "American Purpose"; }
@@ -9963,27 +9967,33 @@ a.button {
   background-size: 100%; }
 
 .tab-item .explore {
-  background-image: url("../img/explore.jpg"); }
+  background: url("../img/explore.jpg") #2a3891 no-repeat;
+  background-position: 50%; }
 
 .tab-item .buy {
-  background-image: url("../img/buy.jpg"); }
+  background: url("../img/buy.jpg") #01a69a no-repeat;
+  background-position: 50%; }
 
 .tab-item .account {
-  background-image: url("../img/account.jpg"); }
+  background: url("../img/account.jpg") #9c1d62 no-repeat;
+  background-position: 50%; }
 
 .tab-item .check {
-  background-image: url("../img/checkin.jpg"); }
+  background: url("../img/usa/checkin.jpg") #31b544 no-repeat;
+  background-position: 50%; }
 
 .tab-item .contact {
-  background-image: url("../img/contactus.jpg"); }
+  background: url("../img/contactus.jpg") #ea1c21 no-repeat;
+  background-position: 50%; }
 
 .header .bar.bar-stable {
   border: none;
   background-color: transparent;
   background-image: none; }
 
-.header .logo {
-  margin-top: 5px; }
+.header .logo .header .logo {
+  margin-top: -2px;
+  padding: 4px; }
 
 .scroll-content {
   padding: 50px 0 0; }
@@ -10032,7 +10042,7 @@ h3.ion-ios-bell-outline {
 .resgistration label {
   padding: 0;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   box-shadow: -2px -3px 3px #7a837b; }
   .resgistration label input {
     height: 34px;
@@ -10053,9 +10063,6 @@ h3.ion-ios-bell-outline {
 
 .landing .list {
   margin-top: 40px; }
-
-.landing label {
-  margin-bottom: 25px; }
 
 .go {
   border: none;
@@ -10085,17 +10092,20 @@ h3.ion-ios-bell-outline {
   background-color: transparent; }
 
 .popup-head {
-  border: none; }
+  border: none;
+  display: none; }
 
 .otp-content {
   position: absolute;
-  top: 70%;
-  left: 30%;
-  -webkit-transform: translate(-30%, -70%);
-  transform: translate(-30%, -70%); }
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
   .otp-content p {
     margin-bottom: 15px;
-    font-size: 14px; }
+    font-size: 18px; }
+    .otp-content p:active {
+      color: yellow !important; }
   .otp-content label {
     margin-bottom: 7px; }
     .otp-content label input {
@@ -10111,11 +10121,19 @@ h3.ion-ios-bell-outline {
   top: -12px;
   right: -8px; }
 
+.my-custom-popup {
+  background-image: url("../img/box-pop.png"); }
+
 .headline .popup-content {
   padding: 15px; }
   .headline .popup-content p {
-    font-size: 13px;
+    font-size: 11px;
     line-height: 18px; }
+
+.headline .wid {
+  margin: 0 auto; }
+  .headline .wid img {
+    width: 100%; }
 
 .menu-open .ion-navicon:before {
   content: "\f2d7" !important; }
@@ -10227,11 +10245,10 @@ h3.ion-ios-bell-outline {
   height: 70px;
   border-radius: 100%;
   position: absolute;
-  top: -10px;
-  left: -15px;
-  z-index: 2; }
-  .relate .profile-img img, .profile-strip .profile-img img {
-    border-radius: 100%; }
+  top: -45px;
+  left: 0;
+  z-index: 2;
+  overflow: hidden; }
 
 .sidemenu-profile .profile-img {
   width: 70px;
@@ -10276,11 +10293,14 @@ h3.ion-ios-bell-outline {
   z-index: 99; }
 
 .inside-smaash .red-img {
-  height: 220px; }
+  height: 220px;
+  width: 100%; }
 
 .points-get {
-  background: url("../img/usa/baby.png") no-repeat -55px -15px #fff002;
-  height: 100%; }
+  background: url(../img/about-smaaash.jpg) no-repeat #fff002;
+  height: 100%;
+  background-position: center;
+  background-size: cover; }
   .points-get p {
     position: absolute;
     top: 25px;
@@ -10312,6 +10332,8 @@ h3.ion-ios-bell-outline {
 .menu .buy-recharge {
   background: url("../img/usa/buy-bg.png") no-repeat;
   background-size: cover; }
+  .menu .buy-recharge .hass-header {
+    top: 130px; }
 
 .recharge-list {
   margin: 15px 0 0; }
@@ -10734,7 +10756,8 @@ h3.ion-ios-bell-outline {
     border: 1px solid #642c91; }
 
 .payment {
-  background: url("../img/bgred.jpg"); }
+  background: url("../img/bgred.jpg");
+  background-size: cover; }
   .payment .points {
     background-color: #662d91; }
   .payment .wallet {
@@ -10792,10 +10815,11 @@ img[alt="pay"] {
   height: 90px;
   top: 15px;
   padding: 25px 0px 0 0;
-  background: url("../img/amrit.png") no-repeat; }
+  background: url("../img/amrit.png") no-repeat;
+  background-size: cover; }
   .profile .profile-info .profile-img {
     left: 0;
-    top: -45px; }
+    top: -30px; }
   .profile .profile-info .plan {
     left: 70px;
     top: 25px; }
@@ -10846,13 +10870,11 @@ img[alt="pay"] {
   padding: 0; }
 
 .account-info .img-holder img {
-  border: 2px solid #fff; }
+  border: 2px solid #fff;
+  width: 100%; }
 
 .account-info .order img {
   margin-left: -2px; }
-
-.account-info .profile img {
-  margin-top: -4px; }
 
 .account-info .offer img {
   margin-top: -4px;
@@ -10862,17 +10884,20 @@ img[alt="pay"] {
   height: 106px;
   padding: 35px 10px 5px 0;
   margin-top: 0;
-  top: -40px;
-  background: url("../img/account-profile.png") no-repeat; }
+  top: -50px;
+  background: url("../img/account-profile.png") no-repeat;
+  background-size: cover; }
   .profile-info .profile-img {
     width: 100px;
     height: 100px;
-    top: -34px;
-    left: -35px; }
+    overflow: hidden;
+    top: -30px;
+    left: 0;
+    z-index: 0; }
   .profile-info .plan {
     position: absolute;
     top: 45px;
-    left: 25px;
+    left: 60px;
     z-index: 3; }
 
 .new,
@@ -10880,10 +10905,20 @@ img[alt="pay"] {
 .party {
   border: none; }
 
-.account-marker {
+.marker-silver {
   position: absolute;
   bottom: 24%;
   left: 22%; }
+
+.marker-gold {
+  position: absolute;
+  bottom: 40%;
+  left: 44%; }
+
+.marker-platinum {
+  position: absolute;
+  bottom: 50%;
+  left: 64%; }
 
 .new {
   background-color: #2da3d6; }
@@ -10969,10 +11004,12 @@ img[alt="pay"] {
   margin-top: 20px; }
 
 .what-new {
-  background: url("../img/attractions.jpg"); }
+  background: url("../img/attractions.jpg");
+  background-size: cover; }
 
 .beverage-bg {
-  background: url("../img/bgyellow.jpg"); }
+  background: url("../img/bgyellow.jpg");
+  background-size: cover; }
   .beverage-bg .card {
     background-color: transparent;
     box-shadow: none; }
@@ -10981,12 +11018,19 @@ img[alt="pay"] {
     .beverage-bg .restaurant-name img {
       width: 100%; }
 
+.name {
+  margin-left: 10%; }
+
 .beverage-bg .restaurant-detail h3 {
   color: #f23cb2; }
 
 .beverage-bg .crickets {
   padding: 0;
   line-height: 0; }
+
+.direction-modal {
+  padding: 0 13px;
+  line-height: 28px; }
 
 .explore-smaash, .evento {
   background: url("../img/explore-smaash.jpg");
@@ -11009,7 +11053,7 @@ img[alt="pay"] {
   border-radius: 5px; }
 
 .attract-new .button-set button {
-  width: 40%; }
+  width: 100%; }
 
 .attract-new .button-set .love {
   width: 58%; }
@@ -11025,17 +11069,21 @@ img[alt="pay"] {
 
 .foot .tab-item .signups {
   background-image: url("../img/signup.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #31b544; }
 
 .foot .tab-item .login {
   background-image: url("../img/login.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #2a3891; }
 
 .bar-footer .tabs-striped .tab-item {
   max-width: 100%; }
 
 .tabs-icon-only .tab-item {
   max-width: 100%; }
+  .tabs-icon-only .tab-item i {
+    background-size: contain; }
 
 .login {
   background-image: url("../img/bg.png");
@@ -11093,19 +11141,24 @@ img[alt="pay"] {
   box-sizing: border-box; }
 
 .avatars1 {
-  background-image: url("../img/usa/flyman.png"); }
+  background-image: url("../img/usa/flyman.png");
+  background-size: cover; }
 
 .avatars2 {
-  background-image: url("../img/usa/smaillady.png"); }
+  background-image: url("../img/usa/smaillady.png");
+  background-size: cover; }
 
 .avatarss {
-  background-image: url("../img/usa/sach.png"); }
+  background-image: url("../img/usa/sach.png");
+  background-size: cover; }
 
 .avatarss1 {
-  background-image: url("../img/usa/flylady.png"); }
+  background-image: url("../img/usa/flylady.png");
+  background-size: cover; }
 
 .avatarss2 {
-  background-image: url("../img/usa/smileman.png"); }
+  background-image: url("../img/usa/smileman.png");
+  background-size: cover; }
 
 .gallery {
   background: white;
@@ -11125,7 +11178,14 @@ img[alt="pay"] {
 .pick-img {
   height: 100px;
   width: 100px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 5px;
+  position: relative; }
+  .pick-img img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
 
 .pick-img + .pick-img {
   margin-left: 20px; }
@@ -11176,8 +11236,11 @@ img[alt="pay"] {
     padding: 0px 0px 0px 0px;
     position: relative; }
 
+.header-slide {
+  top: 40px; }
+
 .hass-header {
-  top: 190px; }
+  top: 170px; }
   .hass-header .item {
     border: none;
     background-color: transparent; }
@@ -11187,7 +11250,9 @@ img[alt="pay"] {
     margin-left: 40px; }
     .hass-header .list .sidemenu-item img {
       vertical-align: top;
-      margin-right: 10px; }
+      margin-right: 10px;
+      height: 15px;
+      width: 15px; }
 
 .usa-logo {
   height: 79px;
@@ -11250,7 +11315,7 @@ img[alt="pay"] {
   .color-change .list:nth-of-type(6n+6) .karting-championship .views button {
     border: 1px solid #29a8df; }
 
-.angular-google-map {
+.angular-google-map, .sorry {
   display: block; }
 
 .angular-google-map-container {
@@ -11268,7 +11333,21 @@ img[alt="pay"] {
   font-size: 12px;
   margin: 0 1px; }
 
-<<<<<<< HEAD
+.order-bg .header .col {
+  background-color: #777; }
+
+.order-bg .col {
+  border: solid 1px #000;
+  border-bottom-style: none;
+  border-right-style: none;
+  background-color: #fff; }
+
+.order-bg .col:last-child {
+  border-right: solid 1px grey; }
+
+.order-bg .row:last-child .col {
+  border-bottom: solid 1px grey; }
+
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
@@ -11289,24 +11368,57 @@ html, body {
   padding: 0; }
 
 #map {
-  height: 100%;
   float: left;
-  width: 80%;
-  height: 100vh; }
+  width: 100%;
+  height: 65vh;
+  margin-top: 10px; }
 
 #right-panel {
-  float: right;
-  display: block;
-  width: 100%;
-  height: 100%; }
+  display: none; }
 
 .panel {
   height: 100%;
   overflow: auto; }
-=======
+
 .otps {
   position: absolute;
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%); }
->>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d
+
+.baring-skip {
+  display: none; }
+
+.skip-button {
+  line-height: 0px;
+  padding: 25px;
+  color: white !important; }
+
+.menu-minus {
+  margin-top: -200px; }
+
+.a-call {
+  right: 4% !important; }
+
+.payments {
+  background-color: transparent;
+  border: none; }
+
+.resgistration p {
+  margin: 0; }
+
+.resgistration .otpss {
+  margin-bottom: 0; }
+  .resgistration .otpss input {
+    margin-bottom: 0;
+    height: 28px; }
+
+.resgistration span {
+  font-size: 12px; }
+
+.pop-imgholder img {
+  width: 100%; }
+
+.max-h {
+  max-height: 100%;
+  max-width: none; }

@@ -3,22 +3,10 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-image-picker@~1.1.1"
-<<<<<<< HEAD
-=======
         },
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-statusbar": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-statusbar@~2.2.0"
->>>>>>> 6e1bb68b61fc23d497c06166b99ca64c2a2302e0
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-<<<<<<< HEAD
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
@@ -79,17 +67,10 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-file-transfer"
-=======
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device@~1.1.3"
->>>>>>> 6e1bb68b61fc23d497c06166b99ca64c2a2302e0
         },
         "is_top_level": true,
         "variables": {}
     },
-<<<<<<< HEAD
     "cordova-plugin-file": {
         "source": {
             "type": "registry",
@@ -99,17 +80,13 @@
         "variables": {}
     },
     "cordova-plugin-compat": {
-=======
-    "cordova-plugin-splashscreen": {
->>>>>>> 6e1bb68b61fc23d497c06166b99ca64c2a2302e0
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-splashscreen@~4.0.0"
+            "id": "cordova-plugin-compat"
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
-<<<<<<< HEAD
     "cordova-plugin-x-socialsharing": {
         "source": {
             "type": "registry",
@@ -155,12 +132,6 @@
             "type": "git",
             "url": "https://github.com/asanka-x/Phonegap-SMS.git",
             "subdir": "."
-=======
-    "ionic-plugin-keyboard": {
-        "source": {
-            "type": "registry",
-            "id": "ionic-plugin-keyboard@~2.2.1"
->>>>>>> 6e1bb68b61fc23d497c06166b99ca64c2a2302e0
         },
         "is_top_level": true,
         "variables": {}

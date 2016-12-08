@@ -32,6 +32,16 @@
     <string/>
     <key>NSMainNibFile~ipad</key>
     <string/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+    </array>
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>NSAppTransportSecurity</key>
@@ -39,6 +49,10 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
+    <key>UIInterfaceOrientation</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+    </array>
     <key>NSPhotoLibraryUsageDescription</key>
     <string/>
     <key>Pushwoosh_LOG_LEVEL</key>
@@ -46,7 +60,7 @@
     <key>Pushwoosh_ALERT_TYPE</key>
     <string>NONE</string>
     <key>NSCameraUsageDescription</key>
-    <string/>
+    <string></string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
   </dict>

@@ -9902,6 +9902,10 @@ a.button {
 .f20 {
   font-size: 20px !important; }
 
+.f16 {
+  font-size: 16px;
+  margin-top: 20px; }
+
 .font-light {
   font-weight: 300; }
 
@@ -9918,7 +9922,7 @@ a.button {
   cursor: pointer; }
 
 .color-white {
-  color: #fff; }
+  color: #fff !important; }
 
 .font-america {
   font-family: "American Purpose"; }
@@ -9963,27 +9967,33 @@ a.button {
   background-size: 100%; }
 
 .tab-item .explore {
-  background-image: url("../img/explore.jpg"); }
+  background: url("../img/explore.jpg") #2a3891 no-repeat;
+  background-position: 50%; }
 
 .tab-item .buy {
-  background-image: url("../img/buy.jpg"); }
+  background: url("../img/buy.jpg") #01a69a no-repeat;
+  background-position: 50%; }
 
 .tab-item .account {
-  background-image: url("../img/account.jpg"); }
+  background: url("../img/account.jpg") #9c1d62 no-repeat;
+  background-position: 50%; }
 
 .tab-item .check {
-  background-image: url("../img/checkin.jpg"); }
+  background: url("../img/usa/checkin.jpg") #31b544 no-repeat;
+  background-position: 50%; }
 
 .tab-item .contact {
-  background-image: url("../img/contactus.jpg"); }
+  background: url("../img/contactus.jpg") #ea1c21 no-repeat;
+  background-position: 50%; }
 
 .header .bar.bar-stable {
   border: none;
   background-color: transparent;
   background-image: none; }
 
-.header .logo {
-  margin-top: 5px; }
+.header .logo .header .logo {
+  margin-top: -2px;
+  padding: 4px; }
 
 .scroll-content {
   padding: 50px 0 0; }
@@ -9996,9 +10006,9 @@ h3.ion-ios-bell-outline {
 
 .bar-footer {
   padding: 0; }
-  .bar-footer .tabs-striped .tab-item.tab-item-active,
+  .bar-footer .tabs-striped .tab-item.activated,
   .bar-footer .tabs-striped .tab-item.active,
-  .bar-footer .tabs-striped .tab-item.activated {
+  .bar-footer .tabs-striped .tab-item.tab-item-active {
     margin-top: 0;
     border-top: none;
     border-right: 2px solid #fff;
@@ -10032,7 +10042,7 @@ h3.ion-ios-bell-outline {
 .resgistration label {
   padding: 0;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   box-shadow: -2px -3px 3px #7a837b; }
   .resgistration label input {
     height: 34px;
@@ -10053,9 +10063,6 @@ h3.ion-ios-bell-outline {
 
 .landing .list {
   margin-top: 40px; }
-
-.landing label {
-  margin-bottom: 25px; }
 
 .go {
   border: none;
@@ -10085,17 +10092,20 @@ h3.ion-ios-bell-outline {
   background-color: transparent; }
 
 .popup-head {
-  border: none; }
+  border: none;
+  display: none; }
 
 .otp-content {
   position: absolute;
-  top: 70%;
-  left: 30%;
-  -webkit-transform: translate(-30%, -70%);
-  transform: translate(-30%, -70%); }
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
   .otp-content p {
     margin-bottom: 15px;
-    font-size: 14px; }
+    font-size: 18px; }
+    .otp-content p:active {
+      color: yellow !important; }
   .otp-content label {
     margin-bottom: 7px; }
     .otp-content label input {
@@ -10111,11 +10121,19 @@ h3.ion-ios-bell-outline {
   top: -12px;
   right: -8px; }
 
+.my-custom-popup {
+  background-image: url("../img/box-pop.png"); }
+
 .headline .popup-content {
   padding: 15px; }
   .headline .popup-content p {
-    font-size: 13px;
+    font-size: 11px;
     line-height: 18px; }
+
+.headline .wid {
+  margin: 0 auto; }
+  .headline .wid img {
+    width: 100%; }
 
 .menu-open .ion-navicon:before {
   content: "\f2d7" !important; }
@@ -10222,16 +10240,16 @@ h3.ion-ios-bell-outline {
   right: -7px;
   z-index: 1; }
 
-.relate .profile-img, .profile-strip .profile-img {
+.profile-strip .profile-img,
+.relate .profile-img {
   width: 70px;
   height: 70px;
   border-radius: 100%;
   position: absolute;
-  top: -10px;
-  left: -15px;
-  z-index: 2; }
-  .relate .profile-img img, .profile-strip .profile-img img {
-    border-radius: 100%; }
+  top: -45px;
+  left: 0;
+  z-index: 2;
+  overflow: hidden; }
 
 .sidemenu-profile .profile-img {
   width: 70px;
@@ -10266,7 +10284,8 @@ h3.ion-ios-bell-outline {
   .slash span {
     font-size: 30px; }
 
-.detail-smaash .row, .detail-smaash .col {
+.detail-smaash .col,
+.detail-smaash .row {
   padding: 0; }
 
 .inside-smaash .inside {
@@ -10276,11 +10295,14 @@ h3.ion-ios-bell-outline {
   z-index: 99; }
 
 .inside-smaash .red-img {
-  height: 220px; }
+  height: 220px;
+  width: 100%; }
 
 .points-get {
-  background: url("../img/usa/baby.png") no-repeat -55px -15px #fff002;
-  height: 100%; }
+  background: url("../img/about-smaaash.jpg") no-repeat #fff002;
+  height: 100%;
+  background-position: center;
+  background-size: cover; }
   .points-get p {
     position: absolute;
     top: 25px;
@@ -10312,6 +10334,8 @@ h3.ion-ios-bell-outline {
 .menu .buy-recharge {
   background: url("../img/usa/buy-bg.png") no-repeat;
   background-size: cover; }
+  .menu .buy-recharge .hass-header {
+    top: 130px; }
 
 .recharge-list {
   margin: 15px 0 0; }
@@ -10338,7 +10362,7 @@ h3.ion-ios-bell-outline {
   background: url("../img/card-number.png") no-repeat 95% 50%; }
 
 .recharge-main .amount {
-  margin: 0 0px 0 10px; }
+  margin: 0 0 0 10px; }
 
 .direction {
   background: url("../img/bgdirection.png");
@@ -10382,10 +10406,12 @@ h3.ion-ios-bell-outline {
 
 .direction-list .border {
   border-top: 1px solid #fff; }
-  .direction-list .border span, .direction-list .border p {
+  .direction-list .border p,
+  .direction-list .border span {
     cursor: pointer; }
 
-.order-bg, .bonus-bg {
+.bonus-bg,
+.order-bg {
   background: url("../img/bgorder.png");
   background-size: cover; }
 
@@ -10419,7 +10445,7 @@ h3.ion-ios-bell-outline {
   width: 40px;
   position: absolute;
   top: 70%;
-  right: 0%;
+  right: 0;
   z-index: 9999;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
@@ -10431,7 +10457,8 @@ h3.ion-ios-bell-outline {
     color: #fff;
     font-size: 18px; }
 
-.about-bg, .leader {
+.about-bg,
+.leader {
   background: url("../img/about.png");
   background-size: cover; }
 
@@ -10460,54 +10487,82 @@ h3.ion-ios-bell-outline {
   background: url("../img/bgdark-blue.jpg") no-repeat;
   background-size: cover; }
 
-.cricket-bg, .smaash-bg, .earn-bg {
+.cricket-bg,
+.earn-bg,
+.smaash-bg {
   background: url("../img/attractions.jpg");
   background-size: cover; }
-  .cricket-bg .accordion-list .card, .smaash-bg .accordion-list .card, .earn-bg .accordion-list .card {
+  .cricket-bg .accordion-list .card,
+  .earn-bg .accordion-list .card,
+  .smaash-bg .accordion-list .card {
     background-color: transparent; }
-    .cricket-bg .accordion-list .card .item:last-child, .smaash-bg .accordion-list .card .item:last-child, .earn-bg .accordion-list .card .item:last-child {
-      border-bottom-right-radius: 0px;
-      border-bottom-left-radius: 0px;
+    .cricket-bg .accordion-list .card .item:last-child,
+    .earn-bg .accordion-list .card .item:last-child,
+    .smaash-bg .accordion-list .card .item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
       border-bottom: 1px solid #fff; }
-    .cricket-bg .accordion-list .card .item:first-child, .smaash-bg .accordion-list .card .item:first-child, .earn-bg .accordion-list .card .item:first-child {
-      border-top-right-radius: 0px;
-      border-top-left-radius: 0px; }
-  .cricket-bg .accordion, .smaash-bg .accordion, .earn-bg .accordion {
+    .cricket-bg .accordion-list .card .item:first-child,
+    .earn-bg .accordion-list .card .item:first-child,
+    .smaash-bg .accordion-list .card .item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0; }
+  .cricket-bg .accordion,
+  .earn-bg .accordion,
+  .smaash-bg .accordion {
     /* DEMO */ }
-    .cricket-bg .accordion p, .smaash-bg .accordion p, .earn-bg .accordion p {
+    .cricket-bg .accordion p,
+    .earn-bg .accordion p,
+    .smaash-bg .accordion p {
       color: #fff; }
-    .cricket-bg .accordion .item, .smaash-bg .accordion .item, .earn-bg .accordion .item {
+    .cricket-bg .accordion .item,
+    .earn-bg .accordion .item,
+    .smaash-bg .accordion .item {
       border: 1px solid #fff;
       padding: 18px 12px;
       border-bottom: none; }
-    .cricket-bg .accordion .item-expand, .smaash-bg .accordion .item-expand, .earn-bg .accordion .item-expand {
+    .cricket-bg .accordion .item-expand,
+    .earn-bg .accordion .item-expand,
+    .smaash-bg .accordion .item-expand {
       position: relative;
       width: 100%;
       max-height: 20px;
       transition: max-height 0.1s ease-out;
       overflow: hidden;
       padding: 0 10px; }
-    .cricket-bg .accordion .item-expand.inactive:after, .smaash-bg .accordion .item-expand.inactive:after, .earn-bg .accordion .item-expand.inactive:after {
+    .cricket-bg .accordion .item-expand.inactive:after,
+    .earn-bg .accordion .item-expand.inactive:after,
+    .smaash-bg .accordion .item-expand.inactive:after {
       content: "";
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
       left: 0;
       height: 15px;
       width: 100%;
       display: block; }
-    .cricket-bg .accordion .item-expand.active, .smaash-bg .accordion .item-expand.active, .earn-bg .accordion .item-expand.active {
+    .cricket-bg .accordion .item-expand.active,
+    .earn-bg .accordion .item-expand.active,
+    .smaash-bg .accordion .item-expand.active {
       max-height: 200px;
       transition: max-height 0.3s ease-out; }
-    .cricket-bg .accordion .item-expand-footer, .smaash-bg .accordion .item-expand-footer, .earn-bg .accordion .item-expand-footer {
+    .cricket-bg .accordion .item-expand-footer,
+    .earn-bg .accordion .item-expand-footer,
+    .smaash-bg .accordion .item-expand-footer {
       color: #fff;
       position: absolute;
       right: 10px;
       top: 10px; }
-    .cricket-bg .accordion .item-expand-footer i, .smaash-bg .accordion .item-expand-footer i, .earn-bg .accordion .item-expand-footer i {
+    .cricket-bg .accordion .item-expand-footer i,
+    .earn-bg .accordion .item-expand-footer i,
+    .smaash-bg .accordion .item-expand-footer i {
       margin-right: 10px; }
-  .cricket-bg .button-set, .smaash-bg .button-set, .earn-bg .button-set {
+  .cricket-bg .button-set,
+  .earn-bg .button-set,
+  .smaash-bg .button-set {
     margin: 0 5px; }
-    .cricket-bg .button-set button, .smaash-bg .button-set button, .earn-bg .button-set button {
+    .cricket-bg .button-set button,
+    .earn-bg .button-set button,
+    .smaash-bg .button-set button {
       color: #fff;
       padding: 5px 0;
       border: none;
@@ -10515,54 +10570,81 @@ h3.ion-ios-bell-outline {
       width: 100%;
       border-radius: 6px;
       text-transform: capitalize; }
-    .cricket-bg .button-set button + button, .smaash-bg .button-set button + button, .earn-bg .button-set button + button {
+    .cricket-bg .button-set button + button,
+    .earn-bg .button-set button + button,
+    .smaash-bg .button-set button + button {
       margin-left: 1px; }
-  .cricket-bg .card, .smaash-bg .card, .earn-bg .card {
+  .cricket-bg .card,
+  .earn-bg .card,
+  .smaash-bg .card {
     margin: 20px 5px; }
-  .cricket-bg .love, .smaash-bg .love, .earn-bg .love {
+  .cricket-bg .love,
+  .earn-bg .love,
+  .smaash-bg .love {
     margin: 0 5px; }
-    .cricket-bg .love button, .smaash-bg .love button, .earn-bg .love button {
+    .cricket-bg .love button,
+    .earn-bg .love button,
+    .smaash-bg .love button {
       padding: 7px 0; }
 
-.smaash-bg, .cricket-bg {
+.cricket-bg,
+.smaash-bg {
   background: url("../img/bgred.jpg");
   background-size: cover; }
-  .smaash-bg .accordion-list .accordion .done, .cricket-bg .accordion-list .accordion .done {
+  .cricket-bg .accordion-list .accordion .done,
+  .smaash-bg .accordion-list .accordion .done {
     background-color: #29a8df; }
-  .smaash-bg .accordion-list .accordion .item-expand-footer, .cricket-bg .accordion-list .accordion .item-expand-footer {
+  .cricket-bg .accordion-list .accordion .item-expand-footer,
+  .smaash-bg .accordion-list .accordion .item-expand-footer {
     right: 10px; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(2) .done, .cricket-bg .accordion-list .accordion:nth-of-type(2) .done {
+  .cricket-bg .accordion-list .accordion:nth-of-type(2) .done,
+  .smaash-bg .accordion-list .accordion:nth-of-type(2) .done {
     background-color: #FFEF01; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(2) h2, .cricket-bg .accordion-list .accordion:nth-of-type(2) h2 {
+  .cricket-bg .accordion-list .accordion:nth-of-type(2) h2,
+  .smaash-bg .accordion-list .accordion:nth-of-type(2) h2 {
     float: right !important; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(2) .item-expand-footer, .cricket-bg .accordion-list .accordion:nth-of-type(2) .item-expand-footer {
+  .cricket-bg .accordion-list .accordion:nth-of-type(2) .item-expand-footer,
+  .smaash-bg .accordion-list .accordion:nth-of-type(2) .item-expand-footer {
     left: 10px; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(3) .done, .cricket-bg .accordion-list .accordion:nth-of-type(3) .done {
+  .cricket-bg .accordion-list .accordion:nth-of-type(3) .done,
+  .smaash-bg .accordion-list .accordion:nth-of-type(3) .done {
     background-color: #642c91; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(3) .item-expand-footer, .cricket-bg .accordion-list .accordion:nth-of-type(3) .item-expand-footer {
+  .cricket-bg .accordion-list .accordion:nth-of-type(3) .item-expand-footer,
+  .smaash-bg .accordion-list .accordion:nth-of-type(3) .item-expand-footer {
     right: 10px; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(4) .done, .cricket-bg .accordion-list .accordion:nth-of-type(4) .done {
+  .cricket-bg .accordion-list .accordion:nth-of-type(4) .done,
+  .smaash-bg .accordion-list .accordion:nth-of-type(4) .done {
     background-color: #01a69a; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(4) h2, .cricket-bg .accordion-list .accordion:nth-of-type(4) h2 {
+  .cricket-bg .accordion-list .accordion:nth-of-type(4) h2,
+  .smaash-bg .accordion-list .accordion:nth-of-type(4) h2 {
     float: right !important; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(4) .item-expand-footer, .cricket-bg .accordion-list .accordion:nth-of-type(4) .item-expand-footer {
+  .cricket-bg .accordion-list .accordion:nth-of-type(4) .item-expand-footer,
+  .smaash-bg .accordion-list .accordion:nth-of-type(4) .item-expand-footer {
     left: 10px; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(5) .done, .cricket-bg .accordion-list .accordion:nth-of-type(5) .done {
+  .cricket-bg .accordion-list .accordion:nth-of-type(5) .done,
+  .smaash-bg .accordion-list .accordion:nth-of-type(5) .done {
     background-color: #9c1d62; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(5) .item-expand-footer, .cricket-bg .accordion-list .accordion:nth-of-type(5) .item-expand-footer {
+  .cricket-bg .accordion-list .accordion:nth-of-type(5) .item-expand-footer,
+  .smaash-bg .accordion-list .accordion:nth-of-type(5) .item-expand-footer {
     right: 10px; }
-  .smaash-bg .accordion-list .accordion:nth-of-type(6), .cricket-bg .accordion-list .accordion:nth-of-type(6) {
+  .cricket-bg .accordion-list .accordion:nth-of-type(6),
+  .smaash-bg .accordion-list .accordion:nth-of-type(6) {
     background-color: #fc5626; }
-    .smaash-bg .accordion-list .accordion:nth-of-type(6) h2, .cricket-bg .accordion-list .accordion:nth-of-type(6) h2 {
+    .cricket-bg .accordion-list .accordion:nth-of-type(6) h2,
+    .smaash-bg .accordion-list .accordion:nth-of-type(6) h2 {
       float: right !important; }
-    .smaash-bg .accordion-list .accordion:nth-of-type(6) .item-expand-footer, .cricket-bg .accordion-list .accordion:nth-of-type(6) .item-expand-footer {
+    .cricket-bg .accordion-list .accordion:nth-of-type(6) .item-expand-footer,
+    .smaash-bg .accordion-list .accordion:nth-of-type(6) .item-expand-footer {
       left: 10px; }
-  .smaash-bg .crickets, .cricket-bg .crickets {
+  .cricket-bg .crickets,
+  .smaash-bg .crickets {
     position: relative;
     padding: 0 20px; }
-    .smaash-bg .crickets img, .cricket-bg .crickets img {
+    .cricket-bg .crickets img,
+    .smaash-bg .crickets img {
       width: 100%; }
-    .smaash-bg .crickets a, .cricket-bg .crickets a {
+    .cricket-bg .crickets a,
+    .smaash-bg .crickets a {
       width: auto;
       height: auto;
       bottom: 0;
@@ -10585,7 +10667,8 @@ h3.ion-ios-bell-outline {
 .events-bg p {
   border-top: 2px solid #fff; }
 
-.events-bg h2, .events-bg p {
+.events-bg h2,
+.events-bg p {
   padding: 0 10px; }
 
 .love button {
@@ -10623,45 +10706,55 @@ h3.ion-ios-bell-outline {
 .purpley {
   color: #642c91; }
 
-.choose .modal-bg, .order-bg .modal-bg {
+.choose .modal-bg,
+.order-bg .modal-bg {
   background: url("../img/modal-bg.png");
   background-size: cover; }
 
-.choose .close, .order-bg .close {
+.choose .close,
+.order-bg .close {
   height: 40px;
   width: 40px;
   top: 0;
   right: 0; }
 
-.choose .forms, .order-bg .forms {
+.choose .forms,
+.order-bg .forms {
   padding: 35px 10px; }
-  .choose .forms .search-green, .order-bg .forms .search-green {
+  .choose .forms .search-green,
+  .order-bg .forms .search-green {
     width: 100%;
     position: relative;
     display: inline-block;
     margin: 0 auto; }
-    .choose .forms .search-green .form-control, .order-bg .forms .search-green .form-control {
+    .choose .forms .search-green .form-control,
+    .order-bg .forms .search-green .form-control {
       border-radius: 10px;
       padding: 6px 12px;
       height: 45px;
-      box-shadow: 0px 3px 1px #ccc inset;
+      box-shadow: 0 3px 1px #ccc inset;
       position: relative; }
-    .choose .forms .search-green .microscope, .order-bg .forms .search-green .microscope {
+    .choose .forms .search-green .microscope,
+    .order-bg .forms .search-green .microscope {
       position: absolute;
       top: 6px;
       right: 20px; }
-  .choose .forms .game-type, .order-bg .forms .game-type {
+  .choose .forms .game-type,
+  .order-bg .forms .game-type {
     position: relative;
     margin: 15px auto 0; }
-    .choose .forms .game-type .form-control, .order-bg .forms .game-type .form-control {
+    .choose .forms .game-type .form-control,
+    .order-bg .forms .game-type .form-control {
       height: 40px;
       width: 100%;
       padding: 6px 12px;
       border-radius: 10px;
-      box-shadow: 0px 3px 1px #ccc inset; }
-    .choose .forms .game-type select, .order-bg .forms .game-type select {
+      box-shadow: 0 3px 1px #ccc inset; }
+    .choose .forms .game-type select,
+    .order-bg .forms .game-type select {
       -webkit-appearance: none; }
-    .choose .forms .game-type a, .order-bg .forms .game-type a {
+    .choose .forms .game-type a,
+    .order-bg .forms .game-type a {
       position: absolute;
       right: 5%;
       top: 25%;
@@ -10677,11 +10770,15 @@ h3.ion-ios-bell-outline {
 .attractions .border-changes {
   border: 2px solid #29a8df; }
 
-.attractions .new-detail, .attractions .news-detail, .attractions .new-details {
+.attractions .new-detail,
+.attractions .new-details,
+.attractions .news-detail {
   border: 1px solid #29a8df;
   border-top: none;
   padding: 20px; }
-  .attractions .new-detail p, .attractions .news-detail p, .attractions .new-details p {
+  .attractions .new-detail p,
+  .attractions .new-details p,
+  .attractions .news-detail p {
     color: #ccc; }
 
 .attractions .pink-button {
@@ -10734,7 +10831,8 @@ h3.ion-ios-bell-outline {
     border: 1px solid #642c91; }
 
 .payment {
-  background: url("../img/bgred.jpg"); }
+  background: url("../img/bgred.jpg");
+  background-size: cover; }
   .payment .points {
     background-color: #662d91; }
   .payment .wallet {
@@ -10791,11 +10889,12 @@ img[alt="pay"] {
 .profile .profile-info {
   height: 90px;
   top: 15px;
-  padding: 25px 0px 0 0;
-  background: url("../img/amrit.png") no-repeat; }
+  padding: 25px 0 0;
+  background: url("../img/amrit.png") no-repeat;
+  background-size: cover; }
   .profile .profile-info .profile-img {
     left: 0;
-    top: -45px; }
+    top: -30px; }
   .profile .profile-info .plan {
     left: 70px;
     top: 25px; }
@@ -10841,18 +10940,16 @@ img[alt="pay"] {
 .account-more-info {
   margin-top: -40px; }
 
-.account-info .row,
-.account-info .col-50 {
+.account-info .col-50,
+.account-info .row {
   padding: 0; }
 
 .account-info .img-holder img {
-  border: 2px solid #fff; }
+  border: 2px solid #fff;
+  width: 100%; }
 
 .account-info .order img {
   margin-left: -2px; }
-
-.account-info .profile img {
-  margin-top: -4px; }
 
 .account-info .offer img {
   margin-top: -4px;
@@ -10862,28 +10959,41 @@ img[alt="pay"] {
   height: 106px;
   padding: 35px 10px 5px 0;
   margin-top: 0;
-  top: -40px;
-  background: url("../img/account-profile.png") no-repeat; }
+  top: -50px;
+  background: url("../img/account-profile.png") no-repeat;
+  background-size: cover; }
   .profile-info .profile-img {
     width: 100px;
     height: 100px;
-    top: -34px;
-    left: -35px; }
+    overflow: hidden;
+    top: -30px;
+    left: 0;
+    z-index: 0; }
   .profile-info .plan {
     position: absolute;
     top: 45px;
-    left: 25px;
+    left: 60px;
     z-index: 3; }
 
-.new,
 .attraction,
+.new,
 .party {
   border: none; }
 
-.account-marker {
+.marker-silver {
   position: absolute;
   bottom: 24%;
   left: 22%; }
+
+.marker-gold {
+  position: absolute;
+  bottom: 40%;
+  left: 44%; }
+
+.marker-platinum {
+  position: absolute;
+  bottom: 50%;
+  left: 64%; }
 
 .new {
   background-color: #2da3d6; }
@@ -10908,7 +11018,7 @@ img[alt="pay"] {
   background: url("../img/user-order.png") no-repeat -12px 0;
   background-size: 100%; }
   .user-detail .col.col-75 {
-    padding: 0px 5px; }
+    padding: 0 5px; }
   .user-detail h3 {
     font-size: 20px; }
 
@@ -10934,7 +11044,8 @@ img[alt="pay"] {
 .partyform h3 {
   font-style: italic; }
 
-.final-decision a, .final-decision button {
+.final-decision a,
+.final-decision button {
   display: inline-block;
   vertical-align: middle; }
 
@@ -10953,26 +11064,29 @@ img[alt="pay"] {
     width: 100%; }
 
 .buttons .share {
-  margin-left: 0px; }
+  margin-left: 0; }
 
 .buttons .review {
-  margin-right: 0px;
+  margin-right: 0;
   margin-left: 20px; }
 
 .buttons .next {
-  margin: 0;
-  margin-left: 20px; }
+  margin: 0 0 0 20px; }
 
-.attraction-bg, .beverage-bg, .what-new {
+.attraction-bg,
+.beverage-bg,
+.what-new {
   background: url("../img/usa/buy-bg.png");
   background-size: cover;
   margin-top: 20px; }
 
 .what-new {
-  background: url("../img/attractions.jpg"); }
+  background: url("../img/attractions.jpg");
+  background-size: cover; }
 
 .beverage-bg {
-  background: url("../img/bgyellow.jpg"); }
+  background: url("../img/bgyellow.jpg");
+  background-size: cover; }
   .beverage-bg .card {
     background-color: transparent;
     box-shadow: none; }
@@ -10981,6 +11095,9 @@ img[alt="pay"] {
     .beverage-bg .restaurant-name img {
       width: 100%; }
 
+.name {
+  margin-left: 10%; }
+
 .beverage-bg .restaurant-detail h3 {
   color: #f23cb2; }
 
@@ -10988,10 +11105,16 @@ img[alt="pay"] {
   padding: 0;
   line-height: 0; }
 
-.explore-smaash, .evento {
+.direction-modal {
+  padding: 0 13px;
+  line-height: 28px; }
+
+.evento,
+.explore-smaash {
   background: url("../img/explore-smaash.jpg");
   background-size: cover; }
-  .explore-smaash .card, .evento .card {
+  .evento .card,
+  .explore-smaash .card {
     background-color: transparent;
     box-shadow: none; }
 
@@ -11009,7 +11132,7 @@ img[alt="pay"] {
   border-radius: 5px; }
 
 .attract-new .button-set button {
-  width: 40%; }
+  width: 100%; }
 
 .attract-new .button-set .love {
   width: 58%; }
@@ -11025,17 +11148,21 @@ img[alt="pay"] {
 
 .foot .tab-item .signups {
   background-image: url("../img/signup.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #31b544; }
 
 .foot .tab-item .login {
   background-image: url("../img/login.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #2a3891; }
 
 .bar-footer .tabs-striped .tab-item {
   max-width: 100%; }
 
 .tabs-icon-only .tab-item {
   max-width: 100%; }
+  .tabs-icon-only .tab-item i {
+    background-size: contain; }
 
 .login {
   background-image: url("../img/bg.png");
@@ -11058,7 +11185,9 @@ img[alt="pay"] {
   vertical-align: middle;
   position: relative; }
 
-.ofbut .share .cart-badge, .ofbut .review .cart-badge, .ofbut .next .cart-badge {
+.ofbut .next .cart-badge,
+.ofbut .review .cart-badge,
+.ofbut .share .cart-badge {
   top: -15px;
   right: -10px;
   background-color: #ff1f1f;
@@ -11070,7 +11199,8 @@ img[alt="pay"] {
 .ion-heart:before {
   color: #ff1f1f; }
 
-.ion-camera, .ion-plus {
+.ion-camera,
+.ion-plus {
   font-size: 20px; }
 
 .photos {
@@ -11081,7 +11211,12 @@ img[alt="pay"] {
   box-shadow: 3px 1px 2px #000;
   border-radius: 5px; }
 
-.avatars, .avatarss, .avatars1, .avatarss1, .avatars2, .avatarss2 {
+.avatars,
+.avatars1,
+.avatars2,
+.avatarss,
+.avatarss1,
+.avatarss2 {
   background-image: url("../img/usa/usvirat.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -11093,19 +11228,24 @@ img[alt="pay"] {
   box-sizing: border-box; }
 
 .avatars1 {
-  background-image: url("../img/usa/flyman.png"); }
+  background-image: url("../img/usa/flyman.png");
+  background-size: cover; }
 
 .avatars2 {
-  background-image: url("../img/usa/smaillady.png"); }
+  background-image: url("../img/usa/smaillady.png");
+  background-size: cover; }
 
 .avatarss {
-  background-image: url("../img/usa/sach.png"); }
+  background-image: url("../img/usa/sach.png");
+  background-size: cover; }
 
 .avatarss1 {
-  background-image: url("../img/usa/flylady.png"); }
+  background-image: url("../img/usa/flylady.png");
+  background-size: cover; }
 
 .avatarss2 {
-  background-image: url("../img/usa/smileman.png"); }
+  background-image: url("../img/usa/smileman.png");
+  background-size: cover; }
 
 .gallery {
   background: white;
@@ -11125,7 +11265,14 @@ img[alt="pay"] {
 .pick-img {
   height: 100px;
   width: 100px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 5px;
+  position: relative; }
+  .pick-img img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
 
 .pick-img + .pick-img {
   margin-left: 20px; }
@@ -11173,11 +11320,14 @@ img[alt="pay"] {
   .baring .bar-profile {
     background-color: #444;
     height: 170px;
-    padding: 0px 0px 0px 0px;
+    padding: 0;
     position: relative; }
 
+.header-slide {
+  top: 40px; }
+
 .hass-header {
-  top: 190px; }
+  top: 170px; }
   .hass-header .item {
     border: none;
     background-color: transparent; }
@@ -11187,7 +11337,9 @@ img[alt="pay"] {
     margin-left: 40px; }
     .hass-header .list .sidemenu-item img {
       vertical-align: top;
-      margin-right: 10px; }
+      margin-right: 10px;
+      height: 15px;
+      width: 15px; }
 
 .usa-logo {
   height: 79px;
@@ -11250,7 +11402,8 @@ img[alt="pay"] {
   .color-change .list:nth-of-type(6n+6) .karting-championship .views button {
     border: 1px solid #29a8df; }
 
-.angular-google-map {
+.angular-google-map,
+.sorry {
   display: block; }
 
 .angular-google-map-container {
@@ -11268,13 +11421,28 @@ img[alt="pay"] {
   font-size: 12px;
   margin: 0 1px; }
 
-<<<<<<< HEAD
+.order-bg .header .col {
+  background-color: #777; }
+
+.order-bg .col {
+  border: solid 1px #000;
+  border-bottom-style: none;
+  border-right-style: none;
+  background-color: #fff; }
+
+.order-bg .col:last-child {
+  border-right: solid 1px grey; }
+
+.order-bg .row:last-child .col {
+  border-bottom: solid 1px grey; }
+
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px; }
 
-#right-panel select, #right-panel input {
+#right-panel input,
+#right-panel select {
   font-size: 15px; }
 
 #right-panel select {
@@ -11283,30 +11451,69 @@ img[alt="pay"] {
 #right-panel i {
   font-size: 12px; }
 
-html, body {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0; }
 
 #map {
-  height: 100%;
   float: left;
-  width: 80%;
-  height: 100vh; }
+  width: 100%;
+  height: 65vh;
+  margin-top: 10px; }
 
 #right-panel {
-  float: right;
-  display: block;
-  width: 100%;
-  height: 100%; }
+  display: none; }
 
 .panel {
   height: 100%;
   overflow: auto; }
-=======
+
 .otps {
   position: absolute;
-  top: 0%;
+  top: 0;
   left: 50%;
   transform: translate(-50%, -50%); }
->>>>>>> a781cd8cd83230c20be5c865a651fec690904d0d
+
+.baring-skip {
+  display: none; }
+
+.skip-button {
+  line-height: 0;
+  padding: 25px;
+  color: white !important; }
+
+.menu-minus {
+  margin-top: -200px; }
+
+.a-call {
+  right: 4% !important; }
+
+.payments {
+  background-color: transparent;
+  border: none; }
+
+.resgistration p {
+  margin: 0; }
+
+.resgistration .exsisting {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 15px; }
+
+.resgistration .otpss {
+  margin-bottom: 0; }
+  .resgistration .otpss input {
+    margin-bottom: 0;
+    height: 28px; }
+
+.resgistration span {
+  font-size: 12px; }
+
+.pop-imgholder img {
+  width: 100%; }
+
+.max-h {
+  max-height: 100%;
+  max-width: none; }

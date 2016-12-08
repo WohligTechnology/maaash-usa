@@ -1,12 +1,19 @@
 <ion-view>
   <ion-content class="account-main">
     <div class="account-banner">
-      <div class="banner-imgholder relate" ng-click="getPlan();">
+      <div class="banner-imgholder relate" >
         <!-- <img src="img/account-info.png" alt="" class="img-responsive"> -->
-        <img src="img/info-account.jpg" alt="" class="img-responsive">
-        <div class="account-marker">
+        <img src="img/usa/home-bg.png" alt="usa" class="full-image img-responsive">
+        <!-- <img src="img/info-account.jpg" alt="" class="img-responsive"> -->
+        <!-- <div class="marker-silver">
           <img src="img/account-marker.png" alt="" class="img-responsive" width="30">
         </div>
+        <div class="marker-gold">
+          <img src="img/account-marker.png" alt="" class="img-responsive" width="30">
+        </div>
+        <div class="marker-platinum">
+          <img src="img/account-marker.png" alt="" class="img-responsive" width="30">
+        </div> -->
       </div>
     </div>
     <div class="profile-strip profile-info">
@@ -14,26 +21,29 @@
         <div class="col col-25">
           <div class="relate">
             <div class="profile-img">
-              <img src="img/profile-img.jpg" alt="" class="img-responsive">
+              <img src="img/profile-img.jpg" ng-if= "!userForm.profilePic" alt="" class=" max-h img-responsive">
             </div>
-            <div class="plan" ng-click="getPlan();">
+            <div class="profile-img">
+              <img ng-src="{{userForm.profilePic|uploadpath}}" alt="" class=" max-h img-responsive">
+            </div>
+            <!-- <div class="plan" ng-click="getPlan();">
               <img src="img/silver.png" alt="silver" class="img-responsive">
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col col-75">
           <div class="clearfix relate">
             <div class="name pull-left">
-              <h4 class="m-clear text-in-shadow color-white font-america">Amrit Bhamrah</h4>
-              <span class="text-in-shadow color-white font-america">Cricketer</span>
+              <h4 class="m-clear text-in-shadow color-white font-america" >{{userForm.CustomerName}}</h4>
+              <!-- <span class="text-in-shadow color-white font-america">Cricketer</span> -->
             </div>
-            <div class="slash">
+            <!-- <div class="slash">
               <span class="text-in-shadow color-white font-galano">&#47;</span>
             </div>
             <div class="name pull-right">
-              <h4 class="m-clear text-in-shadow color-white font-america">33500</h4>
+              <h4 class="m-clear text-in-shadow color-white font-america">0</h4>
               <span class="text-in-shadow color-white font-america">Points</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -42,24 +52,23 @@
       <div class="row">
         <div class="col col-offset-10 col-80">
           <div class="text-center">
-            <h3 class="text-uppercase text-in-shadow font-america mb5">Headline</h3>
-            <p class=" font-galano">Lorem Ipsum is simply dummy text</p>
+            <h3 class="text-uppercase text-in-shadow font-america mb5">My Space</h3>
+            <p class=" font-galano">Explore your account</p>
           </div>
           <div class="account-info">
-            <div class="row">
+            <!-- <div class="row">
               <div class="col col-50">
-                <div class="img-holder history"> 
+                <div class="img-holder history">
                     <img src="img/wishlist.jpg" alt="" class="img-responsive" ui-sref="app.wishlist">
-                    
+
                 </div>
               </div>
               <div class="col col-50">
                 <div class="img-holder order">
               <img src="img/account-order.jpg" alt="" class="img-responsive" ui-sref="app.order">
-                  
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col col-50">
                 <div class="img-holder profile">
@@ -67,9 +76,12 @@
                 </div>
               </div>
               <div class="col col-50">
-                <div class="img-holder offer">
-                  <img src="img/account-offers.jpg" alt="" class="img-responsive" ui-sref="app.earn">
+                <div class="img-holder order">
+              <img src="img/account-order.jpg" alt="" class="img-responsive" ui-sref="app.order">
                 </div>
+                <!-- <div class="img-holder offer">
+                  <img src="img/account-offers.jpg" alt="" class="img-responsive" ui-sref="app.earn">
+                </div> -->
               </div>
             </div>
           </div>

@@ -8,8 +8,8 @@
             <div class="col col-33 col-offset-10">
               <div class="relate">
                 <div class="profile-img">
-                  <img ng-src="{{userForm.profilePic|uploadpath}}" ng-if="userForm.profilePic != null" src="img/profile-img.jpg" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
-                  <img  ng-if="userForm.profilePic == null" src="img/profile-img.jpg" alt="profile-image" class="img-responsive" ng-click="uploadProfilePic();">
+                  <img ng-src="{{userForm.profilePic|uploadpath}}" ng-if="userForm.profilePic != null"  alt="profile-image" class="max-h img-responsive" ng-click="uploadProfilePic();">
+                  <img  ng-if="userForm.profilePic == null" src="img/profile-img.jpg" alt="profile-image" class="max-h img-responsive" ng-click="uploadProfilePic();">
                 </div>
                 <div class="plan" ui-sref="noheader.avatar">
                   <img src="img/pens.png" alt="edit" class="img-responsive">
@@ -53,11 +53,14 @@
               <input type="email" placeholder="Email Id" ng-model="userForm.CustomerEmail" readonly>
             </label>
             <label class="item item-input">
-              <input type="text" placeholder="Pin code" ng-model="userForm.pincode" class="editing">
+              <input type="text" placeholder="Pin code" ng-model="userForm.pincode" class="editing" maxlength="6">
             </label>
             <button type="submit" name="button" class="go full-width" ng-click="updateProfile(userForm)" >
               <img src="img/update.png" alt="" class="img-responsive">
             </button>
+            <p class="color-white text-center" ng-if="popupmsg">
+              profile updated successfully
+            </p>
             <p class="color-white text-center" ng-click="reset();">
               Reset password?
             </p>
