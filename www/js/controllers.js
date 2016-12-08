@@ -1488,7 +1488,7 @@ angular.module('starter.controllers', ['ngCordova'])
           if (data.value === true) {
             $scope.oneTimepswd();
           } else {
-            $scope.errormsg = "true";
+            $scope.errormsg = true;
             $scope.errortext = data.data.GenerateOTPTable[0].Message;
           }
         })
