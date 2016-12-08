@@ -8,7 +8,7 @@
       <ion-list>
         <div class="row">
           <div class="col-offset-10 col col-80">
-            <form name="user" ng-if="!formComplete" ng-submit="generateOtp(userForm.CustomerMobile)">
+            <form name="user" ng-if="!formComplete" ng-submit="generateOtp(userForm)">
               <label class="item item-input">
                 <input type="text" placeholder="Name" name="name" required ng-model="userForm.CustomerName">
               </label>
@@ -23,7 +23,8 @@
               <label class="item item-input ">
                 <div class="custom-select">
                   <select class="gender" required ng-model="userForm.gender">
-                    <option selected value="">Gender</option>
+                    <option ng-selected="true"
+                value="">Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
@@ -47,16 +48,17 @@
                 <input type="password" placeholder="Password" required ng-model="userForm.CustomerPassword" name="password"  maxlength="14" minlength="8">
               </label>
               <label class="item item-input">
-                <input type="password" placeholder="Re-Enter Password" required ng-model="userForm.confirmPassword" name="password"  maxlength="14" minlength="8">
+                <input type="password" placeholder="Re-Enter Password" required ng-model="userForm.confirmPassword" name="confirmpassword"  maxlength="14" minlength="8">
               </label>
-              <p class="error-msg" ng-show=" userForm.CustomerPassword != userForm.confirmPassword">Password does not match.</p>
-              <p class="error-msg" ng-show="user.CustomerPassword.$error.required ">password should be longer than 8 characters</p>
+              <!--<p ng-if="invalPass">Password does not match.</p>-->
+              <p class="error-msg" ng-if="userForm.CustomerPassword != userForm.confirmPassword">Password does not match.</p>
+              <p class="error-msg" ng-show="user.password.$error.required  && user.password.$touched">Please Enter Your Password.</p>
 
               <!-- <button type="submit" name="button" class="go full-width">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button> -->
               <!-- <button type="submit" name="button" class="go full-width" > -->
-              <button  name="button" class="go full-width" >
+              <button  name="button" class="go full-width" type="submit">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="error-msg" ng-if="errormsg">{{errortext}}</p>
