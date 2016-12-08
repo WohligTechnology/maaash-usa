@@ -10817,7 +10817,8 @@ img[alt="pay"] {
   height: 90px;
   top: 15px;
   padding: 25px 0px 0 0;
-  background: url("../img/amrit.png") no-repeat; }
+  background: url("../img/amrit.png") no-repeat;
+  background-size: cover; }
   .profile .profile-info .profile-img {
     left: 0;
     top: -30px; }
@@ -11422,3 +11423,7 @@ html, body {
 
 .pop-imgholder img {
   width: 100%; }
+
+.max-h {
+  max-height: 100%;
+  max-width: none; }
