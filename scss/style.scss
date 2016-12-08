@@ -174,23 +174,23 @@ $brand-blue: #29a8df!default;
     background-size: 100%;
   }
   .explore {
-    background: url('../img/explore.jpg') #7e89d2 no-repeat;
+    background: url('../img/explore.jpg')  #2a3891 no-repeat;
     background-position: 50%;
   }
   .buy {
-    background: url('../img/buy.jpg') #7e89d2 no-repeat;
+    background: url('../img/buy.jpg') #01a69a no-repeat;
     background-position: 50%;
   }
   .account {
-    background: url('../img/account.jpg') #7e89d2 no-repeat;
+    background: url('../img/account.jpg') #9c1d62 no-repeat;
     background-position: 50%;
   }
   .check {
-    background: url('../img/usa/checkin.jpg') #7e89d2 no-repeat;
+    background: url('../img/usa/checkin.jpg') #31b544 no-repeat;
     background-position: 50%;
   }
   .contact {
-    background: url('../img/contactus.jpg') #7e89d2 no-repeat;
+    background: url('../img/contactus.jpg') #ea1c21 no-repeat;
     background-position: 50%;
   }
 }
@@ -514,11 +514,12 @@ label{
   top: -45px;
  left: 0;
   z-index: 2;
-  img {
-    border-radius: 100%;
-    height: 100%;
-    width: 100%;
-  }
+  overflow: hidden;
+  // img {
+  //   border-radius: 100%;
+  //   height: 100%;
+  //   width: 100%;
+  // }
 }
 }
 
@@ -1345,7 +1346,7 @@ img[alt="pay"] {
   }
   .img-holder img {
     border: 2px solid #fff;
-     margin-top: -4px;
+    width: 100%;
   }
   .order img {
     margin-left: -2px;
@@ -1363,8 +1364,9 @@ img[alt="pay"] {
   height: 106px;
   padding: 35px 10px 5px 0;
   margin-top: 0;
-  top: -40px;
+  top: -50px;
   background: url('../img/account-profile.png') no-repeat;
+  background-size:cover; 
   .profile-img {
     width: 100px;
     height: 100px;
