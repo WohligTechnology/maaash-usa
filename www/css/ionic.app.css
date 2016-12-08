@@ -10094,10 +10094,10 @@ h3.ion-ios-bell-outline {
 
 .otp-content {
   position: absolute;
-  top: 70%;
-  left: 30%;
-  -webkit-transform: translate(-30%, -70%);
-  transform: translate(-30%, -70%); }
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
   .otp-content p {
     margin-bottom: 15px;
     font-size: 18px; }
@@ -10292,7 +10292,8 @@ h3.ion-ios-bell-outline {
   z-index: 99; }
 
 .inside-smaash .red-img {
-  height: 220px; }
+  height: 220px;
+  width: 100%; }
 
 .points-get {
   background: url(../img/about-smaaash.jpg) no-repeat #fff002;
@@ -11065,11 +11066,13 @@ img[alt="pay"] {
 
 .foot .tab-item .signups {
   background-image: url("../img/signup.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #31b544; }
 
 .foot .tab-item .login {
   background-image: url("../img/login.png");
-  background-size: 100% 100%; }
+  background-size: contain;
+  background-color: #2a3891; }
 
 .bar-footer .tabs-striped .tab-item {
   max-width: 100%; }
@@ -11401,3 +11404,6 @@ html, body {
 
 .resgistration span {
   font-size: 12px; }
+
+.pop-imgholder img {
+  width: 100%; }

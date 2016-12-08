@@ -332,10 +332,10 @@ label{
 }
 // otp
 .otp-content {
-  position: absolute;
-  top: 70%;
-  left: 30%;
-  @include transform(translate(-30%,-70%));
+ position: absolute;
+    top: 55%;
+    left: 50%;
+  @include transform(translate(-50%,-50%));
   p {
     margin-bottom: 15px;
     font-size: 18px;
@@ -567,6 +567,7 @@ label{
   }
   .red-img {
     height: 220px;
+    width: 100%;
   }
 }
 .points-get {
@@ -1585,11 +1586,13 @@ img[alt="pay"] {
 .foot{
   .tab-item .signups{
         background-image: url("../img/signup.png");
-        background-size: 100% 100%;
+          background-size: contain;
+          background-color: #31b544;
   }
    .tab-item .login{
         background-image: url("../img/login.png");
-          background-size: 100% 100%;
+          background-size: contain;
+          background-color: #2a3891;
   }
 }
 .bar-footer .tabs-striped .tab-item {
@@ -2061,4 +2064,11 @@ margin-top: 10px;
     font-size: 12px;
   }
 
+}
+//last min saving ass
+
+.pop-imgholder{
+  img{
+    width: 100%;
+  }
 }
