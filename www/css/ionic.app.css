@@ -9991,8 +9991,9 @@ a.button {
   background-color: transparent;
   background-image: none; }
 
-.header .logo {
-  margin-top: 5px; }
+.header .logo .header .logo {
+  margin-top: -2px;
+  padding: 4px; }
 
 .scroll-content {
   padding: 50px 0 0; }

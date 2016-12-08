@@ -201,7 +201,11 @@ $brand-blue: #29a8df!default;
     background-image: none;
   }
   .logo {
-    margin-top: 5px;
+    // margin-top: 5px;
+    .header .logo {
+margin-top: -2px;
+padding: 4px;
+}
   }
 }
 .scroll-content {
