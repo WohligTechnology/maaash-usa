@@ -211,9 +211,6 @@ angular.module('starter.controllers', ['ngCordova'])
   MyServices.getSlider(function (data) {
     console.log(data.data);
     $scope.mySlides = data.data;
-    _.each($scope.mySlides, function (n,key) {
-      n.ordering = key+1;
-    });
     $ionicSlideBoxDelegate.update();
   });
 
@@ -471,17 +468,23 @@ angular.module('starter.controllers', ['ngCordova'])
     });
     $scope.read = "Read More";
     $scope.more = false;
+    $scope.moreDesc={};
 
-    $scope.readmore = function (id) {
-      if (!$scope.more) {
-        $scope.read = "Read Less";
-        $scope.more = true;
-      } else {
-        $scope.read = "Read More";
-        $scope.more = false;
-      }
-    }
-
+    // $scope.readmore = function (id) {
+    //   if (!$scope.more) {
+    //     $scope.read = "Read Less";
+    //     $scope.more = true;
+    //   } else {
+    //     $scope.read = "Read More";
+    //     $scope.more = false;
+    //   }
+    // }
+    $scope.readMore = function(id) {
+        $scope.moreDesc[id] = ($scope.moreDesc[id] == true) ? false : true;
+        $scope.myDesc = _.find($scope.SingleExploreSmaaash, function(n) {
+            return n._id == id;
+        }).description;
+    };
 
     $scope.shareProduct = function (index) {
       console.log($scope.SingleExploreSmaaash[index].hometext);
@@ -1479,7 +1482,7 @@ angular.module('starter.controllers', ['ngCordova'])
         $scope.invalPass =false;
    $scope.getotp.CustomerMobileNo = phone.CustomerMobile;
         MyServices.generateOtp($scope.getotp, function (data) {
-          console.log(data);
+          console.log("generateOtp",data);
           $scope.errormsg = "false";
 
           if (data.value === true) {
@@ -1518,33 +1521,29 @@ angular.module('starter.controllers', ['ngCordova'])
     }
 
   $scope.CustomerRegistration = function (formData) {
+      console.log("formData", formData);
+    if (formData) {
+      MyServices.CustomerRegistration(formData, function (data) {
+        console.log(data);
+        if (data.value === true) {
+          MyServices.setUser(data.data);
+          $scope.formComplete = true;
+            $timeout(function () {
+            $scope.formComplete = false;
+            $scope.emailExist = false;
+            $scope.userForm = {};
+            $scope.ionicpop.close();
+            $state.go("noheader.avatar");
+          }, 2000);
+        } else {
+          $scope.emailExist = true;
+          $scope.error = data.data;
+  $state.go('noheader.signup');
+        }
 
-    console.log("formData", formData);
-    // if (formData) {
-    //   formData.city=$.jStorage.get("cityid");
-    // }
-    MyServices.CustomerRegistration(formData, function (data) {
-      console.log(data);
-      if (data.value === true) {
-        // $.jStorage.set("loginDetail", data);
-        MyServices.setUser(data.data);
+      })
+    }
 
-        $scope.formComplete = true;
-
-        $timeout(function () {
-          $scope.formComplete = false;
-          $scope.emailExist = false;
-          $scope.userForm = {};
-          $scope.ionicpop.close();
-          $state.go("noheader.avatar");
-        }, 2000);
-      } else {
-        $scope.emailExist = true;
-        $scope.error = data.data;
-$state.go('noheader.signup');
-      }
-
-    })
   }
 })
 
