@@ -10128,8 +10128,9 @@ h3.ion-ios-bell-outline {
     line-height: 18px; }
 
 .headline .wid {
-  width: 75%;
   margin: 0 auto; }
+  .headline .wid img {
+    width: 100%; }
 
 .menu-open .ion-navicon:before {
   content: "\f2d7" !important; }
@@ -10755,7 +10756,8 @@ h3.ion-ios-bell-outline {
     border: 1px solid #642c91; }
 
 .payment {
-  background: url("../img/bgred.jpg"); }
+  background: url("../img/bgred.jpg");
+  background-size: cover; }
   .payment .points {
     background-color: #662d91; }
   .payment .wallet {
@@ -11003,10 +11005,12 @@ img[alt="pay"] {
   margin-top: 20px; }
 
 .what-new {
-  background: url("../img/attractions.jpg"); }
+  background: url("../img/attractions.jpg");
+  background-size: cover; }
 
 .beverage-bg {
-  background: url("../img/bgyellow.jpg"); }
+  background: url("../img/bgyellow.jpg");
+  background-size: cover; }
   .beverage-bg .card {
     background-color: transparent;
     box-shadow: none; }
@@ -11050,7 +11054,7 @@ img[alt="pay"] {
   border-radius: 5px; }
 
 .attract-new .button-set button {
-  width: 40%; }
+  width: 100%; }
 
 .attract-new .button-set .love {
   width: 58%; }
@@ -11136,19 +11140,24 @@ img[alt="pay"] {
   box-sizing: border-box; }
 
 .avatars1 {
-  background-image: url("../img/usa/flyman.png"); }
+  background-image: url("../img/usa/flyman.png");
+  background-size: cover; }
 
 .avatars2 {
-  background-image: url("../img/usa/smaillady.png"); }
+  background-image: url("../img/usa/smaillady.png");
+  background-size: cover; }
 
 .avatarss {
-  background-image: url("../img/usa/sach.png"); }
+  background-image: url("../img/usa/sach.png");
+  background-size: cover; }
 
 .avatarss1 {
-  background-image: url("../img/usa/flylady.png"); }
+  background-image: url("../img/usa/flylady.png");
+  background-size: cover; }
 
 .avatarss2 {
-  background-image: url("../img/usa/smileman.png"); }
+  background-image: url("../img/usa/smileman.png");
+  background-size: cover; }
 
 .gallery {
   background: white;
@@ -11169,7 +11178,8 @@ img[alt="pay"] {
   height: 100px;
   width: 100px;
   overflow: hidden;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  position: relative; }
   .pick-img img {
     position: absolute;
     left: 50%;

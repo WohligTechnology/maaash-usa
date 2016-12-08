@@ -377,8 +377,10 @@ label{
     }
   }
   .wid{
-    width: 75%;
     margin: 0 auto;
+    img{
+      width: 100%;
+    }
   }
 }
 .menu-open {
@@ -1196,6 +1198,7 @@ padding: 0 10px;
 // payment
 .payment {
   background: url('../img/bgred.jpg');
+  background-size: cover;
   .points {
     background-color: #662d91;
   }
@@ -1498,9 +1501,11 @@ img[alt="pay"] {
 }
 .what-new{
  background: url('../img/attractions.jpg');
+ background-size: cover;
 }
 .beverage-bg{
     background: url('../img/bgyellow.jpg');
+    background-size: cover;
 
     .card{
       background-color: transparent;
@@ -1561,7 +1566,7 @@ img[alt="pay"] {
   }
   .button-set{
     button{
-      width: 40%;
+      width: 100%;
     }
    .love{
       width: 58%;
@@ -1680,21 +1685,26 @@ img[alt="pay"] {
 
 .avatars1{
     background-image: url("../img/usa/flyman.png");
+    background-size: cover;
 }
 
 .avatars2{
     background-image: url("../img/usa/smaillady.png");
+    background-size: cover;
 }
 
 .avatarss{
     background-image: url("../img/usa/sach.png");
+    background-size: cover;
 }
 .avatarss1{
  background-image: url("../img/usa/flylady.png");
+ background-size: cover;
 }
 
 .avatarss2{
  background-image: url("../img/usa/smileman.png");
+ background-size: cover;
 }
 
 .gallery{
@@ -1720,6 +1730,7 @@ img[alt="pay"] {
   width: 100px;
   overflow: hidden;
   margin-bottom: 5px;
+  position: relative;
   img{
     position: absolute;
     left: 50%;
