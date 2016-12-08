@@ -10064,9 +10064,6 @@ h3.ion-ios-bell-outline {
 .landing .list {
   margin-top: 40px; }
 
-.landing label {
-  margin-bottom: 25px; }
-
 .go {
   border: none;
   background-color: transparent; }
@@ -10878,9 +10875,6 @@ img[alt="pay"] {
 
 .account-info .order img {
   margin-left: -2px; }
-
-.account-info .profile img {
-  margin-top: -4px; }
 
 .account-info .offer img {
   margin-top: -4px;
