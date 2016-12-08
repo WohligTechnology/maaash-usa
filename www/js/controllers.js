@@ -1439,7 +1439,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.closePopup = function () {
     $scope.ionicpop.close();
   }
-
+  $scope.variables = {};
   $scope.userForm = {};
   $scope.userForm.BranchID = "17";
   $scope.userForm.otp = "";
@@ -1449,21 +1449,24 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.getotp.CustomerMobileNo = "";
   $scope.getotp.OTPFor = "1";
   $scope.getotp.BranchID = "17";
-
+  $scope.variables.letIn = true;
 
   $scope.generateOtp = function (phone) {
-      $scope.getotp.CustomerMobileNo = phone;
-      MyServices.generateOtp($scope.getotp, function (data) {
-        console.log(data);
-        $scope.errormsg = "false";
+      if($scope.variables.letIn){
+        $scope.variables.letIn = false;
+        $scope.getotp.CustomerMobileNo = phone;
+        MyServices.generateOtp($scope.getotp, function (data) {
+          console.log(data);
+          $scope.errormsg = "false";
 
-        if (data.value === true) {
-          $scope.oneTimepswd();
-        } else {
-          $scope.errormsg = "true";
-          $scope.errortext = data.data.GenerateOTPTable[0].Message;
-        }
-      })
+          if (data.value === true) {
+            $scope.oneTimepswd();
+          } else {
+            $scope.errormsg = "true";
+            $scope.errortext = data.data.GenerateOTPTable[0].Message;
+          }
+        })
+      }
     }
     $scope.resendOtp =function(phone){
       console.log(phone,"****");
@@ -1475,7 +1478,7 @@ angular.module('starter.controllers', ['ngCordova'])
       MyServices.generateOtp($scope.getotp, function(data) {
         console.log(data);
         $scope.errormsg= "false";
-    
+
         if(data.value === true){
           $scope.oneTimepswd();
         }

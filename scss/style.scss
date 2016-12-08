@@ -1716,6 +1716,13 @@ img[alt="pay"] {
   height: 100px;
   width: 100px;
   overflow: hidden;
+  margin-bottom: 5px;
+  img{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50% , -50%);
+  }
 }
 .pick-img+.pick-img{
   margin-left: 20px;
@@ -2048,7 +2055,7 @@ margin-top: 10px;
  margin-bottom: 0;
    height: 28px;
     }
-   
+
   }
   span{
     font-size: 12px;

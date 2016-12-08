@@ -11165,7 +11165,13 @@ img[alt="pay"] {
 .pick-img {
   height: 100px;
   width: 100px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 5px; }
+  .pick-img img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
 
 .pick-img + .pick-img {
   margin-left: 20px; }
