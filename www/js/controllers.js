@@ -264,9 +264,10 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.credentials = {};
+  $scope.abc={};
   $scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
-  $scope.CustomerResetPassword = function (password) {
-    console.log(password);
+  $scope.CustomerResetPassword = function (abc) {
+    console.log("abc",abc);
     console.log($scope.credentials);
     MyServices.CustomerResetPassword($scope.credentials, function (data) {
       console.log(data);
