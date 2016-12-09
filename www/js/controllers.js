@@ -267,7 +267,6 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
   $scope.CustomerResetPassword = function (password) {
     console.log(password);
-
     console.log($scope.credentials);
     MyServices.CustomerResetPassword($scope.credentials, function (data) {
       console.log(data);
@@ -988,6 +987,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
     ];
 
+  // $timeout(function(){
+  //   $scope.slides = ['1','2'];
+  //   $ionicSlideBoxDelegate.update();
+  // },900);
+
+
     MyServices.getHomeContent(function (data) {
       if (data.value) {
         $scope.homeContent = data.data;
@@ -1706,7 +1711,7 @@ $scope.errormsg=false;
       if (data.value === true) {
 
         MyServices.setUser(data.data);
-        $scope.$broadcast('scroll.refreshComplete');
+        // $scope.$broadcast('scroll.refreshComplete');
 
         //$.jStorage.set("loginDetail", data);
         $scope.formComplete = true;
@@ -1718,11 +1723,11 @@ $scope.errormsg=false;
           $scope.ionicpop.close();
           $state.go("app.account")
 
-        }, 2000);
+        }, 8000);
       } else {
         $scope.error = data.data;
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.showLoading('Error Updating Profile!', 1000);
+        // $scope.$broadcast('scroll.refreshComplete');
+        // $scope.showLoading('Error Updating Profile!', 1000);
       }
 
     })

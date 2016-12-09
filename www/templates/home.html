@@ -1,7 +1,7 @@
 <ion-view>
   <ion-content class="home header-slide">
     <div class="home-main">
-      <ion-slide-box on-slide-changed="slideHasChanged($index)"  auto-play="true">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)"  auto-play="true"  does-continue="true">
         <ion-slide ng-repeat="slide in mySlides track by $index">
           <div class="img-bx">
             <img ng-if="slide.appImage && slide.appImage != ''" ng-src="{{slide.appImage | uploadpath }}" alt="No Image Slider" class="full-image">
