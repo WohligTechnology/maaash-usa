@@ -1,3 +1,4 @@
+var globalfunction = {};
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices,$filter) {
@@ -791,7 +792,7 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(data);
       if (data.value === true) {
         $scope.popupmsg = true;
-          $state.go('app.account');
+          // $state.go('app.account');
       }
     })
   }
@@ -1384,7 +1385,7 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log("jstoreage", jstoreage);
 
     }
-
+    // globalfunction
 
     $scope.startloading = function () {
       $ionicLoading.show({
