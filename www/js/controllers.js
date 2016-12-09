@@ -217,7 +217,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicPopup, MyServices, $ionicLoading) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicPopup, MyServices, $ionicLoading,$state) {
   $scope.popupmsg = false;
 
   $scope.startloading = function () {
@@ -230,7 +230,6 @@ angular.module('starter.controllers', ['ngCordova'])
   var _id = jstoreage._id;
   console.log("iddd", _id);
   // $scope.startloading() ;
-
 
 
   MyServices.getProfile(_id, function (data) {
@@ -280,7 +279,6 @@ angular.module('starter.controllers', ['ngCordova'])
       if (data.value === true) {
         $scope.popupmsg = true;
         MyServices.setUser(data.data);
-
       }
     })
   }
@@ -792,14 +790,19 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(data);
       if (data.value === true) {
         $scope.popupmsg = true;
+        MyServices.setUser(data.data);
           // $state.go('app.account');
+          globalfunction.setUserData();
       }
     })
+  }
+  $scope.goHere= function (state) {
+    $state.go(state);
   }
   $scope.takePhotoCamera = function () {
     var options = {
       quality: 75,
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.FILE_URI,
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
@@ -813,10 +816,14 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(imageData);
 
       // $scope.imgURI = "data:image/jpeg;base64," + imageData;
-      $scope.userForm.profilePic = "data:image/jpeg;base64," + imageData;
-      $scope.profilePic = $scope.imgURI;
-      $scope.updateProfile($scope.userForm.profilePic);
+      // $scope.userForm.profilePic = "data:image/jpeg;base64," + imageData;
 
+      // $scope.profilePic = $scope.imgURI;
+
+      // $scope.updateProfile($scope.userForm.profilePic);
+
+      $scope.userForm.profilePic = imageData;
+      $scope.uploadImage($scope.userForm.profilePic);
 
     }, function (err) {
       // An error occured. Show a message to the user
@@ -1362,7 +1369,7 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 .controller('AccountCtrl', function ($scope, $stateParams, $ionicPopup, MyServices, $ionicLoading, $state) {
-
+      console.log("Accounts me hain");
     if ($.jStorage.get("loginDetail") != null) {
 
       var jstoreage = $.jStorage.get("loginDetail");
@@ -1385,7 +1392,9 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log("jstoreage", jstoreage);
 
     }
-    // globalfunction
+    globalfunction.setUserData = function () {
+      $scope.userForm = $.jStorage.get('loginDetail');
+    };
 
     $scope.startloading = function () {
       $ionicLoading.show({
