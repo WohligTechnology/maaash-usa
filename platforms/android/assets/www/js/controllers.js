@@ -241,16 +241,37 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.userForm.dob = new Date(data.data.dob);
     } else {}
   });
+  $scope.credentials = {};
+  $scope.incorrect=false;
+  $scope.popupmsg=false;
+
+  $scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
+  $scope.CustomerResetPassword = function (credentials) {
+    console.log("credentials",credentials);
+
+    MyServices.CustomerResetPassword(credentials, function (data) {
+      console.log(data);
+      if (data.value === true){
+        $scope.popupmsg = true;
+      }else if (data.value === false) {
+        $scope.incorrect=true;
+      }
+
+    })
+  }
+
+
 
   $scope.reset = function () {
+    console.log("in reset");
     $scope.popupmsg = false;
-    $scope.reset = $ionicPopup.show({
+    $scope.resets = $ionicPopup.show({
       templateUrl: 'templates/modal/reset.html',
       scope: $scope
     });
   };
   $scope.closePopup = function () {
-    $scope.reset.close();
+    $scope.resets.close();
   }
   $scope.updateProfile = function (userForm) {
     MyServices.updateProfile(userForm, function (data) {
@@ -263,18 +284,7 @@ angular.module('starter.controllers', ['ngCordova'])
     })
   }
 
-  $scope.credentials = {};
-  $scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
-  $scope.CustomerResetPassword = function (password) {
-    console.log(password);
 
-    console.log($scope.credentials);
-    MyServices.CustomerResetPassword($scope.credentials, function (data) {
-      console.log(data);
-      if (data.value === true)
-        $scope.popupmsg = true;
-    })
-  }
 
 })
 
@@ -739,7 +749,7 @@ angular.module('starter.controllers', ['ngCordova'])
       // Success! Image data is here
       console.log(resultImage);
       $scope.userForm.profilePic = resultImage[0];
-      $scope.updateProfile($scope.userForm.profilePic);
+      // $scope.updateProfile($scope.userForm);
       $scope.uploadImage($scope.userForm.profilePic);
 
     }, function (err) {
@@ -764,7 +774,7 @@ angular.module('starter.controllers', ['ngCordova'])
         console.log(result.response);
         result.response = JSON.parse(result.response);
         $scope.userForm.profilePic = result.response.data[0];
-        $scope.updateProfile($scope.userForm.profilePic);
+        $scope.updateProfile($scope.userForm);
 
         // $scope.submitData($scope.formData);
         // $scope.submitProfile($scope.profileData);
@@ -799,7 +809,7 @@ angular.module('starter.controllers', ['ngCordova'])
     };
 
     $cordovaCamera.getPicture(options).then(function (imageData) {
-      console.log("hi1");
+      console.log(imageData);
 
       // $scope.imgURI = "data:image/jpeg;base64," + imageData;
       $scope.userForm.profilePic = "data:image/jpeg;base64," + imageData;
@@ -987,6 +997,12 @@ angular.module('starter.controllers', ['ngCordova'])
       }
 
     ];
+
+  // $timeout(function(){
+  //   $scope.slides = ['1','2'];
+  //   $ionicSlideBoxDelegate.update();
+  // },900);
+
 
     MyServices.getHomeContent(function (data) {
       if (data.value) {
@@ -1437,27 +1453,7 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   }
     $scope.validEmail = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-  //Password Validator
-// $scope.valid1 = false;
-// $scope.valid2 = false;
-// $scope.passwordValidator = function (password) {
-//   $scope.passwordInvalid = true;
-//   if (password && password.length >= 8 && password.length <= 15) {
-//     $scope.valid1 = true;
-//   } else {
-//     $scope.valid1 = false;
-//   }
-//   if (/([a-zA-Z])/.test(password) && /([0-9])/.test(password)) {
-//     $scope.valid2 = true;
-//   } else {
-//     $scope.valid2 = false;
-//   }
-//   if ($scope.valid1 && $scope.valid2) {
-//     $scope.passwordInvalid = false;
-//   } else {
-//     $scope.passwordInvalid = true;
-//   }
-// };
+
   $scope.maxDate = $filter('date')(new Date(), 'yyyy-MM-dd');
   $scope.closePopup = function () {
     $scope.ionicpop.close();
@@ -1471,7 +1467,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.getotp = {};
   $scope.getotp.CustomerMobileNo = "";
   $scope.getotp.OTPFor = "1";
-  $scope.getotp.BranchID = "17";
+  // $scope.getotp.BranchID = "17";
   $scope.variables.letIn = true;
 
     $scope.generateOtp = function (phone) {
@@ -1489,16 +1485,45 @@ angular.module('starter.controllers', ['ngCordova'])
           if (data.value === true) {
             $scope.oneTimepswd();
           } else {
+            console.log("data in false",data);
             $scope.errormsg = true;
-            $scope.errortext = data.data.GenerateOTPTable[0].Message;
+            $scope.errortext = true;
           }
         })
       }else{
         $scope.invalPass = true;
       }
     }
+  }
 
-      }
+  $scope.CustomerRegistration = function (formData) {
+      console.log("formData", formData);
+    if (formData) {
+      MyServices.CustomerRegistration(formData, function (data) {
+        console.log(data);
+        if (data.value === true) {
+          MyServices.setUser(data.data);
+          $scope.formComplete = true;
+            $timeout(function () {
+            $scope.formComplete = false;
+            // $scope.emailExist = false;
+            $scope.userForm = {};
+            $scope.ionicpop.close();
+            $state.go("noheader.avatar");
+          }, 2000);
+        } else {
+          console.log("datain false",data);
+          // $scope.emailExist = true;
+        $scope.errormsg = true;;
+  $state.go('noheader.signup');
+        }
+
+      })
+    }
+
+  }
+
+
     $scope.resendOtp =function(phone){
       console.log(phone,"****");
       if (phone) {
@@ -1516,37 +1541,13 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.oneTimepswd();
         }
         else{
-          // $scope.errormsg= "true";
-          // $scope.errortext=data.data.GenerateOTPTable[0].Message;
+          $scope.errormsg= "true";
+          $scope.errortext=data.data.GenerateOTPTable[0].Message;
         }
       })
     }
 $scope.errormsg=false;
-  $scope.CustomerRegistration = function (formData) {
-      console.log("formData", formData);
-    if (formData) {
-      MyServices.CustomerRegistration(formData, function (data) {
-        console.log(data);
-        if (data.value === true) {
-          MyServices.setUser(data.data);
-          $scope.formComplete = true;
-            $timeout(function () {
-            $scope.formComplete = false;
-            $scope.emailExist = false;
-            $scope.userForm = {};
-            $scope.ionicpop.close();
-            $state.go("noheader.avatar");
-          }, 2000);
-        } else {
-          $scope.emailExist = true;
-        $scope.errormsg = true;;
-  $state.go('noheader.signup');
-        }
 
-      })
-    }
-
-  }
 })
 
 .controller('LoginCtrl', function ($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout, $ionicSideMenuDelegate) {
@@ -1706,7 +1707,7 @@ $scope.errormsg=false;
       if (data.value === true) {
 
         MyServices.setUser(data.data);
-        $scope.$broadcast('scroll.refreshComplete');
+        // $scope.$broadcast('scroll.refreshComplete');
 
         //$.jStorage.set("loginDetail", data);
         $scope.formComplete = true;
@@ -1718,11 +1719,11 @@ $scope.errormsg=false;
           $scope.ionicpop.close();
           $state.go("app.account")
 
-        }, 2000);
+        }, 8000);
       } else {
         $scope.error = data.data;
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.showLoading('Error Updating Profile!', 1000);
+        // $scope.$broadcast('scroll.refreshComplete');
+        // $scope.showLoading('Error Updating Profile!', 1000);
       }
 
     })

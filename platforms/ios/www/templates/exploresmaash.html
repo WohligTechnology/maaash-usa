@@ -9,7 +9,7 @@
         <ion-item class="new" ng-if="whatsnew.length>0">
           <div class="explore-slider">
             <h4 class="text-uppercase text-in-shadow font-america">smaaash at glance</h4>
-            <ion-slide-box auto-play="false" delegate-handle="first" ng-if="whatsnew.length>0">
+            <ion-slide-box auto-play="false"  does-continue="true" delegate-handle="first" ng-if="whatsnew.length>0">
               <ion-slide ng-repeat="new in whatsnew track by $index">
                 <div class="custom-slider">
                   <img ng-src="{{new.image|uploadpath}}" alt="" class="img-responsive" width="" ui-sref="app.whatsnew({id:new.type._id})">
