@@ -16,7 +16,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
     } else {
       $scope.login = false;
-      $state.go("noheader.login");
+      // $state.go("noheader.login");
     }
 
     $scope.login = false;

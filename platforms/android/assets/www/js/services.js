@@ -72,6 +72,7 @@
          data: data
        }).success(callback);
      },
+
      getProfile: function (_id, callback) {
        if (_id) {
          $http({
