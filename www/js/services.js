@@ -249,9 +249,9 @@
        }).success(callback);
      },
      logout: function (callback) {
-       $.jStorage.flush();
+      //  $.jStorage.flush();
        console.log("$.jStorage", $.jStorage);
-       //  $.jStorage.set("loginDetail",null);
+        $.jStorage.set("loginDetail",null);
        //  $.jStorage.set("loginId",null);
        //  $.jStorage.set("loggedInUser",null);
        //  $.jStorage.set("customizeobj",null);

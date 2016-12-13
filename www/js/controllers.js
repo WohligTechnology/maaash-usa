@@ -1368,7 +1368,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('AccountCtrl', function ($scope, $stateParams, $ionicPopup, MyServices, $ionicLoading, $state) {
+.controller('AccountCtrl', function ($scope, $stateParams,  $ionicPopup, MyServices, $ionicLoading, $state) {
       console.log("Accounts me hain");
     if ($.jStorage.get("loginDetail") != null) {
 
@@ -1417,7 +1417,7 @@ angular.module('starter.controllers', ['ngCordova'])
   .controller('ConfirmOrderCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('RechargeCtrl', function ($scope, $stateParams, $ionicPopup, MyServices) {
+  .controller('RechargeCtrl', function ($scope, $stateParams,$filter, $state ,$interval ,$cordovaInAppBrowser,$ionicPopup, MyServices) {
 
     $scope.popHeadline = function () {
       $scope.headlienPop = $ionicPopup.show({
@@ -1429,26 +1429,56 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.headlienPop.close();
     }
     $scope.Recharge = {};
+    // $interval($scope.callat(),5000);
 
     $scope.RechargeCard = function (formData) {
       console.log("formData", formData);
       $scope.Recharge = formData;
       $scope.Recharge.PGReturnURL = "http://104.155.129.33:94/signup/returnUrlFunctionForMobile";
-      $scope.Recharge.CustomerID = $.jStorage.get("loginDetail").data.CustomerID;
+      $scope.Recharge.CustomerID = $.jStorage.get("loginDetail").CustomerID;
       $scope.Recharge.BranchID = "17";
 
       console.log("formData", $scope.Recharge);
 
-
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      var url = "";
       MyServices.RechargeCard(formData, function (data) {
         console.log(data);
         if (data.value === true) {
           console.log("formData", data);
+          $scope.link=data.data.RechargeCard[0].Link;
+          console.log("$scope.link",$scope.link);
+          var options = {
+      location: 'yes',
+      clearcache: 'yes',
+      toolbar: 'no'
+   };
+
+
+      $cordovaInAppBrowser.open($scope.link, '_blank', options)
+
+      .then(function() {
+         // success
+         console.log("success");
+      })
+
+      .catch(function() {
+         // error
+         console.log("error");
+
+      });
+
+          // url = $filter('uploadpath')($scope.link);
+          // var ref = cordova.InAppBrowser.open(url, target, options);
           $state.go("app.thank");
         } else {
           $state.go("app.sorry");
         }
       })
+    }
+    $scope.callat = function(){
+      console.log("hi");
     }
   })
 
