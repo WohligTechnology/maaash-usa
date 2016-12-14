@@ -24,6 +24,7 @@
                               <option ng-selected="true" value="">Gender</option>
                               <option value="Male">Male</option>
                               <option value="Female">Female</option>
+                              <option value="Others">Others</option>
                            </select>
                         </div>
                      </label>
@@ -38,9 +39,9 @@
                      <p class="error-msg" ng-show="user.email.$invalid && user.email.$touched">Please Enter valid Email.</p>
 
                      <label class="item item-input">
-                        <input type="text" placeholder="Enter Pin Code" required ng-model="userForm.pincode" name="pin" only-Digits maxlength="6">
+                        <input type="text" placeholder="Enter Zip Code" required ng-model="userForm.pincode" name="pin" only-Digits maxlength="6">
                      </label>
-                     <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>
+                     <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Zip Code.</p>
 
                      <label class="item item-input">
 

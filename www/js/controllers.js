@@ -496,9 +496,8 @@ angular.module('starter.controllers', ['ngCordova'])
     };
 
     $scope.shareProduct = function (index) {
-      console.log($scope.SingleExploreSmaaash[index].hometext);
       var image = $filter('serverimage')($scope.SingleExploreSmaaash[index].image);
-      console.log(image);
+      console.log($scope.SingleExploreSmaaash[index].hometext,image);
       $cordovaSocialSharing
         .share($scope.SingleExploreSmaaash[index].hometext, image, '') // Share via native share sheet
         .then(function (result) {
@@ -791,7 +790,7 @@ angular.module('starter.controllers', ['ngCordova'])
       if (data.value === true) {
         $scope.popupmsg = true;
         MyServices.setUser(data.data);
-          // $state.go('app.account');
+          $state.go('app.account');
           globalfunction.setUserData();
       }
     })
@@ -1454,20 +1453,38 @@ angular.module('starter.controllers', ['ngCordova'])
       clearcache: 'yes',
       toolbar: 'no'
    };
-
-
-      $cordovaInAppBrowser.open($scope.link, '_blank', options)
-
-      .then(function() {
-         // success
-         console.log("success");
-      })
-
-      .catch(function() {
-         // error
-         console.log("error");
-
+   var ref = $cordovaInAppBrowser.open($scope.link, 'target=_system', 'location=no');
+      ref.addEventListener('loadstart', function(event) {
+        if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
+          ref.close();
+          var alertPopup = $ionicPopup.alert({
+            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+          });
+          alertPopup.then(function(res) {
+            alertPopup.close();
+            $state.go('app.home');
+          });
+        } else if (event.url == "http://wohlig.co.in/paisoapk/success.html") {
+          ref.close();
+          // callWalletAdd();
+        }
+        // ref.close();
+        // $interval.cancel(callinterval);
+        // callWalletAdd();
       });
+      //
+      // $cordovaInAppBrowser.open($scope.link, '_blank', options)
+      //
+      // .then(function() {
+      //    // success
+      //    console.log("success");
+      // })
+      //
+      // .catch(function() {
+      //    // error
+      //    console.log("error");
+      //
+      // });
 
           // url = $filter('uploadpath')($scope.link);
           // var ref = cordova.InAppBrowser.open(url, target, options);
@@ -1500,7 +1517,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
   $scope.variables = {};
   $scope.userForm = {};
-  $scope.userForm.BranchID = "20";
+  $scope.userForm.BranchID = "17";
   $scope.userForm.otp = "";
   $scope.formComplete = false;
   $scope.emailExist = false;
@@ -1681,7 +1698,7 @@ $scope.errormsg=false;
   $scope.getotp = {};
   $scope.getotp.CustomerMobileNo = "";
   $scope.getotp.OTPFor = "2";
-  $scope.getotp.BranchID = "20";
+  $scope.getotp.BranchID = "17";
   $scope.userForm = {};
   $scope.generateOtp = function (userForm) {
     console.log(userForm, "****");

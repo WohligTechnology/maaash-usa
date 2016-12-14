@@ -13,8 +13,8 @@
 <div class="col">
    <div class="" style="margin:0 auto;">
                     <!-- <img ng-src="{{userForm.profilePic }}" alt=""  class="img-responsive" > -->
-                    <img ng-src="{{userForm.profilePic | uploadpath }}" alt=""  class="img-responsive" >
-                    <img src="img/addphoto.png" alt=""  ng-if = "!userForm.profilePic" class="img-responsive" >
+                    <img ng-src="{{userForm.profilePic | uploadpath }}" alt=""  class="img-responsive" ng-show = "userForm.profilePic">
+                    <img src="img/addphoto.png" alt=""  ng-show = "!userForm.profilePic" class="img-responsive" >
                   </div>
 </div>
             </div>
