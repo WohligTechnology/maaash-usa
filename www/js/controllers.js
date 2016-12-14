@@ -18,7 +18,13 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.login = false;
       // $state.go("noheader.login");
     }
+    MyServices.notification(function (data) {
+      $scope.notification = data.data;
+      console.log("$scope.notification", $scope.notification);
+    });
+$scope.closenote = function (id) {
 
+};
     $scope.login = false;
     // if($.jStorage.get("loginDetail")!=null){
     //   $state.go("app.account");
@@ -1474,7 +1480,7 @@ angular.module('starter.controllers', ['ngCordova'])
         // $interval.cancel(callinterval);
         // callWalletAdd();
       });
-      
+
       //
       // $cordovaInAppBrowser.open($scope.link, '_blank', options)
       //

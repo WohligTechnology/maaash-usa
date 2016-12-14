@@ -134,6 +134,13 @@
          data: data
        }).success(callback);
      },
+     notification: function (callback) {
+       $http({
+         url: adminurl + 'notification/getAll',
+         method: 'POST',
+         withCredentials: true,
+       }).success(callback);
+     },
      assistanceLoginSignup: function (formdata, callback) {
        $http({
          url: adminurl + 'assistance/save',
