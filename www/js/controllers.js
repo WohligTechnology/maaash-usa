@@ -499,7 +499,7 @@ angular.module('starter.controllers', ['ngCordova'])
       var image = $filter('serverimage')($scope.SingleExploreSmaaash[index].image);
       console.log($scope.SingleExploreSmaaash[index].hometext,image);
       $cordovaSocialSharing
-        .share($scope.SingleExploreSmaaash[index].hometext, image, '') // Share via native share sheet
+        .share($scope.SingleExploreSmaaash[index].hometext,'',image, '') // Share via native share sheet
         .then(function (result) {
           console.log("done");
         }, function (err) {
