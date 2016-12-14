@@ -353,7 +353,7 @@ angular.module('starter.controllers', ['ngCordova'])
     url = $filter('uploadpath')(link);
     var ref = cordova.InAppBrowser.open(url, target, options);
   };
-  $scope.pdf = function () {
+  $scope.pdfviewer = function () {
     $scope.pdf = $ionicPopup.show({
       templateUrl: 'templates/modal/pdf.html',
       scope: $scope,
@@ -387,7 +387,7 @@ angular.module('starter.controllers', ['ngCordova'])
     url = $filter('uploadpath')(link);
     var ref = cordova.InAppBrowser.open(url, target, options);
   };
-  $scope.pdf = function () {
+  $scope.pdfviewer = function () {
     $scope.pdf = $ionicPopup.show({
       templateUrl: 'templates/modal/pdf.html',
       scope: $scope,
@@ -1416,7 +1416,7 @@ angular.module('starter.controllers', ['ngCordova'])
   .controller('ConfirmOrderCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('RechargeCtrl', function ($scope, $stateParams,$filter, $state ,$interval ,$cordovaInAppBrowser,$ionicPopup, MyServices) {
+  .controller('RechargeCtrl', function ($scope, $stateParams,$filter, $state ,$interval ,$ionicPopup, MyServices) {
 
     $scope.popHeadline = function () {
       $scope.headlienPop = $ionicPopup.show({
@@ -1453,7 +1453,8 @@ angular.module('starter.controllers', ['ngCordova'])
       clearcache: 'yes',
       toolbar: 'no'
    };
-   var ref = $cordovaInAppBrowser.open($scope.link, 'target=_system', 'location=no');
+   var ref = cordova.InAppBrowser.open($scope.link, 'target=_system', 'location=no');
+   console.log('refff',ref);
       ref.addEventListener('loadstart', function(event) {
         if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
           ref.close();
@@ -1468,10 +1469,12 @@ angular.module('starter.controllers', ['ngCordova'])
           ref.close();
           // callWalletAdd();
         }
+
         // ref.close();
         // $interval.cancel(callinterval);
         // callWalletAdd();
       });
+      
       //
       // $cordovaInAppBrowser.open($scope.link, '_blank', options)
       //
