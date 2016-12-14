@@ -1436,7 +1436,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.Recharge = formData;
       $scope.Recharge.PGReturnURL = "http://104.155.129.33:94/signup/returnUrlFunctionForMobile";
       $scope.Recharge.CustomerID = $.jStorage.get("loginDetail").CustomerID;
-      $scope.Recharge.BranchID = "17";
+      $scope.Recharge.BranchID = "20";
 
       console.log("formData", $scope.Recharge);
 
@@ -1500,7 +1500,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
   $scope.variables = {};
   $scope.userForm = {};
-  $scope.userForm.BranchID = "17";
+  $scope.userForm.BranchID = "20";
   $scope.userForm.otp = "";
   $scope.formComplete = false;
   $scope.emailExist = false;
@@ -1681,7 +1681,7 @@ $scope.errormsg=false;
   $scope.getotp = {};
   $scope.getotp.CustomerMobileNo = "";
   $scope.getotp.OTPFor = "2";
-  $scope.getotp.BranchID = "17";
+  $scope.getotp.BranchID = "20";
   $scope.userForm = {};
   $scope.generateOtp = function (userForm) {
     console.log(userForm, "****");
