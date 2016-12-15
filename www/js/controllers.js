@@ -1477,31 +1477,16 @@ $scope.closenote = function (id) {
       $scope.Recharge.PGReturnURL = "http://104.155.129.33:94/signup/returnUrlFunctionForMobile";
       $scope.Recharge.CustomerID = $.jStorage.get("loginDetail").CustomerID;
       $scope.Recharge.BranchID = "20";
-
       console.log("formData", $scope.Recharge);
-
-      var options = "location=no,toolbar=yes";
-      var target = "_blank";
-      var url = "";
       MyServices.RechargeCard(formData, function (data) {
         console.log(data);
         if (data.value === true) {
           console.log("formData", data);
           $scope.link=data.data.RechargeCard[0].Link;
           console.log("$scope.link",$scope.link);
-          var options = {
-      location: 'yes',
-      clearcache: 'yes',
-      toolbar: 'no'
-   };
-  //  event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
-  //  url = event.url.split(".html")[0] + ".html";
-  //  orderid = event.url.split("=")[1] ;
-  //  console.log(url,orderid);
-  //    $state.go('app.sorry',{order_id:orderid});
-   document = $cordovaInAppBrowser.open($scope.link, 'target=_system', 'location=no');
-   console.log('document',document);
-      document.addEventListener('loadstart', function(event) {
+        //  var ref = window.open(data.data.RechargeCard[0].Link);
+         var ref = cordova.InAppBrowser.open(data.data.RechargeCard[0].Link,'target=_system', 'location=no');
+        ref.addEventListener('loadstop', function(event) {
         // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
         url = event.url.split(".html")[0] + ".html";
         orderid = event.url.split("=")[1] ;
@@ -1511,23 +1496,15 @@ $scope.closenote = function (id) {
           var alertPopup = $ionicPopup.alert({
             template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
           });
-
           alertPopup.then(function(res) {
             alertPopup.close();
             $state.go('app.sorry',{order_id:orderid});
           });
         } else if (url == "http://wohlig.co.in/paisoapk/success.html") {
           ref.close();
-          // callWalletAdd();
           $state.go('app.thank',{order_id:orderid});
         }
-
-        // ref.close();
-        // $interval.cancel(callinterval);
-        // callWalletAdd();
-      });
-
-      //
+   });
       // $cordovaInAppBrowser.open($scope.link, '_blank', options)
       //
       // .then(function() {
@@ -1540,13 +1517,10 @@ $scope.closenote = function (id) {
       //    console.log("error");
       //
       // });
-
-          // url = $filter('uploadpath')($scope.link);
-          // var ref = cordova.InAppBrowser.open(url, target, options);
-
         }
       })
     }
+
 
   })
 
