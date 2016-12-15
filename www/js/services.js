@@ -141,6 +141,25 @@
          withCredentials: true,
        }).success(callback);
      },
+     delete: function (id,callback) {
+       var data = {
+         _id: id,
+       };
+       $http({
+         url: adminurl + 'notification/delete',
+         method: 'POST',
+         withCredentials: true,
+         data: data
+       }).success(callback);
+     },
+     getOrderDetails: function (orderid,callback) {
+       $http({
+         url: adminurl + 'signup/getOrderDetails',
+         method: 'POST',
+         withCredentials: true,
+         data: orderid
+       }).success(callback);
+     },
      assistanceLoginSignup: function (formdata, callback) {
        $http({
          url: adminurl + 'assistance/save',

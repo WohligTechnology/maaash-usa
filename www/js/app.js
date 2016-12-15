@@ -86,7 +86,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
     .state('app.sorry', {
-      url: '/sorry',
+      url: '/sorry/:order_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/sorry.html',
@@ -96,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     })
 
   .state('app.thank', {
-    url: '/thank',
+    url: '/thank/:order_id',
     views: {
       'menuContent': {
         templateUrl: 'templates/thank.html',

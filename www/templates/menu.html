@@ -11,7 +11,7 @@
       <ion-nav-buttons side="right"  >
         <!--<h3 class=" color-white {{getCross}}" >
         </h3>-->
-         <button class="button button-icon button-clear ion-ios-bell-outline" ng-click="whenClose();" {{getCross}} menu-toggle="right">
+         <button class="button button-icon button-clear ion-ios-bell-outline" ng-click="whenClose();notificationButton()" {{getCross}} menu-toggle="right">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -102,14 +102,20 @@
       </h1>
     </ion-header-bar>
     <ion-content>
-      <ion-list class="noti-list" ng-click="whenClose();">
+      <ion-list class="noti-list" >
 
 
         <ion-item menu-close ng-repeat="note in notification" >
-          <div class="close note-close" ng-click=""><img src="img/close-popup.png" alt="close-popup" class="img-responsive"></div>
+          <div class="close note-close" ng-click="closenote(note._id);"><img src="img/close-popup.png" alt="close-popup" class="img-responsive"></div>
           <p class="no-ellipsis">{{note.text}} </p>
-          <!-- <span><img src="img/go.png" alt="" width="50" class="img-responsive"></span> -->
         </ion-item>
+        <div ng-if="Notifications.length<=0">
+          <h3>
+            <b>
+              <center class="color-white">No Notifications</center>
+            </b>
+          </h3>
+        </div>
 
       </ion-list>
     </ion-content>

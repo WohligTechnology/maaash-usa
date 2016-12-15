@@ -1,7 +1,7 @@
 var globalfunction = {};
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices,$filter) {
+.controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout,$ionicLoading, $ionicScrollDelegate, $ionicSideMenuDelegate, MyServices,$filter) {
   console.log("APP is called",$.jStorage.get("loginDetail"));
   if($.jStorage.get("loginDetail")){
 
@@ -18,12 +18,39 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.login = false;
       // $state.go("noheader.login");
     }
+
+
+    $scope.loading = function() {
+      $ionicLoading.show({
+        template: '<ion-spinner class="spinner-assertive"></ion-spinner>'
+      });
+      $timeout(function() {
+        $ionicLoading.hide();
+      }, 10000);
+    };
+
+
     MyServices.notification(function (data) {
+      $ionicLoading.hide();
       $scope.notification = data.data;
       console.log("$scope.notification", $scope.notification);
     });
-$scope.closenote = function (id) {
+$scope.notificationButton = function(){
+  MyServices.notification(function (data) {
+    $ionicLoading.hide();
+    console.log(data);
+    $scope.notification = data.data;
+    console.log("$scope.notification", $scope.notification);
+  });
+};
 
+$scope.closenote = function (id) {
+  console.log(id);
+  MyServices.delete(id ,function (data) {
+    $ionicLoading.hide();
+    $scope.notification = data.data;
+    console.log("$scope.notification", $scope.notification);
+  });
 };
     $scope.login = false;
     // if($.jStorage.get("loginDetail")!=null){
@@ -297,12 +324,20 @@ $scope.closenote = function (id) {
 
 })
 
-.controller('SorryCtrl', function ($scope, $stateParams) {
-
+.controller('SorryCtrl', function ($scope, $stateParams ,MyServices) {
+  console.log($stateParams.order_id);
+  MyServices.getOrderDetails($stateParams.order_id, function (data) {
+    $scope.OrderDetails=data.data;
+    console.log(data);
+  });
 })
 
-.controller('ThankCtrl', function ($scope, $stateParams) {
-
+.controller('ThankCtrl', function ($scope, $stateParams,MyServices) {
+ console.log($stateParams.order_id);
+ MyServices.getOrderDetails($stateParams.order_id, function (data) {
+   $scope.OrderDetails=data.data;
+   console.log(data);
+ });
 })
 
 .controller('BeverageCtrl', function ($scope, $stateParams, MyServices, $ionicPopup, $filter, $ionicSlideBoxDelegate) {
@@ -1422,7 +1457,7 @@ $scope.closenote = function (id) {
   .controller('ConfirmOrderCtrl', function ($scope, $stateParams) {
 
   })
-  .controller('RechargeCtrl', function ($scope, $stateParams,$filter, $state ,$interval ,$ionicPopup, MyServices) {
+  .controller('RechargeCtrl', function ($scope, $stateParams,$filter, $state ,$cordovaInAppBrowser,$interval ,$ionicPopup, MyServices) {
 
     $scope.popHeadline = function () {
       $scope.headlienPop = $ionicPopup.show({
@@ -1459,21 +1494,32 @@ $scope.closenote = function (id) {
       clearcache: 'yes',
       toolbar: 'no'
    };
-   var ref = cordova.InAppBrowser.open($scope.link, 'target=_system', 'location=no');
-   console.log('refff',ref);
-      ref.addEventListener('loadstart', function(event) {
-        if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
+  //  event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+  //  url = event.url.split(".html")[0] + ".html";
+  //  orderid = event.url.split("=")[1] ;
+  //  console.log(url,orderid);
+  //    $state.go('app.sorry',{order_id:orderid});
+   document = $cordovaInAppBrowser.open($scope.link, 'target=_system', 'location=no');
+   console.log('document',document);
+      document.addEventListener('loadstart', function(event) {
+        // event.url="http://wohlig.co.in/paisoapk/success.html?orderid=1231321231";
+        url = event.url.split(".html")[0] + ".html";
+        orderid = event.url.split("=")[1] ;
+        console.log(url,order_id);
+        if (url == "http://wohlig.co.in/paisoapk/fail.html") {
           ref.close();
           var alertPopup = $ionicPopup.alert({
             template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
           });
+
           alertPopup.then(function(res) {
             alertPopup.close();
-            $state.go('app.home');
+            $state.go('app.sorry',{order_id:orderid});
           });
-        } else if (event.url == "http://wohlig.co.in/paisoapk/success.html") {
+        } else if (url == "http://wohlig.co.in/paisoapk/success.html") {
           ref.close();
           // callWalletAdd();
+          $state.go('app.thank',{order_id:orderid});
         }
 
         // ref.close();
@@ -1497,15 +1543,11 @@ $scope.closenote = function (id) {
 
           // url = $filter('uploadpath')($scope.link);
           // var ref = cordova.InAppBrowser.open(url, target, options);
-          $state.go("app.thank");
-        } else {
-          $state.go("app.sorry");
+
         }
       })
     }
-    $scope.callat = function(){
-      console.log("hi");
-    }
+
   })
 
 .controller('SignupCtrl', function ($scope, $stateParams, $ionicPopup, $state, MyServices, $timeout,$filter) {
