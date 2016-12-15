@@ -8,6 +8,15 @@ angular.module('starter.controllers', ['ngCordova'])
     MyServices.getProfile($.jStorage.get("loginDetail")._id,function(data) {
       $scope.userForm = data.data;
     });
+      $scope.userid=$.jStorage.get("loginDetail")._id;
+
+      MyServices.getUserNotification($scope.userid,function (data) {
+        if(data.value){
+          $ionicLoading.hide();
+          $scope.notification = data.data.notification;
+          console.log("$scope.notification", $scope.notification);
+        }
+      });
   }
   $scope.$root.canDrag = false;
     if ($scope.userForm) {
@@ -28,20 +37,21 @@ angular.module('starter.controllers', ['ngCordova'])
         $ionicLoading.hide();
       }, 10000);
     };
-    $scope.userid=$.jStorage.get("loginDetail")._id;
 
 
-    MyServices.getUserNotification($scope.userid,function (data) {
+
+
+$scope.notificationButton = function(){
+  MyServices.getUserNotification($scope.userid ,function (data) {
+    if(data.value){
       $ionicLoading.hide();
       $scope.notification = data.data.notification;
       console.log("$scope.notification", $scope.notification);
-    });
-$scope.notificationButton = function(){
-  MyServices.getUserNotification($scope.userid ,function (data) {
-    $ionicLoading.hide();
-    console.log(data);
-    $scope.notification = data.data.notification;
-    console.log("$scope.notification", $scope.notification);
+    }
+    else{
+      $scope.note=true;
+    }
+
   });
 };
 $scope.note={};
