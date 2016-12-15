@@ -28,28 +28,31 @@ angular.module('starter.controllers', ['ngCordova'])
         $ionicLoading.hide();
       }, 10000);
     };
+    $scope.userid=$.jStorage.get("loginDetail")._id;
 
 
-    MyServices.notification(function (data) {
+    MyServices.getUserNotification($scope.userid,function (data) {
       $ionicLoading.hide();
-      $scope.notification = data.data;
+      $scope.notification = data.data.notification;
       console.log("$scope.notification", $scope.notification);
     });
 $scope.notificationButton = function(){
-  MyServices.notification(function (data) {
+  MyServices.getUserNotification($scope.userid ,function (data) {
     $ionicLoading.hide();
     console.log(data);
-    $scope.notification = data.data;
+    $scope.notification = data.data.notification;
     console.log("$scope.notification", $scope.notification);
   });
 };
+$scope.note={};
 
 $scope.closenote = function (id) {
   console.log(id);
-  MyServices.delete(id ,function (data) {
+  $scope.note.id=id;
+  $scope.note.userid=$scope.userid;
+  MyServices.removeNotification($scope.note ,function (data) {
     $ionicLoading.hide();
-    $scope.notification = data.data;
-    console.log("$scope.notification", $scope.notification);
+    // console.log("$scope.notification", $scope.notification);
   });
 };
     $scope.login = false;

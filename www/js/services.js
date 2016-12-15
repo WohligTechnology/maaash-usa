@@ -134,19 +134,24 @@
          data: data
        }).success(callback);
      },
-     notification: function (callback) {
-       $http({
-         url: adminurl + 'notification/getAll',
-         method: 'POST',
-         withCredentials: true,
-       }).success(callback);
-     },
-     delete: function (id,callback) {
+     getUserNotification: function (userid,callback) {
        var data = {
-         _id: id,
+         userid: userid,
        };
        $http({
-         url: adminurl + 'notification/delete',
+         url: adminurl + 'signup/getUserNotification',
+         method: 'POST',
+         withCredentials: true,
+         data: data
+       }).success(callback);
+     },
+     removeNotification: function (note,callback) {
+       var data = {
+         _id:note.id,
+         userid: note.userid
+       };
+       $http({
+         url: adminurl + 'notification/removeNotification',
          method: 'POST',
          withCredentials: true,
          data: data
