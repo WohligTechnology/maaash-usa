@@ -1542,7 +1542,7 @@ $scope.closenote = function (id) {
   }
   $scope.variables = {};
   $scope.userForm = {};
-  $scope.userForm.BranchID = "17";
+  $scope.userForm.BranchID = "20";
   $scope.userForm.otp = "";
   $scope.formComplete = false;
   $scope.emailExist = false;
@@ -1723,7 +1723,7 @@ $scope.errormsg=false;
   $scope.getotp = {};
   $scope.getotp.CustomerMobileNo = "";
   $scope.getotp.OTPFor = "2";
-  $scope.getotp.BranchID = "17";
+  $scope.getotp.BranchID = "20";
   $scope.userForm = {};
   $scope.generateOtp = function (userForm) {
     console.log(userForm, "****");
