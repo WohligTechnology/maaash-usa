@@ -49,7 +49,7 @@ $scope.notificationButton = function(){
       console.log("$scope.notification", $scope.notification);
     }
     else{
-      $scope.note=true;
+      $note=true
     }
 
   });
@@ -228,6 +228,8 @@ $scope.closenote = function (id) {
 
 .controller('HomeCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate) {
   var jstoreage = $.jStorage.get("loginDetail");
+  $scope.home=MyServices.getUser();
+  console.log("$scope.home",$scope.home);
   if (jstoreage) {
     var _id = jstoreage.data_id;
     console.log("iddd", _id);
@@ -543,10 +545,16 @@ $scope.closenote = function (id) {
     //   }
     // }
     $scope.readMore = function(id) {
+      _.each($scope.moreDesc,function(value,property){
+         if(id !=property){
+             $scope.moreDesc[property]=false;
+         }
+     });
         $scope.moreDesc[id] = ($scope.moreDesc[id] == true) ? false : true;
         $scope.myDesc = _.find($scope.SingleExploreSmaaash, function(n) {
             return n._id == id;
         }).description;
+
     };
 
     $scope.shareProduct = function (index) {
@@ -1422,7 +1430,6 @@ $scope.closenote = function (id) {
 })
 
 .controller('AccountCtrl', function ($scope, $stateParams,  $ionicPopup, MyServices, $ionicLoading, $state) {
-      console.log("Accounts me hain");
     if ($.jStorage.get("loginDetail") != null) {
 
       var jstoreage = $.jStorage.get("loginDetail");

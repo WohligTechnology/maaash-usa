@@ -1,6 +1,6 @@
  // var adminurl = "http://192.168.0.104:1337/"; //local
 
- var adminurl = "http://104.155.129.33:94/"; //server
+ var adminurl = "http://146.148.109.185:94/"; //server
  // var imgpath = adminurl + "uploadfile/getupload?file=";
  var imgurl = adminurl + "upload/";
  var imgpath = imgurl + "readFile?file=";
@@ -84,10 +84,8 @@
            }
          }).success(callback);
        }
-
      },
      updateProfile: function (update, callback) {
-
        $http({
          url: adminurl + 'signup/updateProfile',
          method: 'POST',
