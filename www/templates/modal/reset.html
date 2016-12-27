@@ -8,10 +8,10 @@
         <p class="color-white text-center">Reset Password</p>
         <ion-list>
           <label class="item item-input">
-            <input type="password" placeholder="Old password" ng-model="credentials.OldPassword" required name="OldPassword" >
+            <input type="password" class="otp-input" placeholder="Old password" ng-model="credentials.OldPassword" required name="OldPassword" >
           </label>
           <label class="item item-input">
-            <input type="password" placeholder="New Password"  ng-model="credentials.NewPassword"  name="NewPassword">
+            <input type="password" class="otp-input" placeholder="New Password"  ng-model="credentials.NewPassword"  name="NewPassword">
           </label>
         </ion-list>
         <p ng-if="incorrect">Incorrect Details.</p>

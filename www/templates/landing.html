@@ -8,7 +8,7 @@
       <ion-list>
         <div class="row">
           <div class="col-offset-10 col col-80">
-            <form name="user" >
+            <form name="user" ng-submit="generateOtp(userForm)">
               <label class="item item-input">
                 <input type="text" placeholder="Name" name="name" required ng-model="userForm.name">
               </label>
@@ -27,7 +27,7 @@
                 </div>
               </label>-->
               <label class="item item-input">
-                <input type="tel" placeholder="Mobile Number" name="mobileno" ng-model="userForm.UserName" required only-Digits maxlength="10" minlength="8">
+                <input type="tel" placeholder="Mobile Number" name="mobileno" ng-model="userForm.UserName" required only-Digits maxlength="10" minlength="10">
               </label>
               <p class="error-msg" ng-show="userForm.mobileno.$error.required && userForm.mobileno.$touched">Please Enter Your Mobile Number.</p>
 
@@ -45,7 +45,7 @@
                 <input type="text" placeholder="Enter Pin Code" required ng-model="userForm.pin" name="pin" only-Digits maxlength="6" minlength="6">
               </label>
               <p class="error-msg" ng-show="user.pin.$error.required && user.pin.$touched">Please Enter Your Pin Code.</p>-->
-              <button  name="button" class="go full-width" ng-click="generateOtp(userForm)">
+              <button  name="button" class="go full-width"  type="submit">
                 <img src="img/go.png" alt="" class="img-responsive">
               </button>
               <p class="text-center color-white font-galano">OR</p>

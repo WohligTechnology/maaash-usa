@@ -393,7 +393,9 @@ h3.ion-ios-bell-outline {
     display: none;
 }
 // otp
-
+.otp-input{
+  height: 20px!important;
+}
 .otp-content {
     position: absolute;
     top: 55%;
@@ -402,7 +404,7 @@ h3.ion-ios-bell-outline {
 
     p {
         margin-bottom: 15px;
-        font-size: 18px;
+        font-size: 14px;
 
         &:active {
             color: yellow !important;

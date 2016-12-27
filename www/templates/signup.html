@@ -19,9 +19,9 @@
                      <p class="error-msg" ng-if="user.dob.$error.required && user.dob.$touched">Please Enter Your DOB.</p>
 
                      <label class="item item-input ">
-                        <div class="custom-select">
+                        <div class="custom-select calendar">
                            <select class="gender" required ng-model="userForm.gender">
-                              <option ng-selected="true" value="">Gender</option>
+                              <option ng-selected="true" disabled value="">Gender</option>
                               <option value="Male">Male</option>
                               <option value="Female">Female</option>
                               <option value="Others">Others</option>

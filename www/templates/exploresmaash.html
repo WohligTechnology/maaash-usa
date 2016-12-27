@@ -6,13 +6,15 @@
         <p class="color-white font-galano">Connecting sports, virtual reality and dining into a highly interactive and innovative social experience.</p>
       </div>
       <ion-list>
-        <ion-item class="new" ng-if="whatsnew.length>0">
+        <ion-item class="new" ng-if="atglance.length>0">
           <div class="explore-slider">
             <h4 class="text-uppercase text-in-shadow font-america">smaaash at glance</h4>
-            <ion-slide-box auto-play="false"  does-continue="true" delegate-handle="first" ng-if="whatsnew.length>0">
-              <ion-slide ng-repeat="new in whatsnew track by $index">
+
+            <ion-slide-box auto-play="false"  does-continue="true" delegate-handle="first" ng-if="atglance.length>0">
+              <ion-slide ng-repeat="new in atglance track by $index">
                 <div class="custom-slider">
                   <img ng-src="{{new.image|uploadpath}}" alt="" class="img-responsive" width="" ui-sref="app.whatsnew({id:new.type._id})">
+                  <!-- <p>{{new.image}}</p> -->
                   <!-- <img ng-src="{{new}}" alt="" class="img-responsive" width=""> -->
                 </div>
               </ion-slide>
@@ -38,6 +40,8 @@
             </ion-slide-box>
           </div>
         </ion-item>
+
+
         <ion-item class="new"  ng-if="hostParty.length>0">
           <div class="explore-slider">
             <h4 class="text-uppercase text-in-shadow font-america">Host a party</h4>

@@ -231,7 +231,7 @@ $scope.closenote = function (id) {
   $scope.home=MyServices.getUser();
   console.log("$scope.home",$scope.home);
   if (jstoreage) {
-    var _id = jstoreage.data_id;
+    var _id = jstoreage._id;
     console.log("iddd", _id);
     // $scope.startloading() ;
     MyServices.getProfile(_id, function (data) {
@@ -292,6 +292,7 @@ $scope.closenote = function (id) {
   $scope.credentials = {};
   $scope.incorrect=false;
   $scope.popupmsg=false;
+  $scope.updatemsg=false;
 
   $scope.credentials.CustomerID = $.jStorage.get("loginDetail").CustomerID;
   $scope.CustomerResetPassword = function (credentials) {
@@ -313,6 +314,7 @@ $scope.closenote = function (id) {
   $scope.reset = function () {
     console.log("in reset");
     $scope.popupmsg = false;
+    $scope.incorrect=false;
     $scope.resets = $ionicPopup.show({
       templateUrl: 'templates/modal/reset.html',
       scope: $scope
@@ -1076,11 +1078,15 @@ $scope.closenote = function (id) {
     MyServices.getHomeContent(function (data) {
       if (data.value) {
         $scope.homeContent = data.data;
+        console.log($scope.homeContent);
 
         $scope.content = _.groupBy($scope.homeContent, "type.name");
+        console.log($scope.content);
         // console.log("  $scope.homeContent",    $scope.content );
         $scope.attraction = $scope.content.Attraction;
-        $scope.whatsnew = $scope.content["What's new"];
+        $scope.atglance = $scope.content["What's new"];
+        console.log($scope.content["What's new"]);
+        console.log($scope.atglance);
         $scope.hostParty = $scope.content["Host a party"];
         $scope.beverage = $scope.content["Food and Beverages"];
       } else {}
@@ -1718,9 +1724,9 @@ $scope.errormsg=false;
   }
   $scope.closePopup = function () {
     $scope.password10.close();
+    $scope.userForm = {};
   }
   $scope.CustomerForgetPassword = function (password) {
-    console.log(password.CustomerEmail);
     if (password.CustomerEmail != null && password.CustomerMobileNo != null) {
       MyServices.CustomerForgetPassword(password, function (data) {
         console.log(data);

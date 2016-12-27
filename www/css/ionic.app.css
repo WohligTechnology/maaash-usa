@@ -10095,6 +10095,9 @@ h3.ion-ios-bell-outline {
   border: none;
   display: none; }
 
+.otp-input {
+  height: 20px !important; }
+
 .otp-content {
   position: absolute;
   top: 55%;
@@ -10103,7 +10106,7 @@ h3.ion-ios-bell-outline {
   transform: translate(-50%, -50%); }
   .otp-content p {
     margin-bottom: 15px;
-    font-size: 18px; }
+    font-size: 14px; }
     .otp-content p:active {
       color: yellow !important; }
   .otp-content label {
